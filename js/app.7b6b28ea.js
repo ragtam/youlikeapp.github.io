@@ -183,9 +183,9 @@ function logOff() {
 }
 
 function setUp() {
-  gapi.load('client:auth2', function () {
+  return gapi.load('client:auth2', function () {
     gapi.client.init({
-      clientId: '871050293069-eqou5jodn7u9tahldd0jqdhu10mlk13f.apps.googleusercontent.com',
+      clientId: '830004684171-h17li43l6bp0j7nf1ln7slv3v6bdcvl0.apps.googleusercontent.com',
       scope: 'https://www.googleapis.com/auth/youtube'
     }).then(function () {
       console.log('authenticated');
@@ -728,4 +728,4 @@ var SET_UP_GOOGLE_CLIENT_ID = 'SET_UP_GOOGLE_CLIENT_ID';
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.cb0ae08d.js.map
+//# sourceMappingURL=app.7b6b28ea.js.map
