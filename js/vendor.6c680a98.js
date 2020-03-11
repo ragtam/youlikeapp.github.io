@@ -21621,59 +21621,6 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
 
 /***/ }),
 
-/***/ "9989":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("2b0e");
-/* harmony import */ var _utils_slot_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("dde5");
-
-
-/* harmony default export */ __webpack_exports__["a"] = (vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
-  name: 'QPage',
-  inject: {
-    pageContainer: {
-      default: function _default() {
-        console.error('QPage needs to be child of QPageContainer');
-      }
-    },
-    layout: {}
-  },
-  props: {
-    padding: Boolean,
-    styleFn: Function
-  },
-  computed: {
-    style: function style() {
-      var offset = (this.layout.header.space === true ? this.layout.header.size : 0) + (this.layout.footer.space === true ? this.layout.footer.size : 0);
-
-      if (typeof this.styleFn === 'function') {
-        var height = this.layout.container === true ? this.layout.containerHeight : this.$q.screen.height;
-        return this.styleFn(offset, height);
-      }
-
-      return {
-        minHeight: this.layout.container === true ? this.layout.containerHeight - offset + 'px' : this.$q.screen.height === 0 ? "calc(100vh - ".concat(offset, "px)") : this.$q.screen.height - offset + 'px'
-      };
-    },
-    classes: function classes() {
-      if (this.padding === true) {
-        return 'q-layout-padding';
-      }
-    }
-  },
-  render: function render(h) {
-    return h('main', {
-      staticClass: 'q-page',
-      style: this.style,
-      class: this.classes,
-      on: this.$listeners
-    }, Object(_utils_slot_js__WEBPACK_IMPORTED_MODULE_1__[/* slot */ "c"])(this, 'default'));
-  }
-}));
-
-/***/ }),
-
 /***/ "99b6":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -39721,4 +39668,4 @@ module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u20
 /***/ })
 
 }]);
-//# sourceMappingURL=vendor.3ef70032.js.map
+//# sourceMappingURL=vendor.6c680a98.js.map

@@ -159,6 +159,10 @@ var es6_promise = __webpack_require__("551c");
 // CONCATENATED MODULE: ./src/services/google-api.service.js
 
 
+var clientConfiguration = {
+  clientId: '830004684171-h17li43l6bp0j7nf1ln7slv3v6bdcvl0.apps.googleusercontent.com',
+  scope: 'https://www.googleapis.com/auth/youtube'
+};
 
 function signIn() {
   return new Promise(function (resolve) {
@@ -182,13 +186,12 @@ function logOff() {
   });
 }
 
-function setUp() {
-  return gapi.load('client:auth2', function () {
-    gapi.client.init({
-      clientId: '830004684171-h17li43l6bp0j7nf1ln7slv3v6bdcvl0.apps.googleusercontent.com',
-      scope: 'https://www.googleapis.com/auth/youtube'
-    }).then(function () {
-      console.log('authenticated');
+function getAuthInstance() {
+  return new Promise(function (resolve) {
+    gapi.load('client:auth2', function () {
+      gapi.client.init(clientConfiguration).then(function () {
+        resolve(gapi.auth2.getAuthInstance());
+      });
     });
   });
 }
@@ -196,7 +199,7 @@ function setUp() {
 var googleApiService = {
   signIn: signIn,
   logOff: logOff,
-  setUp: setUp
+  getAuthInstance: getAuthInstance
 };
 /* harmony default export */ var google_api_service = (googleApiService);
 // CONCATENATED MODULE: ./src/store/index.js
@@ -254,7 +257,11 @@ var initialState = {
         commit(mutation_types["a" /* LOG_OFF */], _objectSpread({}, initialState.user));
       });
     }), defineProperty_default()(_actions, mutation_types["b" /* SET_UP_GOOGLE_CLIENT_ID */], function () {
-      google_api_service.setUp();
+      google_api_service.getAuthInstance().then(function (authInstance) {
+        var currentUser = authInstance.currentUser.get().getBasicProfile();
+        var isSignedIn = authInstance.isSignedIn.get();
+        console.log('set up google client id', currentUser, isSignedIn);
+      });
     }), _actions),
     strict: false
   });
@@ -272,7 +279,7 @@ var routes = [{
   children: [{
     path: '',
     component: function component() {
-      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, "8b24"));
+      return __webpack_require__.e(/* import() */ 7).then(__webpack_require__.bind(null, "8b24"));
     }
   }]
 }, {
@@ -283,7 +290,7 @@ var routes = [{
   children: [{
     path: '',
     component: function component() {
-      return __webpack_require__.e(/* import() */ 6).then(__webpack_require__.bind(null, "a1d1"));
+      return __webpack_require__.e(/* import() */ 5).then(__webpack_require__.bind(null, "a1d1"));
     }
   }]
 }, {
@@ -294,7 +301,7 @@ var routes = [{
   children: [{
     path: '',
     component: function component() {
-      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, "2973"));
+      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, "2973"));
     }
   }]
 }, {
@@ -728,4 +735,4 @@ var SET_UP_GOOGLE_CLIENT_ID = 'SET_UP_GOOGLE_CLIENT_ID';
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.7b6b28ea.js.map
+//# sourceMappingURL=app.88f998a3.js.map
