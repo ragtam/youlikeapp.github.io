@@ -166,6 +166,16 @@ var clientConfiguration = {
 var oauthClient = 'client:auth2';
 var authInstance;
 
+function setUpAuthInstance() {
+  return new Promise(function (resolve) {
+    gapi.load(oauthClient, function () {
+      gapi.client.init(clientConfiguration).then(function () {
+        authInstance = gapi.auth2.getAuthInstance();
+      });
+    });
+  });
+}
+
 function signIn() {
   return new Promise(function (resolve, reject) {
     authInstance.signIn().then(function (_ref) {
@@ -214,22 +224,11 @@ function getSignedInUser() {
   };
 }
 
-function setUpAuthInstance() {
-  return new Promise(function (resolve) {
-    gapi.load(oauthClient, function () {
-      gapi.client.init(clientConfiguration).then(function () {
-        authInstance = gapi.auth2.getAuthInstance();
-        resolve(authInstance);
-      });
-    });
-  });
-}
-
 var googleApiService = {
+  setUpAuthInstance: setUpAuthInstance,
   signIn: signIn,
   logOff: logOff,
-  listenToSignedInChanges: listenToSignedInChanges,
-  setUpAuthInstance: setUpAuthInstance
+  listenToSignedInChanges: listenToSignedInChanges
 };
 /* harmony default export */ var google_api_service = (googleApiService);
 // CONCATENATED MODULE: ./src/store/index.js
@@ -776,4 +775,4 @@ var SET_UP_GOOGLE_AUTHENTICATION_API = 'SET_UP_GOOGLE_AUTHENTICATION_API';
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.b4c40590.js.map
+//# sourceMappingURL=app.ac2c4e8f.js.map
