@@ -70,12 +70,12 @@ vue_runtime_esm["default"].use(vue_plugin["a" /* default */], {
   lang: en_us["a" /* default */],
   iconSet: icon_set_fontawesome_v5["a" /* default */]
 });
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=54683bfa&
-var Appvue_type_template_id_54683bfa_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"q-app"}},[_c('router-view')],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=2b9197ce&
+var Appvue_type_template_id_2b9197ce_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"q-app"}},[_c('router-view')],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=54683bfa&
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=2b9197ce&
 
 // EXTERNAL MODULE: ./src/store/mutation-types.js
 var mutation_types = __webpack_require__("9fb0");
@@ -96,7 +96,7 @@ var googleAuthenticationApi = 'https://apis.google.com/js/platform.js';
     var _this = this;
 
     vue_runtime_esm["default"].loadScript(googleAuthenticationApi).then(function () {
-      _this.$store.dispatch(mutation_types["b" /* SET_UP_GOOGLE_CLIENT_ID */]);
+      _this.$store.dispatch(mutation_types["b" /* SET_UP_GOOGLE_AUTHENTICATION_API */]);
     });
   }
 });
@@ -115,7 +115,7 @@ var componentNormalizer = __webpack_require__("2877");
 
 var component = Object(componentNormalizer["a" /* default */])(
   src_Appvue_type_script_lang_js_,
-  Appvue_type_template_id_54683bfa_render,
+  Appvue_type_template_id_2b9197ce_render,
   staticRenderFns,
   false,
   null,
@@ -163,34 +163,63 @@ var clientConfiguration = {
   clientId: '830004684171-h17li43l6bp0j7nf1ln7slv3v6bdcvl0.apps.googleusercontent.com',
   scope: 'https://www.googleapis.com/auth/youtube'
 };
+var oauthClient = 'client:auth2';
+var authInstance;
 
 function signIn() {
-  return new Promise(function (resolve) {
-    setTimeout(function () {
+  return new Promise(function (resolve, reject) {
+    authInstance.signIn().then(function (_ref) {
+      var Qt = _ref.Qt;
+      var name = Qt.Ad,
+          image = Qt.jL;
       resolve({
-        name: 'Mateusz Garbaciak',
-        image: 'img:statics/photo.png'
+        name: name,
+        image: image
       });
-    }, 1000);
+    }, function () {
+      reject();
+    });
   });
 }
 
 function logOff() {
-  return new Promise(function (resolve) {
-    setTimeout(function () {
-      resolve({
-        name: '',
-        image: ''
-      });
-    }, 1000);
+  authInstance.signOut();
+}
+
+function listenToSignedInChanges(callback) {
+  if (authInstance.isSignedIn.ie) {
+    callback({
+      isSignedIn: true,
+      user: getSignedInUser()
+    });
+  }
+
+  authInstance.isSignedIn.listen(function (isSignedIn) {
+    var user = isSignedIn ? getSignedInUser() : null;
+    callback({
+      isSignedIn: isSignedIn,
+      user: user
+    });
   });
 }
 
-function getAuthInstance() {
+function getSignedInUser() {
+  var _authInstance$current = authInstance.currentUser.get().getBasicProfile(),
+      name = _authInstance$current.Ad,
+      image = _authInstance$current.jL;
+
+  return {
+    name: name,
+    image: image
+  };
+}
+
+function setUpAuthInstance() {
   return new Promise(function (resolve) {
-    gapi.load('client:auth2', function () {
+    gapi.load(oauthClient, function () {
       gapi.client.init(clientConfiguration).then(function () {
-        resolve(gapi.auth2.getAuthInstance());
+        authInstance = gapi.auth2.getAuthInstance();
+        resolve(authInstance);
       });
     });
   });
@@ -199,7 +228,8 @@ function getAuthInstance() {
 var googleApiService = {
   signIn: signIn,
   logOff: logOff,
-  getAuthInstance: getAuthInstance
+  listenToSignedInChanges: listenToSignedInChanges,
+  setUpAuthInstance: setUpAuthInstance
 };
 /* harmony default export */ var google_api_service = (googleApiService);
 // CONCATENATED MODULE: ./src/store/index.js
@@ -250,17 +280,28 @@ var initialState = {
           image: image,
           isSignedIn: true
         });
-      });
-    }), defineProperty_default()(_actions, mutation_types["a" /* LOG_OFF */], function (_ref3) {
-      var commit = _ref3.commit;
-      google_api_service.logOff().then(function () {
+      }, function () {
         commit(mutation_types["a" /* LOG_OFF */], _objectSpread({}, initialState.user));
       });
-    }), defineProperty_default()(_actions, mutation_types["b" /* SET_UP_GOOGLE_CLIENT_ID */], function () {
-      google_api_service.getAuthInstance().then(function (authInstance) {
-        var currentUser = authInstance.currentUser.get().getBasicProfile();
-        var isSignedIn = authInstance.isSignedIn.get();
-        console.log('set up google client id', currentUser, isSignedIn);
+    }), defineProperty_default()(_actions, mutation_types["a" /* LOG_OFF */], function () {
+      google_api_service.logOff();
+    }), defineProperty_default()(_actions, mutation_types["b" /* SET_UP_GOOGLE_AUTHENTICATION_API */], function (_ref3) {
+      var commit = _ref3.commit;
+      google_api_service.setUpAuthInstance().then(function () {
+        google_api_service.listenToSignedInChanges(function (_ref4) {
+          var isSignedIn = _ref4.isSignedIn,
+              user = _ref4.user;
+
+          if (isSignedIn) {
+            commit(mutation_types["c" /* SIGN_IN */], {
+              name: user.name,
+              image: user.image,
+              isSignedIn: isSignedIn
+            });
+          } else {
+            commit(mutation_types["a" /* LOG_OFF */], _objectSpread({}, initialState.user));
+          }
+        });
       });
     }), _actions),
     strict: false
@@ -727,12 +768,12 @@ start();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return SIGN_IN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LOG_OFF; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SET_UP_GOOGLE_CLIENT_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SET_UP_GOOGLE_AUTHENTICATION_API; });
 var SIGN_IN = 'SIGN IN';
 var LOG_OFF = 'LOG OFF';
-var SET_UP_GOOGLE_CLIENT_ID = 'SET_UP_GOOGLE_CLIENT_ID';
+var SET_UP_GOOGLE_AUTHENTICATION_API = 'SET_UP_GOOGLE_AUTHENTICATION_API';
 
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.88f998a3.js.map
+//# sourceMappingURL=app.b4c40590.js.map
