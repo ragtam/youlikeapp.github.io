@@ -159,6 +159,12 @@ var es6_promise = __webpack_require__("551c");
 // CONCATENATED MODULE: ./src/services/google-api.service.js
 
 
+var publicApi = {
+  setUpAuthInstance: setUpAuthInstance,
+  signIn: signIn,
+  logOff: logOff,
+  listenToSignedInChanges: listenToSignedInChanges
+};
 var clientConfiguration = {
   clientId: '830004684171-h17li43l6bp0j7nf1ln7slv3v6bdcvl0.apps.googleusercontent.com',
   scope: 'https://www.googleapis.com/auth/youtube'
@@ -224,12 +230,7 @@ function getSignedInUser() {
   };
 }
 
-var googleApiService = {
-  setUpAuthInstance: setUpAuthInstance,
-  signIn: signIn,
-  logOff: logOff,
-  listenToSignedInChanges: listenToSignedInChanges
-};
+var googleApiService = publicApi;
 /* harmony default export */ var google_api_service = (googleApiService);
 // CONCATENATED MODULE: ./src/store/index.js
 
@@ -768,11 +769,11 @@ start();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return SIGN_IN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LOG_OFF; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SET_UP_GOOGLE_AUTHENTICATION_API; });
-var SIGN_IN = 'SIGN IN';
-var LOG_OFF = 'LOG OFF';
+var SIGN_IN = 'SIGN_IN';
+var LOG_OFF = 'LOG_OFF';
 var SET_UP_GOOGLE_AUTHENTICATION_API = 'SET_UP_GOOGLE_AUTHENTICATION_API';
 
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.ac2c4e8f.js.map
+//# sourceMappingURL=app.3f453c66.js.map
