@@ -141,7 +141,7 @@ var QIcon = __webpack_require__("0016");
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/card/QCardActions.js
 var QCardActions = __webpack_require__("4b7e");
 
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/btn/QBtn.js + 3 modules
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/btn/QBtn.js + 1 modules
 var QBtn = __webpack_require__("9c40");
 
 // CONCATENATED MODULE: ./src/components/GoogleSignIn.vue

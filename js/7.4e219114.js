@@ -13,19 +13,23 @@ var staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/pages/Index.vue?vue&type=template&id=72f199a4&
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MainContent.vue?vue&type=template&id=119269f2&
-var MainContentvue_type_template_id_119269f2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('v-main-content-video-list-input',{on:{"check-videos":function($event){return _vm.checkVideos()},"save-list":function($event){return _vm.saveList()},"load-list":function($event){return _vm.loadList()}}}),_c('v-main-content-recovery-summary'),_c('v-main-content-video-errors')],1)}
-var MainContentvue_type_template_id_119269f2_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MainContent.vue?vue&type=template&id=c0e75868&
+var MainContentvue_type_template_id_c0e75868_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('button',{on:{"click":function($event){return _vm.addVideo()}}},[_vm._v("test add")]),_c('v-main-content-video-list-input',{attrs:{"videos":_vm.videos},on:{"check-videos":function($event){return _vm.checkVideos()},"save-list":function($event){return _vm.saveList()},"load-list":function($event){return _vm.loadList()}}}),_c('v-main-content-recovery-summary'),_c('v-main-content-video-errors')],1)}
+var MainContentvue_type_template_id_c0e75868_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/MainContent.vue?vue&type=template&id=119269f2&
+// CONCATENATED MODULE: ./src/components/MainContent.vue?vue&type=template&id=c0e75868&
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentVideoListInput.vue?vue&type=template&id=19c76657&
-var VMainContentVideoListInputvue_type_template_id_19c76657_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("Восстановление лайков")]),_c('div',[_c('div',[_c('div',[_vm._m(0),_c('div',[_c('button',{on:{"click":function($event){return _vm.checkVideos()}}},[_c('span',[_vm._v("checkVideos() Проверить")])]),_c('button',{on:{"click":function($event){return _vm.saveList()}}},[_c('span',[_vm._v("saveList() Сохранить")])]),_c('button',{on:{"click":function($event){return _vm.loadList()}}},[_c('span',[_vm._v("loadList() Загрузить")])]),_c('button',{on:{"click":function($event){return _vm.deleteVideos()}}},[_c('span',[_vm._v("showDialog('confirmDeleteDialog') Удалить")])])])]),_vm._m(1),_vm._v("\n            a href with $ctrl.bottomId dynamic id\n        ")])]),_c('input',{attrs:{"id":"forceUpdate","type":"hidden","placeholder":"on click $ctrl.forceUpdate()"}}),_c('hr'),_c('v-main-content-video-list-input-delete'),_c('hr')],1)}
-var VMainContentVideoListInputvue_type_template_id_19c76657_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('label',[_vm._v("Список видео (идентификаторы или полные ссылки)")]),_c('textarea',{attrs:{"name":"videosListTextArea","id":"","cols":"30","rows":"10"}})])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h3',[_vm._v("Результат выставления лайков")]),_c('p',[_vm._v("Проставлено: $ctrl.lastSuccessedVideos.length")]),_c('p',[_vm._v("Не проставлено: $ctrl.lastFailedVideos.length")]),_c('p',[_c('strong',[_vm._v("Лайки могут появиться с задержкой.")])]),_c('div',[_vm._v("\n                    ng-if=\"$ctrl.lastFailedVideos.length > 0\"\n                    "),_c('button',[_vm._v("\n                        ng-click=\"$ctrl.showDialog('failedVideosDialog')\"\n                        "),_c('span',[_vm._v("Показать ошибки")])])])])}]
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/toConsumableArray.js
+var toConsumableArray = __webpack_require__("4db1");
+var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableArray);
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentVideoListInput.vue?vue&type=template&id=1ccf9599&
+var VMainContentVideoListInputvue_type_template_id_1ccf9599_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("Восстановление лайков")]),_c('div',[_c('div',[_c('div',[_c('div',[_c('label',[_vm._v("Список видео (идентификаторы или полные ссылки)")]),_c('q-input',{attrs:{"filled":"","autogrow":""},model:{value:(_vm.videosString),callback:function ($$v) {_vm.videosString=$$v},expression:"videosString"}})],1),_c('div',[_c('div',{staticClass:"q-pa-md q-gutter-sm"},[_c('q-btn',{attrs:{"disabled":_vm.isListEmpty,"icon":"fas fa-tasks","label":"Проверить","color":"primary"},on:{"click":function($event){return _vm.checkVideos()}}}),_c('q-btn',{attrs:{"disabled":_vm.isListEmpty,"icon":"fas fa-save","label":"Сохранить","color":"secondary"},on:{"click":function($event){return _vm.saveList()}}}),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-file-download","label":"Загрузить","color":"red"},on:{"click":function($event){return _vm.loadList()}}}):_vm._e(),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-trash-alt","label":"Удалить","color":"purple"},on:{"click":function($event){return _vm.deleteVideos()}}}):_vm._e()],1)])]),_vm._m(0),_vm._v("\n            a href with $ctrl.bottomId dynamic id\n        ")])]),_c('input',{attrs:{"id":"forceUpdate","type":"hidden","placeholder":"on click $ctrl.forceUpdate()"}}),_c('hr'),_c('v-main-content-video-list-input-delete'),_c('hr')],1)}
+var VMainContentVideoListInputvue_type_template_id_1ccf9599_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h3',[_vm._v("Результат выставления лайков")]),_c('p',[_vm._v("Проставлено: $ctrl.lastSuccessedVideos.length")]),_c('p',[_vm._v("Не проставлено: $ctrl.lastFailedVideos.length")]),_c('p',[_c('strong',[_vm._v("Лайки могут появиться с задержкой.")])]),_c('div',[_vm._v("\n                    ng-if=\"$ctrl.lastFailedVideos.length > 0\"\n                    "),_c('button',[_vm._v("\n                        ng-click=\"$ctrl.showDialog('failedVideosDialog')\"\n                        "),_c('span',[_vm._v("Показать ошибки")])])])])}]
 
 
-// CONCATENATED MODULE: ./src/components/VMainContentVideoListInput.vue?vue&type=template&id=19c76657&
+// CONCATENATED MODULE: ./src/components/VMainContentVideoListInput.vue?vue&type=template&id=1ccf9599&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentVideoListInputDelete.vue?vue&type=template&id=7869a2b0&
 var VMainContentVideoListInputDeletevue_type_template_id_7869a2b0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -162,28 +166,24 @@ var component = Object(componentNormalizer["a" /* default */])(
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ var VMainContentVideoListInputvue_type_script_lang_js_ = ({
+  props: {
+    videos: Array
+  },
+  watch: {
+    videos: {
+      immediate: true,
+      handler: function handler(newVideos) {
+        this.videosString = newVideos.join(', ');
+      }
+    }
+  },
+  data: function data() {
+    return {
+      videosString: ''
+    };
+  },
   components: {
     VMainContentVideoListInputDelete: VMainContentVideoListInputDelete
   },
@@ -200,10 +200,25 @@ var component = Object(componentNormalizer["a" /* default */])(
     deleteVideos: function deleteVideos() {
       console.log('show confirmation dialog');
     }
+  },
+  computed: {
+    isListEmpty: function isListEmpty() {
+      return this.videosString == null || this.videosString == '';
+    }
   }
 });
 // CONCATENATED MODULE: ./src/components/VMainContentVideoListInput.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_VMainContentVideoListInputvue_type_script_lang_js_ = (VMainContentVideoListInputvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./node_modules/@quasar/app/lib/webpack/runtime.auto-import.js
+var runtime_auto_import = __webpack_require__("eebe");
+var runtime_auto_import_default = /*#__PURE__*/__webpack_require__.n(runtime_auto_import);
+
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/input/QInput.js + 8 modules
+var QInput = __webpack_require__("27f9");
+
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/btn/QBtn.js + 1 modules
+var QBtn = __webpack_require__("9c40");
+
 // CONCATENATED MODULE: ./src/components/VMainContentVideoListInput.vue
 
 
@@ -214,8 +229,8 @@ var component = Object(componentNormalizer["a" /* default */])(
 
 var VMainContentVideoListInput_component = Object(componentNormalizer["a" /* default */])(
   components_VMainContentVideoListInputvue_type_script_lang_js_,
-  VMainContentVideoListInputvue_type_template_id_19c76657_render,
-  VMainContentVideoListInputvue_type_template_id_19c76657_staticRenderFns,
+  VMainContentVideoListInputvue_type_template_id_1ccf9599_render,
+  VMainContentVideoListInputvue_type_template_id_1ccf9599_staticRenderFns,
   false,
   null,
   null,
@@ -224,12 +239,17 @@ var VMainContentVideoListInput_component = Object(componentNormalizer["a" /* def
 )
 
 /* harmony default export */ var VMainContentVideoListInput = (VMainContentVideoListInput_component.exports);
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentRecoverySummary.vue?vue&type=template&id=fc77bda6&
-var VMainContentRecoverySummaryvue_type_template_id_fc77bda6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h3',[_vm._v("Результат проверки")]),_c('p',[_vm._v("Всего проверено: $ctrl.lastCheckingResult.withLikes.length + $ctrl.lastCheckingResult.withoutLikes.length")]),_c('p',[_vm._v("С лайками: $ctrl.lastCheckingResult.withLikes.length")]),_c('p',[_vm._v("Без лайков: $ctrl.lastCheckingResult.withoutLikes.length")]),_vm._m(0),_c('v-main-content-recovery-summary-withoutLikes')],1)}
-var VMainContentRecoverySummaryvue_type_template_id_fc77bda6_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('button',[_vm._v("\n            $ctrl.showDialog('videosWithoutLikesDialog')\n            "),_c('span',[_vm._v("Показать видео без лайков")])]),_c('button',[_vm._v("\n            $ctrl.setLikes()\n            "),_c('span',[_vm._v("Поставить лайки")])])])}]
 
 
-// CONCATENATED MODULE: ./src/components/VMainContentRecoverySummary.vue?vue&type=template&id=fc77bda6&
+
+runtime_auto_import_default()(VMainContentVideoListInput_component, 'components', {QInput: QInput["a" /* default */],QBtn: QBtn["a" /* default */]})
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentRecoverySummary.vue?vue&type=template&id=25122cc4&
+var VMainContentRecoverySummaryvue_type_template_id_25122cc4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h3',[_vm._v("Результат проверки")]),_c('p',[_vm._v("Всего проверено: $ctrl.lastCheckingResult.withLikes.length + $ctrl.lastCheckingResult.withoutLikes.length")]),_c('p',[_vm._v("С лайками: $ctrl.lastCheckingResult.withLikes.length")]),_c('p',[_vm._v("Без лайков: $ctrl.lastCheckingResult.withoutLikes.length")]),_vm._m(0),_c('v-main-content-recovery-summary-without-likes')],1)}
+var VMainContentRecoverySummaryvue_type_template_id_25122cc4_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('button',[_vm._v("\n            $ctrl.showDialog('videosWithoutLikesDialog')\n            "),_c('span',[_vm._v("Показать видео без лайков")])]),_c('button',[_vm._v("\n            $ctrl.setLikes()\n            "),_c('span',[_vm._v("Поставить лайки")])])])}]
+
+
+// CONCATENATED MODULE: ./src/components/VMainContentRecoverySummary.vue?vue&type=template&id=25122cc4&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentRecoverySummaryWithoutLikes.vue?vue&type=template&id=60659cb4&
 var VMainContentRecoverySummaryWithoutLikesvue_type_template_id_60659cb4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -357,8 +377,8 @@ var VMainContentRecoverySummaryWithoutLikes_component = Object(componentNormaliz
 
 var VMainContentRecoverySummary_component = Object(componentNormalizer["a" /* default */])(
   components_VMainContentRecoverySummaryvue_type_script_lang_js_,
-  VMainContentRecoverySummaryvue_type_template_id_fc77bda6_render,
-  VMainContentRecoverySummaryvue_type_template_id_fc77bda6_staticRenderFns,
+  VMainContentRecoverySummaryvue_type_template_id_25122cc4_render,
+  VMainContentRecoverySummaryvue_type_template_id_25122cc4_staticRenderFns,
   false,
   null,
   null,
@@ -453,6 +473,9 @@ var VMainContentVideoErrors_component = Object(componentNormalizer["a" /* defaul
 
 /* harmony default export */ var VMainContentVideoErrors = (VMainContentVideoErrors_component.exports);
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MainContent.vue?vue&type=script&lang=js&
+
+//
+//
 //
 //
 //
@@ -469,6 +492,11 @@ var VMainContentVideoErrors_component = Object(componentNormalizer["a" /* defaul
 
 
 /* harmony default export */ var MainContentvue_type_script_lang_js_ = ({
+  data: function data() {
+    return {
+      videos: ['www.youtube.com/1234', 'www.youtube.com/235', 'www.youtube.com/acdef']
+    };
+  },
   components: {
     VMainContentVideoListInput: VMainContentVideoListInput,
     VMainContentRecoverySummary: VMainContentRecoverySummary,
@@ -483,6 +511,9 @@ var VMainContentVideoErrors_component = Object(componentNormalizer["a" /* defaul
     },
     loadList: function loadList() {
       console.log('@load-list');
+    },
+    addVideo: function addVideo() {
+      this.videos = [].concat(toConsumableArray_default()(this.videos), ['www.youtube.pl/xyz']);
     }
   }
 });
@@ -498,8 +529,8 @@ var VMainContentVideoErrors_component = Object(componentNormalizer["a" /* defaul
 
 var MainContent_component = Object(componentNormalizer["a" /* default */])(
   components_MainContentvue_type_script_lang_js_,
-  MainContentvue_type_template_id_119269f2_render,
-  MainContentvue_type_template_id_119269f2_staticRenderFns,
+  MainContentvue_type_template_id_c0e75868_render,
+  MainContentvue_type_template_id_c0e75868_staticRenderFns,
   false,
   null,
   null,
@@ -546,4 +577,4 @@ var Index_component = Object(componentNormalizer["a" /* default */])(
 /***/ })
 
 }]);
-//# sourceMappingURL=7.d4f385ee.js.map
+//# sourceMappingURL=7.4e219114.js.map

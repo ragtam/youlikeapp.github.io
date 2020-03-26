@@ -53,7 +53,7 @@ var componentNormalizer = __webpack_require__("2877");
 var runtime_auto_import = __webpack_require__("eebe");
 var runtime_auto_import_default = /*#__PURE__*/__webpack_require__.n(runtime_auto_import);
 
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/btn/QBtn.js + 3 modules
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/btn/QBtn.js + 1 modules
 var QBtn = __webpack_require__("9c40");
 
 // CONCATENATED MODULE: ./src/pages/Error404.vue

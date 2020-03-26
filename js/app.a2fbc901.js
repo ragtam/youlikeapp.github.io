@@ -320,7 +320,7 @@ var routes = [{
   children: [{
     path: '',
     component: function component() {
-      return __webpack_require__.e(/* import() */ 7).then(__webpack_require__.bind(null, "8b24"));
+      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, "8b24"));
     }
   }]
 }, {
@@ -594,7 +594,7 @@ var free_solid_svg_icons_index_es = __webpack_require__("c074");
 
 /* harmony default export */ var fontawesome = (function (_ref) {
   var Vue = _ref.Vue;
-  index_es["c" /* library */].add(free_brands_svg_icons_index_es["i" /* faVk */], free_brands_svg_icons_index_es["h" /* faTwitter */], free_brands_svg_icons_index_es["b" /* faFacebook */], free_brands_svg_icons_index_es["e" /* faOdnoklassniki */], free_brands_svg_icons_index_es["d" /* faGooglePlus */], free_brands_svg_icons_index_es["g" /* faTelegram */], free_brands_svg_icons_index_es["a" /* faChrome */], free_brands_svg_icons_index_es["f" /* faOpera */], free_brands_svg_icons_index_es["c" /* faFirefox */], free_solid_svg_icons_index_es["a" /* faThumbsUp */]);
+  index_es["c" /* library */].add(free_brands_svg_icons_index_es["i" /* faVk */], free_brands_svg_icons_index_es["h" /* faTwitter */], free_brands_svg_icons_index_es["b" /* faFacebook */], free_brands_svg_icons_index_es["e" /* faOdnoklassniki */], free_brands_svg_icons_index_es["d" /* faGooglePlus */], free_brands_svg_icons_index_es["g" /* faTelegram */], free_brands_svg_icons_index_es["a" /* faChrome */], free_brands_svg_icons_index_es["f" /* faOpera */], free_brands_svg_icons_index_es["c" /* faFirefox */], free_solid_svg_icons_index_es["d" /* faThumbsUp */], free_solid_svg_icons_index_es["b" /* faSave */], free_solid_svg_icons_index_es["c" /* faTasks */], free_solid_svg_icons_index_es["a" /* faFileDownload */], free_solid_svg_icons_index_es["e" /* faTrashAlt */]);
   Vue.component('fa', vue_fontawesome_index_es["a" /* FontAwesomeIcon */]);
 });
 // EXTERNAL MODULE: ./node_modules/vue-plugin-load-script/index.js
@@ -776,4 +776,4 @@ var SET_UP_GOOGLE_AUTHENTICATION_API = 'SET_UP_GOOGLE_AUTHENTICATION_API';
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.3f453c66.js.map
+//# sourceMappingURL=app.a2fbc901.js.map
