@@ -96,7 +96,7 @@ var googleAuthenticationApi = 'https://apis.google.com/js/platform.js';
     var _this = this;
 
     vue_runtime_esm["default"].loadScript(googleAuthenticationApi).then(function () {
-      _this.$store.dispatch(mutation_types["c" /* SET_UP_GOOGLE_AUTHENTICATION_API */]);
+      _this.$store.dispatch(mutation_types["e" /* SET_UP_GOOGLE_AUTHENTICATION_API */]);
     });
   }
 });
@@ -142,6 +142,10 @@ var es6_object_to_string = __webpack_require__("06db");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
 var es6_object_keys = __webpack_require__("456d");
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/objectDestructuringEmpty.js
+var objectDestructuringEmpty = __webpack_require__("dad6");
+var objectDestructuringEmpty_default = /*#__PURE__*/__webpack_require__.n(objectDestructuringEmpty);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
@@ -359,6 +363,7 @@ var youtubeRatingService = youtube_rating_service_publicApi;
 
 
 
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -378,7 +383,8 @@ var initialState = {
   checkedVideos: {
     withLikes: [],
     withoutLikes: []
-  }
+  },
+  savedVideos: []
 };
 /* harmony default export */ var src_store = (function ()
 /* { ssrContext } */
@@ -387,29 +393,31 @@ var initialState = {
 
   var Store = new vuex_esm["a" /* default */].Store({
     state: _objectSpread({}, initialState),
-    mutations: (_mutations = {}, defineProperty_default()(_mutations, mutation_types["d" /* SIGN_IN */], function (state, user) {
+    mutations: (_mutations = {}, defineProperty_default()(_mutations, mutation_types["f" /* SIGN_IN */], function (state, user) {
       state.user = _objectSpread({}, user);
-    }), defineProperty_default()(_mutations, mutation_types["b" /* LOG_OFF */], function (state, user) {
+    }), defineProperty_default()(_mutations, mutation_types["c" /* LOG_OFF */], function (state, user) {
       state.user = _objectSpread({}, user);
     }), defineProperty_default()(_mutations, mutation_types["a" /* CHECK_VIDEOS */], function (state, checkedVideos) {
       state.checkedVideos = _objectSpread({}, checkedVideos);
+    }), defineProperty_default()(_mutations, mutation_types["b" /* GET_SAVED_VIDEOS */], function (state, savedVideos) {
+      state.savedVideos = savedVideos;
     }), _mutations),
-    actions: (_actions = {}, defineProperty_default()(_actions, mutation_types["d" /* SIGN_IN */], function (_ref) {
+    actions: (_actions = {}, defineProperty_default()(_actions, mutation_types["f" /* SIGN_IN */], function (_ref) {
       var commit = _ref.commit;
       google_api_service.signIn().then(function (_ref2) {
         var name = _ref2.name,
             image = _ref2.image;
-        commit(mutation_types["d" /* SIGN_IN */], {
+        commit(mutation_types["f" /* SIGN_IN */], {
           name: name,
           image: image,
           isSignedIn: true
         });
       }, function () {
-        commit(mutation_types["b" /* LOG_OFF */], _objectSpread({}, initialState.user));
+        commit(mutation_types["c" /* LOG_OFF */], _objectSpread({}, initialState.user));
       });
-    }), defineProperty_default()(_actions, mutation_types["b" /* LOG_OFF */], function () {
+    }), defineProperty_default()(_actions, mutation_types["c" /* LOG_OFF */], function () {
       google_api_service.logOff();
-    }), defineProperty_default()(_actions, mutation_types["c" /* SET_UP_GOOGLE_AUTHENTICATION_API */], function (_ref3) {
+    }), defineProperty_default()(_actions, mutation_types["e" /* SET_UP_GOOGLE_AUTHENTICATION_API */], function (_ref3) {
       var commit = _ref3.commit;
       google_api_service.setUpAuthInstance().then(function () {
         google_api_service.listenToSignedInChanges(function (_ref4) {
@@ -417,13 +425,13 @@ var initialState = {
               user = _ref4.user;
 
           if (isSignedIn) {
-            commit(mutation_types["d" /* SIGN_IN */], {
+            commit(mutation_types["f" /* SIGN_IN */], {
               name: user.name,
               image: user.image,
               isSignedIn: isSignedIn
             });
           } else {
-            commit(mutation_types["b" /* LOG_OFF */], _objectSpread({}, initialState.user));
+            commit(mutation_types["c" /* LOG_OFF */], _objectSpread({}, initialState.user));
           }
         });
       });
@@ -433,6 +441,17 @@ var initialState = {
       youtube_rating_service.checkVideos(videosToCheck).then(function (checkedVideos) {
         commit(mutation_types["a" /* CHECK_VIDEOS */], checkedVideos);
       });
+    }), defineProperty_default()(_actions, mutation_types["b" /* GET_SAVED_VIDEOS */], function (_ref7) {
+      var commit = _ref7.commit;
+      setTimeout(function () {
+        var savedVideos = JSON.parse(localStorage.getItem('videosList')) || [];
+        commit(mutation_types["b" /* GET_SAVED_VIDEOS */], savedVideos);
+      }, 1000);
+    }), defineProperty_default()(_actions, mutation_types["d" /* SAVE_VIDEOS */], function (_ref8, _ref9) {
+      objectDestructuringEmpty_default()(_ref8);
+
+      var videosToSave = _ref9.videosToSave;
+      localStorage.setItem('videosList', JSON.stringify(videosToSave));
     }), _actions),
     strict: false
   });
@@ -896,16 +915,20 @@ start();
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return SIGN_IN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return LOG_OFF; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return SET_UP_GOOGLE_AUTHENTICATION_API; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return SIGN_IN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LOG_OFF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return SET_UP_GOOGLE_AUTHENTICATION_API; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CHECK_VIDEOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return GET_SAVED_VIDEOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return SAVE_VIDEOS; });
 var SIGN_IN = 'SIGN_IN';
 var LOG_OFF = 'LOG_OFF';
 var SET_UP_GOOGLE_AUTHENTICATION_API = 'SET_UP_GOOGLE_AUTHENTICATION_API';
 var CHECK_VIDEOS = 'CHECK_VIDEOS';
+var GET_SAVED_VIDEOS = 'GET_SAVED_VIDEOS';
+var SAVE_VIDEOS = 'SAVE_VIDEOS';
 
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.44205aa3.js.map
+//# sourceMappingURL=app.d883f2ec.js.map
