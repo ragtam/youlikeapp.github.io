@@ -242,9 +242,8 @@ var lodash = __webpack_require__("2ef0");
 var validator = __webpack_require__("f90c");
 var validator_default = /*#__PURE__*/__webpack_require__.n(validator);
 
-// EXTERNAL MODULE: ./node_modules/query-string/index.js
-var query_string = __webpack_require__("72bf");
-var query_string_default = /*#__PURE__*/__webpack_require__.n(query_string);
+// EXTERNAL MODULE: ./src/services/youtube-url-parser.service.js
+var youtube_url_parser_service = __webpack_require__("c7ad");
 
 // CONCATENATED MODULE: ./src/services/youtube-rating.service.js
 
@@ -320,7 +319,7 @@ function setRating(videoIds, rating, onSuccess, onError) {
           onSuccess(videoId);
         }
       }, function (data) {
-        toastr.error("\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u043F\u043E\u0441\u0442\u0430\u0432\u0438\u0442\u044C \u043B\u0430\u0439\u043A \u043D\u0430 \u0432\u0438\u0434\u0435\u043E \u0441 \u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043E\u043C ".concat(videoId, ". ").concat(data.result.error.message));
+        // toastr.error(`Не удалось поставить лайк на видео с идентификатором ${videoId}. ${data.result.error.message}`);
         console.error(data);
 
         if (onError) {
@@ -335,7 +334,7 @@ function setRating(videoIds, rating, onSuccess, onError) {
 
 function extractVideoIds(videos) {
   return videos.map(function (videoUrl) {
-    return validator_default.a.isURL(videoUrl) ? query_string_default.a.parse(query_string_default.a.extract(videoUrl)).v : videoUrl;
+    return validator_default.a.isURL(videoUrl) ? youtube_url_parser_service["a" /* default */].getVideoId(videoUrl) : videoUrl;
   });
 }
 
@@ -1000,7 +999,33 @@ var GET_SAVED_VIDEOS = 'GET_SAVED_VIDEOS';
 var SAVE_VIDEOS = 'SAVE_VIDEOS';
 var REMOVE_VIDEOS = 'REMOVE_VIDEOS';
 
+/***/ }),
+
+/***/ "c7ad":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("72bf");
+/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(query_string__WEBPACK_IMPORTED_MODULE_0__);
+
+var publicApi = {
+  getVideoId: getVideoId,
+  isIdValid: isIdValid
+};
+
+function getVideoId(url) {
+  return query_string__WEBPACK_IMPORTED_MODULE_0___default.a.parse(query_string__WEBPACK_IMPORTED_MODULE_0___default.a.extract(url)).v;
+}
+
+function isIdValid(videoId) {
+  // https://webapps.stackexchange.com/questions/54443/format-for-id-of-youtube-video
+  return /[0-9A-Za-z_-]{10}[048AEIMQUYcgkosw]/.test(videoId);
+}
+
+var youtubeUrlParserService = publicApi;
+/* harmony default export */ __webpack_exports__["a"] = (youtubeUrlParserService);
+
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.37be3751.js.map
+//# sourceMappingURL=app.a4ae02b5.js.map

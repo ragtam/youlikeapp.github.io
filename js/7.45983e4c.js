@@ -164,28 +164,9 @@ var validators = __webpack_require__("b5ae");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.replace.js
 var es6_regexp_replace = __webpack_require__("a481");
 
-// EXTERNAL MODULE: ./node_modules/query-string/index.js
-var query_string = __webpack_require__("72bf");
-var query_string_default = /*#__PURE__*/__webpack_require__.n(query_string);
+// EXTERNAL MODULE: ./src/services/youtube-url-parser.service.js
+var youtube_url_parser_service = __webpack_require__("c7ad");
 
-// CONCATENATED MODULE: ./src/services/youtube-url-parser.service.js
-
-var publicApi = {
-  getVideoId: getVideoId,
-  isIdValid: isIdValid
-};
-
-function getVideoId(url) {
-  return query_string_default.a.parse(query_string_default.a.extract(url)).v;
-}
-
-function isIdValid(videoId) {
-  // https://webapps.stackexchange.com/questions/54443/format-for-id-of-youtube-video
-  return /[0-9A-Za-z_-]{10}[048AEIMQUYcgkosw]/.test(videoId);
-}
-
-var youtubeUrlParserService = publicApi;
-/* harmony default export */ var youtube_url_parser_service = (youtubeUrlParserService);
 // CONCATENATED MODULE: ./src/services/form-validator.service.js
 
 
@@ -197,11 +178,11 @@ function commaSeparatedListOfUrlsOrVideoIds(value) {
 }
 
 function toVideoId(youtubeUrl) {
-  return Object(validators["url"])(youtubeUrl) ? youtube_url_parser_service.getVideoId(youtubeUrl) : youtubeUrl;
+  return Object(validators["url"])(youtubeUrl) ? youtube_url_parser_service["a" /* default */].getVideoId(youtubeUrl) : youtubeUrl;
 }
 
 function idIsValid(videoId) {
-  return youtube_url_parser_service.isIdValid(videoId);
+  return youtube_url_parser_service["a" /* default */].isIdValid(videoId);
 }
 
 
@@ -782,4 +763,4 @@ var Index_component = Object(componentNormalizer["a" /* default */])(
 /***/ })
 
 }]);
-//# sourceMappingURL=7.19f3f079.js.map
+//# sourceMappingURL=7.45983e4c.js.map
