@@ -500,15 +500,7 @@ var vue_router_esm = __webpack_require__("8c4f");
 // CONCATENATED MODULE: ./src/router/routes.js
 var routes = [{
   path: '/',
-  component: function component() {
-    return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, "713b"));
-  },
-  children: [{
-    path: '',
-    component: function component() {
-      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, "8b24"));
-    }
-  }]
+  redirect: '/recovery'
 }, {
   path: '/about',
   component: function component() {
@@ -539,7 +531,7 @@ var routes = [{
   children: [{
     path: '',
     component: function component() {
-      return __webpack_require__.e(/* import() */ 8).then(__webpack_require__.bind(null, "afad"));
+      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, "afad"));
     }
   }]
 }]; // Always leave this as last one
@@ -1028,4 +1020,4 @@ var youtubeUrlParserService = publicApi;
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.a4ae02b5.js.map
+//# sourceMappingURL=app.3664bc50.js.map

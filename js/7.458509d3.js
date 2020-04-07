@@ -1,24 +1,17 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[7],{
 
-/***/ "8b24":
+/***/ "afad":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Index.vue?vue&type=template&id=72f199a4&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('main-content')}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Recovery.vue?vue&type=template&id=0b270cfc&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('v-main-content-video-list-input',{attrs:{"videos":_vm.videos},on:{"check-videos":function($event){return _vm.checkVideos($event)},"save-list":_vm.saveList,"load-list":function($event){return _vm.loadList()},"remove-videos":_vm.removeVideos}}),_c('v-main-content-recovery-summary',{attrs:{"checkedVideos":_vm.checkedVideos}}),_c('v-main-content-video-errors')],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/pages/Index.vue?vue&type=template&id=72f199a4&
-
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MainContent.vue?vue&type=template&id=5a3fc3e8&
-var MainContentvue_type_template_id_5a3fc3e8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('v-main-content-video-list-input',{attrs:{"videos":_vm.videos},on:{"check-videos":function($event){return _vm.checkVideos($event)},"save-list":_vm.saveList,"load-list":function($event){return _vm.loadList()},"remove-videos":_vm.removeVideos}}),_c('v-main-content-recovery-summary',{attrs:{"checkedVideos":_vm.checkedVideos}}),_c('v-main-content-video-errors')],1)}
-var MainContentvue_type_template_id_5a3fc3e8_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/components/MainContent.vue?vue&type=template&id=5a3fc3e8&
+// CONCATENATED MODULE: ./src/pages/Recovery.vue?vue&type=template&id=0b270cfc&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentVideoListInput.vue?vue&type=template&id=559e2d07&
 var VMainContentVideoListInputvue_type_template_id_559e2d07_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',[_c('h1',[_vm._v("Восстановление лайков")]),_c('div',[_c('label',[_vm._v("Список видео (идентификаторы или полные ссылки)")]),_c('q-input',{attrs:{"filled":"","autogrow":"","placeholder":"placeholder to be filled in"},model:{value:(_vm.$v.videosString.$model),callback:function ($$v) {_vm.$set(_vm.$v.videosString, "$model", (typeof $$v === 'string'? $$v.trim(): $$v))},expression:"$v.videosString.$model"}}),(!_vm.$v.videosString.required)?_c('div',{staticClass:"error"},[_vm._v("Field is required")]):_vm._e(),(_vm.$v.videosString.required && !_vm.$v.videosString.commaSeparatedListOfUrlsOrVideoIds)?_c('div',{staticClass:"error"},[_vm._v("YouTube url or video id invalid")]):_vm._e()],1),_c('div',{staticClass:"q-pa-md q-gutter-sm"},[_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-tasks","label":"Проверить","color":"primary"},on:{"click":function($event){return _vm.checkVideos()}}}),_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-save","label":"Сохранить","color":"secondary"},on:{"click":function($event){return _vm.saveList()}}}),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-file-download","label":"Загрузить","color":"red"},on:{"click":function($event){return _vm.loadList()}}}):_vm._e(),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-trash-alt","label":"Удалить","color":"purple"},on:{"click":function($event){return _vm.showDeleteConfirmationModal()}}}):_vm._e()],1)]),_vm._m(0),_vm._v("\n    a href with $ctrl.bottomId dynamic id\n    "),_c('input',{attrs:{"id":"forceUpdate","type":"hidden","placeholder":"on click $ctrl.forceUpdate()"}}),_c('v-main-content-video-list-input-modal-delete-confirmation',{attrs:{"modal-visible":_vm.isDeleteModalVisible},on:{"close":_vm.closeModal}})],1)}
@@ -105,7 +98,7 @@ var componentNormalizer = __webpack_require__("2877");
 var runtime_auto_import = __webpack_require__("eebe");
 var runtime_auto_import_default = /*#__PURE__*/__webpack_require__.n(runtime_auto_import);
 
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/dialog/QDialog.js + 4 modules
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/dialog/QDialog.js + 5 modules
 var QDialog = __webpack_require__("24e8");
 
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/card/QCard.js
@@ -625,13 +618,7 @@ var VMainContentVideoErrors_component = Object(componentNormalizer["a" /* defaul
 // EXTERNAL MODULE: ./src/store/mutation-types.js
 var mutation_types = __webpack_require__("9fb0");
 
-// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MainContent.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
+// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Recovery.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -644,7 +631,7 @@ var mutation_types = __webpack_require__("9fb0");
 
 
 
-/* harmony default export */ var MainContentvue_type_script_lang_js_ = ({
+/* harmony default export */ var Recoveryvue_type_script_lang_js_ = ({
   data: function data() {
     return {
       videos: [],
@@ -703,9 +690,9 @@ var mutation_types = __webpack_require__("9fb0");
     }
   }
 });
-// CONCATENATED MODULE: ./src/components/MainContent.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_MainContentvue_type_script_lang_js_ = (MainContentvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/MainContent.vue
+// CONCATENATED MODULE: ./src/pages/Recovery.vue?vue&type=script&lang=js&
+ /* harmony default export */ var pages_Recoveryvue_type_script_lang_js_ = (Recoveryvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/pages/Recovery.vue
 
 
 
@@ -713,42 +700,8 @@ var mutation_types = __webpack_require__("9fb0");
 
 /* normalize component */
 
-var MainContent_component = Object(componentNormalizer["a" /* default */])(
-  components_MainContentvue_type_script_lang_js_,
-  MainContentvue_type_template_id_5a3fc3e8_render,
-  MainContentvue_type_template_id_5a3fc3e8_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var MainContent = (MainContent_component.exports);
-// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Index.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-
-/* harmony default export */ var Indexvue_type_script_lang_js_ = ({
-  components: {
-    MainContent: MainContent
-  },
-  name: 'PageIndex'
-});
-// CONCATENATED MODULE: ./src/pages/Index.vue?vue&type=script&lang=js&
- /* harmony default export */ var pages_Indexvue_type_script_lang_js_ = (Indexvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/pages/Index.vue
-
-
-
-
-
-/* normalize component */
-
-var Index_component = Object(componentNormalizer["a" /* default */])(
-  pages_Indexvue_type_script_lang_js_,
+var Recovery_component = Object(componentNormalizer["a" /* default */])(
+  pages_Recoveryvue_type_script_lang_js_,
   render,
   staticRenderFns,
   false,
@@ -758,9 +711,9 @@ var Index_component = Object(componentNormalizer["a" /* default */])(
   
 )
 
-/* harmony default export */ var Index = __webpack_exports__["default"] = (Index_component.exports);
+/* harmony default export */ var Recovery = __webpack_exports__["default"] = (Recovery_component.exports);
 
 /***/ })
 
 }]);
-//# sourceMappingURL=7.45983e4c.js.map
+//# sourceMappingURL=7.458509d3.js.map
