@@ -13,23 +13,19 @@ var staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/pages/Index.vue?vue&type=template&id=72f199a4&
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MainContent.vue?vue&type=template&id=7e17154e&
-var MainContentvue_type_template_id_7e17154e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('button',{on:{"click":function($event){return _vm.addVideo()}}},[_vm._v("test add")]),_c('v-main-content-video-list-input',{attrs:{"videos":_vm.videos},on:{"check-videos":function($event){return _vm.checkVideos($event)},"save-list":_vm.saveList,"load-list":function($event){return _vm.loadList()},"remove-videos":_vm.removeVideos}}),_c('v-main-content-recovery-summary',{attrs:{"checkedVideos":_vm.checkedVideos}}),_c('v-main-content-video-errors')],1)}
-var MainContentvue_type_template_id_7e17154e_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MainContent.vue?vue&type=template&id=5a3fc3e8&
+var MainContentvue_type_template_id_5a3fc3e8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('v-main-content-video-list-input',{attrs:{"videos":_vm.videos},on:{"check-videos":function($event){return _vm.checkVideos($event)},"save-list":_vm.saveList,"load-list":function($event){return _vm.loadList()},"remove-videos":_vm.removeVideos}}),_c('v-main-content-recovery-summary',{attrs:{"checkedVideos":_vm.checkedVideos}}),_c('v-main-content-video-errors')],1)}
+var MainContentvue_type_template_id_5a3fc3e8_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/MainContent.vue?vue&type=template&id=7e17154e&
+// CONCATENATED MODULE: ./src/components/MainContent.vue?vue&type=template&id=5a3fc3e8&
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/toConsumableArray.js
-var toConsumableArray = __webpack_require__("4db1");
-var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableArray);
-
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentVideoListInput.vue?vue&type=template&id=54bd060a&
-var VMainContentVideoListInputvue_type_template_id_54bd060a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',[_c('h1',[_vm._v("Восстановление лайков")]),_c('div',[_c('label',[_vm._v("Список видео (идентификаторы или полные ссылки)")]),_c('q-input',{attrs:{"filled":"","autogrow":"","placeholder":"placeholder to be filled in"},model:{value:(_vm.videosString),callback:function ($$v) {_vm.videosString=$$v},expression:"videosString"}})],1),_c('div',{staticClass:"q-pa-md q-gutter-sm"},[_c('q-btn',{attrs:{"disabled":_vm.isListEmpty,"icon":"fas fa-tasks","label":"Проверить","color":"primary"},on:{"click":function($event){return _vm.checkVideos()}}}),_c('q-btn',{attrs:{"disabled":_vm.isListEmpty,"icon":"fas fa-save","label":"Сохранить","color":"secondary"},on:{"click":function($event){return _vm.saveList()}}}),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-file-download","label":"Загрузить","color":"red"},on:{"click":function($event){return _vm.loadList()}}}):_vm._e(),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-trash-alt","label":"Удалить","color":"purple"},on:{"click":function($event){return _vm.showDeleteConfirmationModal()}}}):_vm._e()],1)]),_vm._m(0),_vm._v("\n    a href with $ctrl.bottomId dynamic id\n    "),_c('input',{attrs:{"id":"forceUpdate","type":"hidden","placeholder":"on click $ctrl.forceUpdate()"}}),_c('v-main-content-video-list-input-modal-delete-confirmation',{attrs:{"modal-visible":_vm.isDeleteModalVisible},on:{"close":_vm.closeModal}})],1)}
-var VMainContentVideoListInputvue_type_template_id_54bd060a_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h3',[_vm._v("Результат выставления лайков")]),_c('p',[_vm._v("Проставлено: $ctrl.lastSuccessedVideos.length")]),_c('p',[_vm._v("Не проставлено: $ctrl.lastFailedVideos.length")]),_c('p',[_c('strong',[_vm._v("Лайки могут появиться с задержкой.")])]),_c('div',[_vm._v("\n            ng-if=\"$ctrl.lastFailedVideos.length > 0\"\n            "),_c('button',[_vm._v("\n                ng-click=\"$ctrl.showDialog('failedVideosDialog')\"\n                "),_c('span',[_vm._v("Показать ошибки")])])])])}]
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentVideoListInput.vue?vue&type=template&id=559e2d07&
+var VMainContentVideoListInputvue_type_template_id_559e2d07_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',[_c('h1',[_vm._v("Восстановление лайков")]),_c('div',[_c('label',[_vm._v("Список видео (идентификаторы или полные ссылки)")]),_c('q-input',{attrs:{"filled":"","autogrow":"","placeholder":"placeholder to be filled in"},model:{value:(_vm.$v.videosString.$model),callback:function ($$v) {_vm.$set(_vm.$v.videosString, "$model", (typeof $$v === 'string'? $$v.trim(): $$v))},expression:"$v.videosString.$model"}}),(!_vm.$v.videosString.required)?_c('div',{staticClass:"error"},[_vm._v("Field is required")]):_vm._e(),(_vm.$v.videosString.required && !_vm.$v.videosString.commaSeparatedListOfUrlsOrVideoIds)?_c('div',{staticClass:"error"},[_vm._v("YouTube url or video id invalid")]):_vm._e()],1),_c('div',{staticClass:"q-pa-md q-gutter-sm"},[_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-tasks","label":"Проверить","color":"primary"},on:{"click":function($event){return _vm.checkVideos()}}}),_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-save","label":"Сохранить","color":"secondary"},on:{"click":function($event){return _vm.saveList()}}}),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-file-download","label":"Загрузить","color":"red"},on:{"click":function($event){return _vm.loadList()}}}):_vm._e(),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-trash-alt","label":"Удалить","color":"purple"},on:{"click":function($event){return _vm.showDeleteConfirmationModal()}}}):_vm._e()],1)]),_vm._m(0),_vm._v("\n    a href with $ctrl.bottomId dynamic id\n    "),_c('input',{attrs:{"id":"forceUpdate","type":"hidden","placeholder":"on click $ctrl.forceUpdate()"}}),_c('v-main-content-video-list-input-modal-delete-confirmation',{attrs:{"modal-visible":_vm.isDeleteModalVisible},on:{"close":_vm.closeModal}})],1)}
+var VMainContentVideoListInputvue_type_template_id_559e2d07_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h3',[_vm._v("Результат выставления лайков")]),_c('p',[_vm._v("Проставлено: $ctrl.lastSuccessedVideos.length")]),_c('p',[_vm._v("Не проставлено: $ctrl.lastFailedVideos.length")]),_c('p',[_c('strong',[_vm._v("Лайки могут появиться с задержкой.")])]),_c('div',[_vm._v("\n            ng-if=\"$ctrl.lastFailedVideos.length > 0\"\n            "),_c('button',[_vm._v("\n                ng-click=\"$ctrl.showDialog('failedVideosDialog')\"\n                "),_c('span',[_vm._v("Показать ошибки")])])])])}]
 
 
-// CONCATENATED MODULE: ./src/components/VMainContentVideoListInput.vue?vue&type=template&id=54bd060a&
+// CONCATENATED MODULE: ./src/components/VMainContentVideoListInput.vue?vue&type=template&id=559e2d07&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.split.js
 var es6_regexp_split = __webpack_require__("28a5");
@@ -162,6 +158,53 @@ runtime_auto_import_default()(component, 'components', {QDialog: QDialog["a" /* 
 
 runtime_auto_import_default()(component, 'directives', {ClosePopup: ClosePopup["a" /* default */]})
 
+// EXTERNAL MODULE: ./node_modules/vuelidate/lib/validators/index.js
+var validators = __webpack_require__("b5ae");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.replace.js
+var es6_regexp_replace = __webpack_require__("a481");
+
+// EXTERNAL MODULE: ./node_modules/query-string/index.js
+var query_string = __webpack_require__("72bf");
+var query_string_default = /*#__PURE__*/__webpack_require__.n(query_string);
+
+// CONCATENATED MODULE: ./src/services/youtube-url-parser.service.js
+
+var publicApi = {
+  getVideoId: getVideoId,
+  isIdValid: isIdValid
+};
+
+function getVideoId(url) {
+  return query_string_default.a.parse(query_string_default.a.extract(url)).v;
+}
+
+function isIdValid(videoId) {
+  // https://webapps.stackexchange.com/questions/54443/format-for-id-of-youtube-video
+  return /[0-9A-Za-z_-]{10}[048AEIMQUYcgkosw]/.test(videoId);
+}
+
+var youtubeUrlParserService = publicApi;
+/* harmony default export */ var youtube_url_parser_service = (youtubeUrlParserService);
+// CONCATENATED MODULE: ./src/services/form-validator.service.js
+
+
+
+
+
+function commaSeparatedListOfUrlsOrVideoIds(value) {
+  return value.replace(/\s/g, '').split(',').map(toVideoId).every(idIsValid);
+}
+
+function toVideoId(youtubeUrl) {
+  return Object(validators["url"])(youtubeUrl) ? youtube_url_parser_service.getVideoId(youtubeUrl) : youtubeUrl;
+}
+
+function idIsValid(videoId) {
+  return youtube_url_parser_service.isIdValid(videoId);
+}
+
+
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentVideoListInput.vue?vue&type=script&lang=js&
 
 //
@@ -241,6 +284,13 @@ runtime_auto_import_default()(component, 'directives', {ClosePopup: ClosePopup["
 //
 //
 //
+//
+//
+//
+//
+//
+
+
 
 var VMainContentVideoListInputvue_type_script_lang_js_customEvents = {
   checkVideos: 'check-videos',
@@ -252,6 +302,18 @@ var VMainContentVideoListInputvue_type_script_lang_js_customEvents = {
   props: {
     videos: Array
   },
+  data: function data() {
+    return {
+      videosString: '',
+      isDeleteModalVisible: false
+    };
+  },
+  validations: {
+    videosString: {
+      required: validators["required"],
+      commaSeparatedListOfUrlsOrVideoIds: commaSeparatedListOfUrlsOrVideoIds
+    }
+  },
   watch: {
     videos: {
       immediate: true,
@@ -259,12 +321,6 @@ var VMainContentVideoListInputvue_type_script_lang_js_customEvents = {
         this.videosString = newVideos.join(', ');
       }
     }
-  },
-  data: function data() {
-    return {
-      videosString: '',
-      isDeleteModalVisible: false
-    };
   },
   components: {
     VMainContentVideoListInputModalDeleteConfirmation: VMainContentVideoListInputModalDeleteConfirmation
@@ -318,8 +374,8 @@ var QInput = __webpack_require__("27f9");
 
 var VMainContentVideoListInput_component = Object(componentNormalizer["a" /* default */])(
   components_VMainContentVideoListInputvue_type_script_lang_js_,
-  VMainContentVideoListInputvue_type_template_id_54bd060a_render,
-  VMainContentVideoListInputvue_type_template_id_54bd060a_staticRenderFns,
+  VMainContentVideoListInputvue_type_template_id_559e2d07_render,
+  VMainContentVideoListInputvue_type_template_id_559e2d07_staticRenderFns,
   false,
   null,
   null,
@@ -589,8 +645,6 @@ var VMainContentVideoErrors_component = Object(componentNormalizer["a" /* defaul
 var mutation_types = __webpack_require__("9fb0");
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/MainContent.vue?vue&type=script&lang=js&
-
-//
 //
 //
 //
@@ -631,10 +685,16 @@ var mutation_types = __webpack_require__("9fb0");
       var type = _ref.type,
           payload = _ref.payload;
 
-      if (type === mutation_types["a" /* CHECK_VIDEOS */]) {
-        _this.checkedVideos = payload;
-      } else if (type === mutation_types["b" /* GET_SAVED_VIDEOS */]) {
-        _this.videos = payload;
+      switch (type) {
+        case mutation_types["a" /* CHECK_VIDEOS */]:
+          _this.checkedVideos = payload;
+          break;
+
+        case mutation_types["b" /* GET_SAVED_VIDEOS */]:
+        case mutation_types["d" /* REMOVE_VIDEOS */]:
+        case mutation_types["e" /* SAVE_VIDEOS */]:
+          _this.videos = payload;
+          break;
       }
     });
     this.$store.dispatch(mutation_types["b" /* GET_SAVED_VIDEOS */]);
@@ -648,18 +708,17 @@ var mutation_types = __webpack_require__("9fb0");
     },
     saveList: function saveList(videosToSave) {
       this.$store.dispatch({
-        type: mutation_types["d" /* SAVE_VIDEOS */],
+        type: mutation_types["e" /* SAVE_VIDEOS */],
         videosToSave: videosToSave
       });
     },
     loadList: function loadList() {
       this.$store.dispatch(mutation_types["b" /* GET_SAVED_VIDEOS */]);
     },
-    addVideo: function addVideo() {
-      this.videos = [].concat(toConsumableArray_default()(this.videos), ['www.youtube.pl/xyz']);
-    },
     removeVideos: function removeVideos() {
-      console.log('removeVideos');
+      this.$store.dispatch({
+        type: mutation_types["d" /* REMOVE_VIDEOS */]
+      });
     }
   }
 });
@@ -675,8 +734,8 @@ var mutation_types = __webpack_require__("9fb0");
 
 var MainContent_component = Object(componentNormalizer["a" /* default */])(
   components_MainContentvue_type_script_lang_js_,
-  MainContentvue_type_template_id_7e17154e_render,
-  MainContentvue_type_template_id_7e17154e_staticRenderFns,
+  MainContentvue_type_template_id_5a3fc3e8_render,
+  MainContentvue_type_template_id_5a3fc3e8_staticRenderFns,
   false,
   null,
   null,
@@ -723,4 +782,4 @@ var Index_component = Object(componentNormalizer["a" /* default */])(
 /***/ })
 
 }]);
-//# sourceMappingURL=7.9291c3f7.js.map
+//# sourceMappingURL=7.19f3f079.js.map

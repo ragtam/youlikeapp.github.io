@@ -96,7 +96,7 @@ var googleAuthenticationApi = 'https://apis.google.com/js/platform.js';
     var _this = this;
 
     vue_runtime_esm["default"].loadScript(googleAuthenticationApi).then(function () {
-      _this.$store.dispatch(mutation_types["e" /* SET_UP_GOOGLE_AUTHENTICATION_API */]);
+      _this.$store.dispatch(mutation_types["f" /* SET_UP_GOOGLE_AUTHENTICATION_API */]);
     });
   }
 });
@@ -142,10 +142,6 @@ var es6_object_to_string = __webpack_require__("06db");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
 var es6_object_keys = __webpack_require__("456d");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/objectDestructuringEmpty.js
-var objectDestructuringEmpty = __webpack_require__("dad6");
-var objectDestructuringEmpty_default = /*#__PURE__*/__webpack_require__.n(objectDestructuringEmpty);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
@@ -353,6 +349,34 @@ function split(arrayToSplit) {
 
 var youtubeRatingService = youtube_rating_service_publicApi;
 /* harmony default export */ var youtube_rating_service = (youtubeRatingService);
+// CONCATENATED MODULE: ./src/services/storage.service.js
+
+
+var storage_service_publicApi = {
+  save: save,
+  get: get,
+  remove: remove
+};
+
+function save(key, value) {
+  var valueStringified = JSON.stringify(value);
+  localStorage.setItem(key, valueStringified);
+  return Promise.resolve(get(key));
+}
+
+function get(key) {
+  var stringifiedValue = localStorage.getItem(key);
+  var obj = JSON.parse(stringifiedValue);
+  return Promise.resolve(obj);
+}
+
+function remove(key) {
+  localStorage.removeItem(key);
+  return Promise.resolve(get(key));
+}
+
+var storageService = storage_service_publicApi;
+/* harmony default export */ var storage_service = (storageService);
 // CONCATENATED MODULE: ./src/store/index.js
 
 
@@ -363,6 +387,7 @@ var youtubeRatingService = youtube_rating_service_publicApi;
 
 
 
+var _mutations, _actions;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -373,7 +398,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
 vue_runtime_esm["default"].use(vuex_esm["a" /* default */]);
+var videosStorageKey = 'videosList';
 var initialState = {
   user: {
     name: 'Anonymous User',
@@ -386,76 +413,87 @@ var initialState = {
   },
   savedVideos: []
 };
+var mutations = (_mutations = {}, defineProperty_default()(_mutations, mutation_types["g" /* SIGN_IN */], function (state, user) {
+  state.user = _objectSpread({}, user);
+}), defineProperty_default()(_mutations, mutation_types["c" /* LOG_OFF */], function (state, user) {
+  state.user = _objectSpread({}, user);
+}), defineProperty_default()(_mutations, mutation_types["a" /* CHECK_VIDEOS */], function (state, checkedVideos) {
+  state.checkedVideos = _objectSpread({}, checkedVideos);
+}), defineProperty_default()(_mutations, mutation_types["b" /* GET_SAVED_VIDEOS */], function (state, savedVideos) {
+  state.savedVideos = savedVideos;
+}), defineProperty_default()(_mutations, mutation_types["d" /* REMOVE_VIDEOS */], function (state, removedVideos) {
+  state.savedVideos = removedVideos;
+}), defineProperty_default()(_mutations, mutation_types["e" /* SAVE_VIDEOS */], function (state, savedVideos) {
+  state.savedVideos = savedVideos;
+}), _mutations);
+var actions = (_actions = {}, defineProperty_default()(_actions, mutation_types["g" /* SIGN_IN */], function (_ref) {
+  var commit = _ref.commit;
+  google_api_service.signIn().then(function (_ref2) {
+    var name = _ref2.name,
+        image = _ref2.image;
+    commit(mutation_types["g" /* SIGN_IN */], {
+      name: name,
+      image: image,
+      isSignedIn: true
+    });
+  }, function () {
+    commit(mutation_types["c" /* LOG_OFF */], _objectSpread({}, initialState.user));
+  });
+}), defineProperty_default()(_actions, mutation_types["c" /* LOG_OFF */], function () {
+  google_api_service.logOff();
+}), defineProperty_default()(_actions, mutation_types["f" /* SET_UP_GOOGLE_AUTHENTICATION_API */], function (_ref3) {
+  var commit = _ref3.commit;
+  google_api_service.setUpAuthInstance().then(function () {
+    google_api_service.listenToSignedInChanges(function (_ref4) {
+      var isSignedIn = _ref4.isSignedIn,
+          user = _ref4.user;
+
+      if (isSignedIn) {
+        commit(mutation_types["g" /* SIGN_IN */], {
+          name: user.name,
+          image: user.image,
+          isSignedIn: isSignedIn
+        });
+      } else {
+        commit(mutation_types["c" /* LOG_OFF */], _objectSpread({}, initialState.user));
+      }
+    });
+  });
+}), defineProperty_default()(_actions, mutation_types["a" /* CHECK_VIDEOS */], function (_ref5, _ref6) {
+  var commit = _ref5.commit;
+  var videosToCheck = _ref6.videosToCheck;
+  youtube_rating_service.checkVideos(videosToCheck).then(function (checkedVideos) {
+    commit(mutation_types["a" /* CHECK_VIDEOS */], checkedVideos);
+  });
+}), defineProperty_default()(_actions, mutation_types["b" /* GET_SAVED_VIDEOS */], function (_ref7) {
+  var commit = _ref7.commit;
+  setTimeout(function () {
+    storage_service.get(videosStorageKey).then(function (res) {
+      var savedVideos = res || [];
+      commit(mutation_types["b" /* GET_SAVED_VIDEOS */], savedVideos);
+    });
+  }, 1000);
+}), defineProperty_default()(_actions, mutation_types["e" /* SAVE_VIDEOS */], function (_ref8, _ref9) {
+  var commit = _ref8.commit;
+  var videosToSave = _ref9.videosToSave;
+  storage_service.save(videosStorageKey, videosToSave).then(function (result) {
+    commit(mutation_types["e" /* SAVE_VIDEOS */], result);
+  });
+}), defineProperty_default()(_actions, mutation_types["d" /* REMOVE_VIDEOS */], function (_ref10) {
+  var commit = _ref10.commit;
+  storage_service.remove(videosStorageKey).then(function (result) {
+    commit(mutation_types["d" /* REMOVE_VIDEOS */], result || []);
+  });
+}), _actions);
 /* harmony default export */ var src_store = (function ()
 /* { ssrContext } */
 {
-  var _mutations, _actions;
-
-  var Store = new vuex_esm["a" /* default */].Store({
+  return new vuex_esm["a" /* default */].Store({
     state: _objectSpread({}, initialState),
-    mutations: (_mutations = {}, defineProperty_default()(_mutations, mutation_types["f" /* SIGN_IN */], function (state, user) {
-      state.user = _objectSpread({}, user);
-    }), defineProperty_default()(_mutations, mutation_types["c" /* LOG_OFF */], function (state, user) {
-      state.user = _objectSpread({}, user);
-    }), defineProperty_default()(_mutations, mutation_types["a" /* CHECK_VIDEOS */], function (state, checkedVideos) {
-      state.checkedVideos = _objectSpread({}, checkedVideos);
-    }), defineProperty_default()(_mutations, mutation_types["b" /* GET_SAVED_VIDEOS */], function (state, savedVideos) {
-      state.savedVideos = savedVideos;
-    }), _mutations),
-    actions: (_actions = {}, defineProperty_default()(_actions, mutation_types["f" /* SIGN_IN */], function (_ref) {
-      var commit = _ref.commit;
-      google_api_service.signIn().then(function (_ref2) {
-        var name = _ref2.name,
-            image = _ref2.image;
-        commit(mutation_types["f" /* SIGN_IN */], {
-          name: name,
-          image: image,
-          isSignedIn: true
-        });
-      }, function () {
-        commit(mutation_types["c" /* LOG_OFF */], _objectSpread({}, initialState.user));
-      });
-    }), defineProperty_default()(_actions, mutation_types["c" /* LOG_OFF */], function () {
-      google_api_service.logOff();
-    }), defineProperty_default()(_actions, mutation_types["e" /* SET_UP_GOOGLE_AUTHENTICATION_API */], function (_ref3) {
-      var commit = _ref3.commit;
-      google_api_service.setUpAuthInstance().then(function () {
-        google_api_service.listenToSignedInChanges(function (_ref4) {
-          var isSignedIn = _ref4.isSignedIn,
-              user = _ref4.user;
-
-          if (isSignedIn) {
-            commit(mutation_types["f" /* SIGN_IN */], {
-              name: user.name,
-              image: user.image,
-              isSignedIn: isSignedIn
-            });
-          } else {
-            commit(mutation_types["c" /* LOG_OFF */], _objectSpread({}, initialState.user));
-          }
-        });
-      });
-    }), defineProperty_default()(_actions, mutation_types["a" /* CHECK_VIDEOS */], function (_ref5, _ref6) {
-      var commit = _ref5.commit;
-      var videosToCheck = _ref6.videosToCheck;
-      youtube_rating_service.checkVideos(videosToCheck).then(function (checkedVideos) {
-        commit(mutation_types["a" /* CHECK_VIDEOS */], checkedVideos);
-      });
-    }), defineProperty_default()(_actions, mutation_types["b" /* GET_SAVED_VIDEOS */], function (_ref7) {
-      var commit = _ref7.commit;
-      setTimeout(function () {
-        var savedVideos = JSON.parse(localStorage.getItem('videosList')) || [];
-        commit(mutation_types["b" /* GET_SAVED_VIDEOS */], savedVideos);
-      }, 1000);
-    }), defineProperty_default()(_actions, mutation_types["d" /* SAVE_VIDEOS */], function (_ref8, _ref9) {
-      objectDestructuringEmpty_default()(_ref8);
-
-      var videosToSave = _ref9.videosToSave;
-      localStorage.setItem('videosList', JSON.stringify(videosToSave));
-    }), _actions),
+    mutations: mutations,
+    actions: actions,
     strict: false
   });
-  return Store;
 });
 // EXTERNAL MODULE: ./node_modules/vue-router/dist/vue-router.esm.js
 var vue_router_esm = __webpack_require__("8c4f");
@@ -776,6 +814,37 @@ var vue_plugin_load_script = __webpack_require__("67b0");
     return _ref.apply(this, arguments);
   };
 })());
+// EXTERNAL MODULE: ./node_modules/vuelidate/lib/index.js
+var lib = __webpack_require__("1dce");
+var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
+
+// CONCATENATED MODULE: ./src/boot/vuelidate.js
+
+
+
+
+/* harmony default export */ var vuelidate = (/*#__PURE__*/(function () {
+  var _ref = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee(_ref2) {
+    var Vue;
+    return regenerator_default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            Vue = _ref2.Vue;
+            Vue.use(lib_default.a);
+
+          case 2:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function (_x) {
+    return _ref.apply(this, arguments);
+  };
+})());
 // CONCATENATED MODULE: ./.quasar/client-entry.js
 
 
@@ -795,6 +864,7 @@ var vue_plugin_load_script = __webpack_require__("67b0");
  **/
 
  // We load Quasar stylesheet file
+
 
 
 
@@ -832,7 +902,7 @@ function _start() {
             };
 
             urlPath = window.location.href.replace(window.location.origin, '');
-            bootFiles = [boot_i18n, vue_social_sharing, fontawesome, boot_vue_plugin_load_script];
+            bootFiles = [boot_i18n, vue_social_sharing, fontawesome, boot_vue_plugin_load_script, vuelidate];
             i = 0;
 
           case 11:
@@ -915,20 +985,22 @@ start();
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return SIGN_IN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return SIGN_IN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LOG_OFF; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return SET_UP_GOOGLE_AUTHENTICATION_API; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return SET_UP_GOOGLE_AUTHENTICATION_API; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CHECK_VIDEOS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return GET_SAVED_VIDEOS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return SAVE_VIDEOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return SAVE_VIDEOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return REMOVE_VIDEOS; });
 var SIGN_IN = 'SIGN_IN';
 var LOG_OFF = 'LOG_OFF';
 var SET_UP_GOOGLE_AUTHENTICATION_API = 'SET_UP_GOOGLE_AUTHENTICATION_API';
 var CHECK_VIDEOS = 'CHECK_VIDEOS';
 var GET_SAVED_VIDEOS = 'GET_SAVED_VIDEOS';
 var SAVE_VIDEOS = 'SAVE_VIDEOS';
+var REMOVE_VIDEOS = 'REMOVE_VIDEOS';
 
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.d883f2ec.js.map
+//# sourceMappingURL=app.37be3751.js.map
