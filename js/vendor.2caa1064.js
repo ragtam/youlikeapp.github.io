@@ -663,6 +663,750 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 /***/ }),
 
+/***/ "05c0":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.string.anchor.js
+var es6_string_anchor = __webpack_require__("8449");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
+var es6_number_constructor = __webpack_require__("c5f6");
+
+// EXTERNAL MODULE: ./node_modules/vue/dist/vue.runtime.esm.js
+var vue_runtime_esm = __webpack_require__("2b0e");
+
+// EXTERNAL MODULE: ./node_modules/quasar/src/plugins/Platform.js
+var Platform = __webpack_require__("0967");
+
+// CONCATENATED MODULE: ./node_modules/quasar/src/utils/selection.js
+
+function clearSelection() {
+  if (window.getSelection !== void 0) {
+    var selection = window.getSelection();
+
+    if (selection.empty !== void 0) {
+      selection.empty();
+    } else if (selection.removeAllRanges !== void 0) {
+      selection.removeAllRanges();
+      Platform["b" /* default */].is.mobile !== true && selection.addRange(document.createRange());
+    }
+  } else if (document.selection !== void 0) {
+    document.selection.empty();
+  }
+}
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
+var utils_event = __webpack_require__("d882");
+
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/touch.js
+var touch = __webpack_require__("3627");
+
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/key-composition.js
+var key_composition = __webpack_require__("d728");
+
+// CONCATENATED MODULE: ./node_modules/quasar/src/mixins/anchor.js
+
+
+
+
+/* harmony default export */ var mixins_anchor = ({
+  props: {
+    target: {
+      default: true
+    },
+    noParentEvent: Boolean,
+    contextMenu: Boolean
+  },
+  watch: {
+    contextMenu: function contextMenu(val) {
+      if (this.anchorEl !== void 0) {
+        this.__unconfigureAnchorEl();
+
+        this.__configureAnchorEl(val);
+      }
+    },
+    target: function target() {
+      if (this.anchorEl !== void 0) {
+        this.__unconfigureAnchorEl();
+      }
+
+      this.__pickAnchorEl();
+    },
+    noParentEvent: function noParentEvent(val) {
+      if (this.anchorEl !== void 0) {
+        if (val === true) {
+          this.__unconfigureAnchorEl();
+        } else {
+          this.__configureAnchorEl();
+        }
+      }
+    }
+  },
+  methods: {
+    __showCondition: function __showCondition(evt) {
+      // abort with no parent configured or on multi-touch
+      if (this.anchorEl === void 0) {
+        return false;
+      }
+
+      if (evt === void 0) {
+        return true;
+      }
+
+      return evt.touches === void 0 || evt.touches.length <= 1;
+    },
+    __contextClick: function __contextClick(evt) {
+      var _this = this;
+
+      this.hide(evt);
+      this.$nextTick(function () {
+        _this.show(evt);
+      });
+      Object(utils_event["f" /* prevent */])(evt);
+    },
+    __toggleKey: function __toggleKey(evt) {
+      Object(key_composition["a" /* isKeyCode */])(evt, 13) === true && this.toggle(evt);
+    },
+    __mobileCleanup: function __mobileCleanup(evt) {
+      this.anchorEl.classList.remove('non-selectable');
+      clearTimeout(this.touchTimer);
+
+      if (this.showing === true && evt !== void 0) {
+        clearSelection();
+      }
+    },
+    __mobilePrevent: utils_event["f" /* prevent */],
+    __mobileTouch: function __mobileTouch(evt) {
+      var _this2 = this;
+
+      this.__mobileCleanup(evt);
+
+      if (this.__showCondition(evt) !== true) {
+        return;
+      }
+
+      this.hide(evt);
+      this.anchorEl.classList.add('non-selectable');
+      var target = Object(touch["c" /* getTouchTarget */])(evt.target);
+      Object(touch["a" /* addEvt */])(this, 'anchor', [[target, 'touchmove', '__mobileCleanup', 'passive'], [target, 'touchend', '__mobileCleanup', 'passive'], [target, 'touchcancel', '__mobileCleanup', 'passive'], [this.anchorEl, 'contextmenu', '__mobilePrevent', 'notPassive']]);
+      this.touchTimer = setTimeout(function () {
+        _this2.show(evt);
+      }, 300);
+    },
+    __unconfigureAnchorEl: function __unconfigureAnchorEl() {
+      Object(touch["b" /* cleanEvt */])(this, 'anchor');
+    },
+    __configureAnchorEl: function __configureAnchorEl() {
+      var context = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.contextMenu;
+
+      if (this.noParentEvent === true || this.anchorEl === void 0) {
+        return;
+      }
+
+      var evts;
+
+      if (context === true) {
+        if (this.$q.platform.is.mobile === true) {
+          evts = [[this.anchorEl, 'touchstart', '__mobileTouch', 'passive']];
+        } else {
+          evts = [[this.anchorEl, 'click', 'hide', 'passive'], [this.anchorEl, 'contextmenu', '__contextClick', 'notPassive']];
+        }
+      } else {
+        evts = [[this.anchorEl, 'click', 'toggle', 'passive'], [this.anchorEl, 'keyup', '__toggleKey', 'passive']];
+      }
+
+      Object(touch["a" /* addEvt */])(this, 'anchor', evts);
+    },
+    __setAnchorEl: function __setAnchorEl(el) {
+      this.anchorEl = el;
+
+      while (this.anchorEl.classList.contains('q-anchor--skip')) {
+        this.anchorEl = this.anchorEl.parentNode;
+      }
+
+      this.__configureAnchorEl();
+    },
+    __pickAnchorEl: function __pickAnchorEl() {
+      if (this.target === false || this.target === '') {
+        this.anchorEl = void 0;
+      } else if (this.target === true) {
+        this.__setAnchorEl(this.parentEl);
+      } else {
+        var el = this.target;
+
+        if (typeof this.target === 'string') {
+          try {
+            el = document.querySelector(this.target);
+          } catch (err) {
+            el = void 0;
+          }
+        }
+
+        if (el !== void 0 && el !== null) {
+          this.anchorEl = el._isVue === true && el.$el !== void 0 ? el.$el : el;
+
+          this.__configureAnchorEl();
+        } else {
+          this.anchorEl = void 0;
+          console.error("Anchor: target \"".concat(this.target, "\" not found"), this);
+        }
+      }
+    },
+    __changeScrollEvent: function __changeScrollEvent(scrollTarget, fn) {
+      var fnProp = "".concat(fn !== void 0 ? 'add' : 'remove', "EventListener");
+      var fnHandler = fn !== void 0 ? fn : this.__scrollFn;
+
+      if (scrollTarget !== window) {
+        scrollTarget[fnProp]('scroll', fnHandler, utils_event["c" /* listenOpts */].passive);
+      }
+
+      window[fnProp]('scroll', fnHandler, utils_event["c" /* listenOpts */].passive);
+      this.__scrollFn = fn;
+    }
+  },
+  created: function created() {
+    var _this3 = this;
+
+    if (typeof this.__configureScrollTarget === 'function' && typeof this.__unconfigureScrollTarget === 'function') {
+      this.noParentEventWatcher = this.$watch('noParentEvent', function () {
+        if (_this3.__scrollTarget !== void 0) {
+          _this3.__unconfigureScrollTarget();
+
+          _this3.__configureScrollTarget();
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.parentEl = this.$el.parentNode;
+
+    this.__pickAnchorEl();
+
+    if (this.value === true && this.anchorEl === void 0) {
+      this.$emit('input', false);
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    clearTimeout(this.touchTimer);
+    this.noParentEventWatcher !== void 0 && this.noParentEventWatcher();
+    this.__anchorCleanup !== void 0 && this.__anchorCleanup();
+
+    this.__unconfigureAnchorEl();
+  }
+});
+// EXTERNAL MODULE: ./node_modules/quasar/src/mixins/model-toggle.js
+var model_toggle = __webpack_require__("7ee0");
+
+// EXTERNAL MODULE: ./node_modules/quasar/src/mixins/portal.js
+var portal = __webpack_require__("9e62");
+
+// CONCATENATED MODULE: ./node_modules/quasar/src/mixins/transition.js
+/* harmony default export */ var transition = ({
+  props: {
+    transitionShow: {
+      type: String,
+      default: 'fade'
+    },
+    transitionHide: {
+      type: String,
+      default: 'fade'
+    }
+  },
+  data: function data() {
+    return {
+      transitionState: this.showing
+    };
+  },
+  watch: {
+    showing: function showing(val) {
+      var _this = this;
+
+      this.transitionShow !== this.transitionHide && this.$nextTick(function () {
+        _this.transitionState = val;
+      });
+    }
+  },
+  computed: {
+    transition: function transition() {
+      return 'q-transition--' + (this.transitionState === true ? this.transitionHide : this.transitionShow);
+    }
+  }
+});
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/scroll.js
+var utils_scroll = __webpack_require__("0831");
+
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/slot.js
+var slot = __webpack_require__("dde5");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.assign.js
+var es6_object_assign = __webpack_require__("f751");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es7.array.includes.js
+var es7_array_includes = __webpack_require__("6762");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.string.includes.js
+var es6_string_includes = __webpack_require__("2fdb");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.split.js
+var es6_regexp_split = __webpack_require__("28a5");
+
+// CONCATENATED MODULE: ./node_modules/quasar/src/utils/position-engine.js
+
+
+
+
+
+
+var vpLeft, vpTop;
+function validatePosition(pos) {
+  var parts = pos.split(' ');
+
+  if (parts.length !== 2) {
+    return false;
+  }
+
+  if (!['top', 'center', 'bottom'].includes(parts[0])) {
+    console.error('Anchor/Self position must start with one of top/center/bottom');
+    return false;
+  }
+
+  if (!['left', 'middle', 'right'].includes(parts[1])) {
+    console.error('Anchor/Self position must end with one of left/middle/right');
+    return false;
+  }
+
+  return true;
+}
+function validateOffset(val) {
+  if (!val) {
+    return true;
+  }
+
+  if (val.length !== 2) {
+    return false;
+  }
+
+  if (typeof val[0] !== 'number' || typeof val[1] !== 'number') {
+    return false;
+  }
+
+  return true;
+}
+function parsePosition(pos) {
+  var parts = pos.split(' ');
+  return {
+    vertical: parts[0],
+    horizontal: parts[1]
+  };
+}
+function validateCover(val) {
+  if (val === true || val === false) {
+    return true;
+  }
+
+  return validatePosition(val);
+}
+function getAnchorProps(el, offset) {
+  var _el$getBoundingClient = el.getBoundingClientRect(),
+      top = _el$getBoundingClient.top,
+      left = _el$getBoundingClient.left,
+      right = _el$getBoundingClient.right,
+      bottom = _el$getBoundingClient.bottom,
+      width = _el$getBoundingClient.width,
+      height = _el$getBoundingClient.height;
+
+  if (offset !== void 0) {
+    top -= offset[1];
+    left -= offset[0];
+    bottom += offset[1];
+    right += offset[0];
+    width += offset[0];
+    height += offset[1];
+  }
+
+  return {
+    top: top,
+    left: left,
+    right: right,
+    bottom: bottom,
+    width: width,
+    height: height,
+    middle: left + (right - left) / 2,
+    center: top + (bottom - top) / 2
+  };
+}
+function getTargetProps(el) {
+  return {
+    top: 0,
+    center: el.offsetHeight / 2,
+    bottom: el.offsetHeight,
+    left: 0,
+    middle: el.offsetWidth / 2,
+    right: el.offsetWidth
+  };
+} // cfg: { el, anchorEl, anchorOrigin, selfOrigin, offset, absoluteOffset, cover, fit, maxHeight, maxWidth }
+
+function setPosition(cfg) {
+  if (Platform["a" /* client */].is.ios === true && window.visualViewport !== void 0) {
+    // uses the q-position-engine CSS class
+    var el = document.body.style;
+    var _window$visualViewpor = window.visualViewport,
+        left = _window$visualViewpor.offsetLeft,
+        top = _window$visualViewpor.offsetTop;
+
+    if (left !== vpLeft) {
+      el.setProperty('--q-pe-left', left + 'px');
+      vpLeft = left;
+    }
+
+    if (top !== vpTop) {
+      el.setProperty('--q-pe-top', top + 'px');
+      vpTop = top;
+    }
+  }
+
+  var anchorProps; // scroll position might change
+  // if max-height/-width changes, so we
+  // need to restore it after we calculate
+  // the new positioning
+
+  var _cfg$el = cfg.el,
+      scrollLeft = _cfg$el.scrollLeft,
+      scrollTop = _cfg$el.scrollTop;
+
+  if (cfg.absoluteOffset === void 0) {
+    anchorProps = getAnchorProps(cfg.anchorEl, cfg.cover === true ? [0, 0] : cfg.offset);
+  } else {
+    var _cfg$anchorEl$getBoun = cfg.anchorEl.getBoundingClientRect(),
+        anchorTop = _cfg$anchorEl$getBoun.top,
+        anchorLeft = _cfg$anchorEl$getBoun.left,
+        _top = anchorTop + cfg.absoluteOffset.top,
+        _left = anchorLeft + cfg.absoluteOffset.left;
+
+    anchorProps = {
+      top: _top,
+      left: _left,
+      width: 1,
+      height: 1,
+      right: _left + 1,
+      center: _top,
+      middle: _left,
+      bottom: _top + 1
+    };
+  }
+
+  var elStyle = {
+    maxHeight: cfg.maxHeight,
+    maxWidth: cfg.maxWidth,
+    visibility: 'visible'
+  };
+
+  if (cfg.fit === true || cfg.cover === true) {
+    elStyle.minWidth = anchorProps.width + 'px';
+
+    if (cfg.cover === true) {
+      elStyle.minHeight = anchorProps.height + 'px';
+    }
+  }
+
+  Object.assign(cfg.el.style, elStyle);
+  var targetProps = getTargetProps(cfg.el),
+      props = {
+    top: anchorProps[cfg.anchorOrigin.vertical] - targetProps[cfg.selfOrigin.vertical],
+    left: anchorProps[cfg.anchorOrigin.horizontal] - targetProps[cfg.selfOrigin.horizontal]
+  };
+  applyBoundaries(props, anchorProps, targetProps, cfg.anchorOrigin, cfg.selfOrigin);
+  elStyle = {
+    top: Math.floor(props.top) + 'px',
+    left: Math.floor(props.left) + 'px'
+  };
+
+  if (props.maxHeight !== void 0) {
+    elStyle.maxHeight = Math.floor(props.maxHeight) + 'px';
+
+    if (anchorProps.height > props.maxHeight) {
+      elStyle.minHeight = elStyle.maxHeight;
+    }
+  }
+
+  if (props.maxWidth !== void 0) {
+    elStyle.maxWidth = Math.floor(props.maxWidth) + 'px';
+
+    if (anchorProps.width > props.maxWidth) {
+      elStyle.minWidth = elStyle.maxWidth;
+    }
+  }
+
+  Object.assign(cfg.el.style, elStyle); // restore scroll position
+
+  if (cfg.el.scrollTop !== scrollTop) {
+    cfg.el.scrollTop = scrollTop;
+  }
+
+  if (cfg.el.scrollLeft !== scrollLeft) {
+    cfg.el.scrollLeft = scrollLeft;
+  }
+}
+
+function applyBoundaries(props, anchorProps, targetProps, anchorOrigin, selfOrigin) {
+  var currentHeight = targetProps.bottom,
+      currentWidth = targetProps.right,
+      margin = Object(utils_scroll["d" /* getScrollbarWidth */])(),
+      innerHeight = window.innerHeight - margin,
+      innerWidth = document.body.clientWidth;
+
+  if (props.top < 0 || props.top + currentHeight > innerHeight) {
+    if (selfOrigin.vertical === 'center') {
+      props.top = anchorProps[anchorOrigin.vertical] > innerHeight / 2 ? Math.max(0, innerHeight - currentHeight) : 0;
+      props.maxHeight = Math.min(currentHeight, innerHeight);
+    } else if (anchorProps[anchorOrigin.vertical] > innerHeight / 2) {
+      var anchorY = Math.min(innerHeight, anchorOrigin.vertical === 'center' ? anchorProps.center : anchorOrigin.vertical === selfOrigin.vertical ? anchorProps.bottom : anchorProps.top);
+      props.maxHeight = Math.min(currentHeight, anchorY);
+      props.top = Math.max(0, anchorY - currentHeight);
+    } else {
+      props.top = Math.max(0, anchorOrigin.vertical === 'center' ? anchorProps.center : anchorOrigin.vertical === selfOrigin.vertical ? anchorProps.top : anchorProps.bottom);
+      props.maxHeight = Math.min(currentHeight, innerHeight - props.top);
+    }
+  }
+
+  if (props.left < 0 || props.left + currentWidth > innerWidth) {
+    props.maxWidth = Math.min(currentWidth, innerWidth);
+
+    if (selfOrigin.horizontal === 'middle') {
+      props.left = anchorProps[anchorOrigin.horizontal] > innerWidth / 2 ? Math.max(0, innerWidth - currentWidth) : 0;
+    } else if (anchorProps[anchorOrigin.horizontal] > innerWidth / 2) {
+      var anchorX = Math.min(innerWidth, anchorOrigin.horizontal === 'middle' ? anchorProps.middle : anchorOrigin.horizontal === selfOrigin.horizontal ? anchorProps.right : anchorProps.left);
+      props.maxWidth = Math.min(currentWidth, anchorX);
+      props.left = Math.max(0, anchorX - props.maxWidth);
+    } else {
+      props.left = Math.max(0, anchorOrigin.horizontal === 'middle' ? anchorProps.middle : anchorOrigin.horizontal === selfOrigin.horizontal ? anchorProps.left : anchorProps.right);
+      props.maxWidth = Math.min(currentWidth, innerWidth - props.left);
+    }
+  }
+}
+// CONCATENATED MODULE: ./node_modules/quasar/src/components/tooltip/QTooltip.js
+
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ var QTooltip = __webpack_exports__["a"] = (vue_runtime_esm["default"].extend({
+  name: 'QTooltip',
+  mixins: [mixins_anchor, model_toggle["a" /* default */], portal["b" /* default */], transition],
+  props: {
+    maxHeight: {
+      type: String,
+      default: null
+    },
+    maxWidth: {
+      type: String,
+      default: null
+    },
+    transitionShow: {
+      default: 'jump-down'
+    },
+    transitionHide: {
+      default: 'jump-up'
+    },
+    anchor: {
+      type: String,
+      default: 'bottom middle',
+      validator: validatePosition
+    },
+    self: {
+      type: String,
+      default: 'top middle',
+      validator: validatePosition
+    },
+    offset: {
+      type: Array,
+      default: function _default() {
+        return [14, 14];
+      },
+      validator: validateOffset
+    },
+    scrollTarget: {
+      default: void 0
+    },
+    delay: {
+      type: Number,
+      default: 0
+    },
+    hideDelay: {
+      type: Number,
+      default: 0
+    }
+  },
+  computed: {
+    anchorOrigin: function anchorOrigin() {
+      return parsePosition(this.anchor);
+    },
+    selfOrigin: function selfOrigin() {
+      return parsePosition(this.self);
+    },
+    hideOnRouteChange: function hideOnRouteChange() {
+      return this.persistent !== true;
+    }
+  },
+  methods: {
+    __show: function __show(evt) {
+      var _this = this;
+
+      this.__showPortal();
+
+      this.__nextTick(function () {
+        _this.observer = new MutationObserver(function () {
+          return _this.updatePosition();
+        });
+
+        _this.observer.observe(_this.__portal.$el, {
+          attributes: false,
+          childList: true,
+          characterData: true,
+          subtree: true
+        });
+
+        _this.updatePosition();
+
+        _this.__configureScrollTarget();
+      });
+
+      this.__setTimeout(function () {
+        _this.$emit('show', evt);
+      }, 300);
+    },
+    __hide: function __hide(evt) {
+      var _this2 = this;
+
+      this.__anchorCleanup();
+
+      this.__setTimeout(function () {
+        _this2.__hidePortal();
+
+        _this2.$emit('hide', evt);
+      }, 300);
+    },
+    __anchorCleanup: function __anchorCleanup() {
+      if (this.observer !== void 0) {
+        this.observer.disconnect();
+        this.observer = void 0;
+      }
+
+      this.__unconfigureScrollTarget();
+
+      Object(touch["b" /* cleanEvt */])(this, 'tooltipTemp');
+    },
+    updatePosition: function updatePosition() {
+      if (this.anchorEl === void 0 || this.__portal === void 0) {
+        return;
+      }
+
+      var el = this.__portal.$el;
+
+      if (el.nodeType === 8) {
+        // IE replaces the comment with delay
+        setTimeout(this.updatePosition, 25);
+        return;
+      }
+
+      setPosition({
+        el: el,
+        offset: this.offset,
+        anchorEl: this.anchorEl,
+        anchorOrigin: this.anchorOrigin,
+        selfOrigin: this.selfOrigin,
+        maxHeight: this.maxHeight,
+        maxWidth: this.maxWidth
+      });
+    },
+    __delayShow: function __delayShow(evt) {
+      var _this3 = this;
+
+      if (this.$q.platform.is.mobile === true) {
+        clearSelection();
+        document.body.classList.add('non-selectable');
+        var target = Object(touch["c" /* getTouchTarget */])(this.anchorEl);
+        var evts = ['touchmove', 'touchcancel', 'touchend', 'click'].map(function (e) {
+          return [target, e, '__delayHide', 'passiveCapture'];
+        });
+        Object(touch["a" /* addEvt */])(this, 'tooltipTemp', evts);
+      }
+
+      this.__setTimeout(function () {
+        _this3.show(evt);
+      }, this.delay);
+    },
+    __delayHide: function __delayHide(evt) {
+      var _this4 = this;
+
+      this.__clearTimeout();
+
+      if (this.$q.platform.is.mobile === true) {
+        Object(touch["b" /* cleanEvt */])(this, 'tooltipTemp');
+        clearSelection(); // delay needed otherwise selection still occurs
+
+        setTimeout(function () {
+          document.body.classList.remove('non-selectable');
+        }, 10);
+      }
+
+      this.__setTimeout(function () {
+        _this4.hide(evt);
+      }, this.hideDelay);
+    },
+    __configureAnchorEl: function __configureAnchorEl() {
+      if (this.noParentEvent === true || this.anchorEl === void 0) {
+        return;
+      }
+
+      var evts = this.$q.platform.is.mobile === true ? [[this.anchorEl, 'touchstart', '__delayShow', 'passive']] : [[this.anchorEl, 'mouseenter', '__delayShow', 'passive'], [this.anchorEl, 'mouseleave', '__delayHide', 'passive']];
+      Object(touch["a" /* addEvt */])(this, 'anchor', evts);
+    },
+    __unconfigureScrollTarget: function __unconfigureScrollTarget() {
+      if (this.__scrollTarget !== void 0) {
+        this.__changeScrollEvent(this.__scrollTarget);
+
+        this.__scrollTarget = void 0;
+      }
+    },
+    __configureScrollTarget: function __configureScrollTarget() {
+      if (this.anchorEl !== void 0 || this.scrollTarget !== void 0) {
+        this.__scrollTarget = Object(utils_scroll["c" /* getScrollTarget */])(this.anchorEl, this.scrollTarget);
+        var fn = this.noParentEvent === true ? this.updatePosition : this.hide;
+
+        this.__changeScrollEvent(this.__scrollTarget, fn);
+      }
+    },
+    __renderPortal: function __renderPortal(h) {
+      return h('transition', {
+        props: {
+          name: this.transition
+        }
+      }, [this.showing === true ? h('div', {
+        staticClass: 'q-tooltip q-tooltip--style q-position-engine no-pointer-events',
+        class: this.contentClass,
+        style: this.contentStyle,
+        attrs: {
+          role: 'complementary'
+        }
+      }, Object(slot["c" /* slot */])(this, 'default')) : null]);
+    }
+  },
+  mounted: function mounted() {
+    this.__processModelChange(this.value);
+  }
+}));
+
+/***/ }),
+
 /***/ "06db":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -689,6 +1433,206 @@ module.exports = function (it, key) {
   return hasOwnProperty.call(it, key);
 };
 
+
+/***/ }),
+
+/***/ "0831":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getScrollTarget; });
+/* unused harmony export getScrollHeight */
+/* unused harmony export getScrollWidth */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getScrollPosition; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getHorizontalScrollPosition; });
+/* unused harmony export animScrollTo */
+/* unused harmony export animHorizontalScrollTo */
+/* unused harmony export setScrollPosition */
+/* unused harmony export setHorizontalScrollPosition */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getScrollbarWidth; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return hasScrollbar; });
+/* harmony import */ var core_js_modules_es7_array_includes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("6762");
+/* harmony import */ var core_js_modules_es7_array_includes__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_array_includes__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es6_string_includes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("2fdb");
+/* harmony import */ var core_js_modules_es6_string_includes__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_string_includes__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _plugins_Platform_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("0967");
+/* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("f303");
+
+
+
+
+var scrollTargets = _plugins_Platform_js__WEBPACK_IMPORTED_MODULE_2__[/* isSSR */ "f"] === false ? [null, document, document.body, document.scrollingElement, document.documentElement] : [];
+function getScrollTarget(el, target) {
+  if (typeof target === 'string') {
+    try {
+      target = document.querySelector(target);
+    } catch (err) {
+      target = void 0;
+    }
+  }
+
+  if (target === void 0 || target === null) {
+    target = el.closest('.scroll,.scroll-y,.overflow-auto');
+  } else if (target._isVue === true && target.$el !== void 0) {
+    target = target.$el;
+  }
+
+  return scrollTargets.includes(target) ? window : target;
+}
+function getScrollHeight(el) {
+  return (el === window ? document.body : el).scrollHeight;
+}
+function getScrollWidth(el) {
+  return (el === window ? document.body : el).scrollWidth;
+}
+function getScrollPosition(scrollTarget) {
+  if (scrollTarget === window) {
+    return window.pageYOffset || window.scrollY || document.body.scrollTop || 0;
+  }
+
+  return scrollTarget.scrollTop;
+}
+function getHorizontalScrollPosition(scrollTarget) {
+  if (scrollTarget === window) {
+    return window.pageXOffset || window.scrollX || document.body.scrollLeft || 0;
+  }
+
+  return scrollTarget.scrollLeft;
+}
+function animScrollTo(el, to) {
+  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+  var pos = getScrollPosition(el);
+
+  if (duration <= 0) {
+    if (pos !== to) {
+      setScroll(el, to);
+    }
+
+    return;
+  }
+
+  requestAnimationFrame(function () {
+    var newPos = pos + (to - pos) / Math.max(16, duration) * 16;
+    setScroll(el, newPos);
+
+    if (newPos !== to) {
+      animScrollTo(el, to, duration - 16);
+    }
+  });
+}
+function animHorizontalScrollTo(el, to) {
+  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+  var pos = getHorizontalScrollPosition(el);
+
+  if (duration <= 0) {
+    if (pos !== to) {
+      setHorizontalScroll(el, to);
+    }
+
+    return;
+  }
+
+  requestAnimationFrame(function () {
+    var newPos = pos + (to - pos) / Math.max(16, duration) * 16;
+    setHorizontalScroll(el, newPos);
+
+    if (newPos !== to) {
+      animHorizontalScrollTo(el, to, duration - 16);
+    }
+  });
+}
+
+function setScroll(scrollTarget, offset) {
+  if (scrollTarget === window) {
+    window.scrollTo(window.pageXOffset || window.scrollX || document.body.scrollLeft || 0, offset);
+    return;
+  }
+
+  scrollTarget.scrollTop = offset;
+}
+
+function setHorizontalScroll(scrollTarget, offset) {
+  if (scrollTarget === window) {
+    window.scrollTo(offset, window.pageYOffset || window.scrollY || document.body.scrollTop || 0);
+    return;
+  }
+
+  scrollTarget.scrollLeft = offset;
+}
+
+function setScrollPosition(scrollTarget, offset, duration) {
+  if (duration) {
+    animScrollTo(scrollTarget, offset, duration);
+    return;
+  }
+
+  setScroll(scrollTarget, offset);
+}
+function setHorizontalScrollPosition(scrollTarget, offset, duration) {
+  if (duration) {
+    animHorizontalScrollTo(scrollTarget, offset, duration);
+    return;
+  }
+
+  setHorizontalScroll(scrollTarget, offset);
+}
+var size;
+function getScrollbarWidth() {
+  if (size !== undefined) {
+    return size;
+  }
+
+  var inner = document.createElement('p'),
+      outer = document.createElement('div');
+  Object(_dom_js__WEBPACK_IMPORTED_MODULE_3__[/* css */ "b"])(inner, {
+    width: '100%',
+    height: '200px'
+  });
+  Object(_dom_js__WEBPACK_IMPORTED_MODULE_3__[/* css */ "b"])(outer, {
+    position: 'absolute',
+    top: '0px',
+    left: '0px',
+    visibility: 'hidden',
+    width: '200px',
+    height: '150px',
+    overflow: 'hidden'
+  });
+  outer.appendChild(inner);
+  document.body.appendChild(outer);
+  var w1 = inner.offsetWidth;
+  outer.style.overflow = 'scroll';
+  var w2 = inner.offsetWidth;
+
+  if (w1 === w2) {
+    w2 = outer.clientWidth;
+  }
+
+  outer.remove();
+  size = w1 - w2;
+  return size;
+}
+function hasScrollbar(el) {
+  var onY = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+  if (!el || el.nodeType !== Node.ELEMENT_NODE) {
+    return false;
+  }
+
+  return onY ? el.scrollHeight > el.clientHeight && (el.classList.contains('scroll') || el.classList.contains('overflow-auto') || ['auto', 'scroll'].includes(window.getComputedStyle(el)['overflow-y'])) : el.scrollWidth > el.clientWidth && (el.classList.contains('scroll') || el.classList.contains('overflow-auto') || ['auto', 'scroll'].includes(window.getComputedStyle(el)['overflow-x']));
+}
+/* unused harmony default export */ var _unused_webpack_default_export = ({
+  getScrollTarget: getScrollTarget,
+  getScrollHeight: getScrollHeight,
+  getScrollWidth: getScrollWidth,
+  getScrollPosition: getScrollPosition,
+  getHorizontalScrollPosition: getHorizontalScrollPosition,
+  animScrollTo: animScrollTo,
+  animHorizontalScrollTo: animHorizontalScrollTo,
+  setScrollPosition: setScrollPosition,
+  setHorizontalScrollPosition: setHorizontalScrollPosition,
+  getScrollbarWidth: getScrollbarWidth,
+  hasScrollbar: hasScrollbar
+});
 
 /***/ }),
 
@@ -3355,316 +4299,18 @@ var src_history = __webpack_require__("582c");
     this.showing === true && this.__removeHistory();
   }
 });
-// EXTERNAL MODULE: ./node_modules/quasar/src/plugins/Platform.js
-var Platform = __webpack_require__("0967");
+// EXTERNAL MODULE: ./node_modules/quasar/src/mixins/model-toggle.js
+var model_toggle = __webpack_require__("7ee0");
 
-// EXTERNAL MODULE: ./node_modules/quasar/src/mixins/timeout.js
-var timeout = __webpack_require__("463c");
-
-// CONCATENATED MODULE: ./node_modules/quasar/src/mixins/model-toggle.js
-
-
-/* harmony default export */ var model_toggle = ({
-  mixins: [timeout["a" /* default */]],
-  props: {
-    value: {
-      type: Boolean,
-      default: void 0
-    }
-  },
-  data: function data() {
-    return {
-      showing: false
-    };
-  },
-  watch: {
-    value: function value(val) {
-      this.__processModelChange(val);
-    },
-    $route: function $route() {
-      this.hideOnRouteChange === true && this.showing === true && this.hide();
-    }
-  },
-  methods: {
-    toggle: function toggle(evt) {
-      this[this.showing === true ? 'hide' : 'show'](evt);
-    },
-    show: function show(evt) {
-      var _this = this;
-
-      if (this.disable === true || this.__showCondition !== void 0 && this.__showCondition(evt) !== true) {
-        return;
-      }
-
-      if (this.$listeners.input !== void 0 && Platform["f" /* isSSR */] === false) {
-        this.$emit('input', true);
-        this.payload = evt;
-        this.$nextTick(function () {
-          if (_this.payload === evt) {
-            _this.payload = void 0;
-          }
-        });
-      }
-
-      if (this.value === void 0 || this.$listeners.input === void 0 || Platform["f" /* isSSR */] === true) {
-        this.__processShow(evt);
-      }
-    },
-    __processShow: function __processShow(evt) {
-      if (this.showing === true) {
-        return;
-      } // need to call it before setting showing to true
-      // in order to not ruin the animation
-
-
-      this.__preparePortal !== void 0 && this.__preparePortal();
-      this.showing = true;
-      this.$emit('before-show', evt);
-
-      if (this.__show !== void 0) {
-        this.__clearTick();
-
-        this.__show(evt);
-
-        this.__prepareTick();
-      } else {
-        this.$emit('show', evt);
-      }
-    },
-    hide: function hide(evt) {
-      var _this2 = this;
-
-      if (this.disable === true) {
-        return;
-      }
-
-      if (this.$listeners.input !== void 0 && Platform["f" /* isSSR */] === false) {
-        this.$emit('input', false);
-        this.payload = evt;
-        this.$nextTick(function () {
-          if (_this2.payload === evt) {
-            _this2.payload = void 0;
-          }
-        });
-      }
-
-      if (this.value === void 0 || this.$listeners.input === void 0 || Platform["f" /* isSSR */] === true) {
-        this.__processHide(evt);
-      }
-    },
-    __processHide: function __processHide(evt) {
-      if (this.showing === false) {
-        return;
-      }
-
-      this.showing = false;
-      this.$emit('before-hide', evt);
-
-      if (this.__hide !== void 0) {
-        this.__clearTick();
-
-        this.__hide(evt);
-
-        this.__prepareTick();
-      } else {
-        this.$emit('hide', evt);
-      }
-    },
-    __processModelChange: function __processModelChange(val) {
-      if (this.disable === true && val === true) {
-        this.$listeners.input !== void 0 && this.$emit('input', false);
-      } else if (val === true !== this.showing) {
-        this["__process".concat(val === true ? 'Show' : 'Hide')](this.payload);
-      }
-    }
-  }
-});
 // EXTERNAL MODULE: ./node_modules/quasar/src/mixins/portal.js
 var portal = __webpack_require__("9e62");
 
 // EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
 var utils_event = __webpack_require__("d882");
 
-// EXTERNAL MODULE: ./node_modules/quasar/src/utils/dom.js
-var dom = __webpack_require__("f303");
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/scroll.js
+var utils_scroll = __webpack_require__("0831");
 
-// CONCATENATED MODULE: ./node_modules/quasar/src/utils/scroll.js
-
-
-
-
-var scrollTargets = Platform["f" /* isSSR */] === false ? [null, document, document.body, document.scrollingElement, document.documentElement] : [];
-function getScrollTarget(el, target) {
-  if (typeof target === 'string') {
-    try {
-      target = document.querySelector(target);
-    } catch (err) {
-      target = void 0;
-    }
-  }
-
-  if (target === void 0 || target === null) {
-    target = el.closest('.scroll,.scroll-y,.overflow-auto');
-  } else if (target._isVue === true && target.$el !== void 0) {
-    target = target.$el;
-  }
-
-  return scrollTargets.includes(target) ? window : target;
-}
-function getScrollHeight(el) {
-  return (el === window ? document.body : el).scrollHeight;
-}
-function getScrollWidth(el) {
-  return (el === window ? document.body : el).scrollWidth;
-}
-function getScrollPosition(scrollTarget) {
-  if (scrollTarget === window) {
-    return window.pageYOffset || window.scrollY || document.body.scrollTop || 0;
-  }
-
-  return scrollTarget.scrollTop;
-}
-function getHorizontalScrollPosition(scrollTarget) {
-  if (scrollTarget === window) {
-    return window.pageXOffset || window.scrollX || document.body.scrollLeft || 0;
-  }
-
-  return scrollTarget.scrollLeft;
-}
-function animScrollTo(el, to) {
-  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-  var pos = getScrollPosition(el);
-
-  if (duration <= 0) {
-    if (pos !== to) {
-      setScroll(el, to);
-    }
-
-    return;
-  }
-
-  requestAnimationFrame(function () {
-    var newPos = pos + (to - pos) / Math.max(16, duration) * 16;
-    setScroll(el, newPos);
-
-    if (newPos !== to) {
-      animScrollTo(el, to, duration - 16);
-    }
-  });
-}
-function animHorizontalScrollTo(el, to) {
-  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-  var pos = getHorizontalScrollPosition(el);
-
-  if (duration <= 0) {
-    if (pos !== to) {
-      setHorizontalScroll(el, to);
-    }
-
-    return;
-  }
-
-  requestAnimationFrame(function () {
-    var newPos = pos + (to - pos) / Math.max(16, duration) * 16;
-    setHorizontalScroll(el, newPos);
-
-    if (newPos !== to) {
-      animHorizontalScrollTo(el, to, duration - 16);
-    }
-  });
-}
-
-function setScroll(scrollTarget, offset) {
-  if (scrollTarget === window) {
-    window.scrollTo(window.pageXOffset || window.scrollX || document.body.scrollLeft || 0, offset);
-    return;
-  }
-
-  scrollTarget.scrollTop = offset;
-}
-
-function setHorizontalScroll(scrollTarget, offset) {
-  if (scrollTarget === window) {
-    window.scrollTo(offset, window.pageYOffset || window.scrollY || document.body.scrollTop || 0);
-    return;
-  }
-
-  scrollTarget.scrollLeft = offset;
-}
-
-function setScrollPosition(scrollTarget, offset, duration) {
-  if (duration) {
-    animScrollTo(scrollTarget, offset, duration);
-    return;
-  }
-
-  setScroll(scrollTarget, offset);
-}
-function setHorizontalScrollPosition(scrollTarget, offset, duration) {
-  if (duration) {
-    animHorizontalScrollTo(scrollTarget, offset, duration);
-    return;
-  }
-
-  setHorizontalScroll(scrollTarget, offset);
-}
-var size;
-function getScrollbarWidth() {
-  if (size !== undefined) {
-    return size;
-  }
-
-  var inner = document.createElement('p'),
-      outer = document.createElement('div');
-  Object(dom["b" /* css */])(inner, {
-    width: '100%',
-    height: '200px'
-  });
-  Object(dom["b" /* css */])(outer, {
-    position: 'absolute',
-    top: '0px',
-    left: '0px',
-    visibility: 'hidden',
-    width: '200px',
-    height: '150px',
-    overflow: 'hidden'
-  });
-  outer.appendChild(inner);
-  document.body.appendChild(outer);
-  var w1 = inner.offsetWidth;
-  outer.style.overflow = 'scroll';
-  var w2 = inner.offsetWidth;
-
-  if (w1 === w2) {
-    w2 = outer.clientWidth;
-  }
-
-  outer.remove();
-  size = w1 - w2;
-  return size;
-}
-function hasScrollbar(el) {
-  var onY = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-
-  if (!el || el.nodeType !== Node.ELEMENT_NODE) {
-    return false;
-  }
-
-  return onY ? el.scrollHeight > el.clientHeight && (el.classList.contains('scroll') || el.classList.contains('overflow-auto') || ['auto', 'scroll'].includes(window.getComputedStyle(el)['overflow-y'])) : el.scrollWidth > el.clientWidth && (el.classList.contains('scroll') || el.classList.contains('overflow-auto') || ['auto', 'scroll'].includes(window.getComputedStyle(el)['overflow-x']));
-}
-/* harmony default export */ var utils_scroll = ({
-  getScrollTarget: getScrollTarget,
-  getScrollHeight: getScrollHeight,
-  getScrollWidth: getScrollWidth,
-  getScrollPosition: getScrollPosition,
-  getHorizontalScrollPosition: getHorizontalScrollPosition,
-  animScrollTo: animScrollTo,
-  animHorizontalScrollTo: animHorizontalScrollTo,
-  setScrollPosition: setScrollPosition,
-  setHorizontalScrollPosition: setHorizontalScrollPosition,
-  getScrollbarWidth: getScrollbarWidth,
-  hasScrollbar: hasScrollbar
-});
 // CONCATENATED MODULE: ./node_modules/quasar/src/mixins/prevent-scroll.js
 
 
@@ -3696,7 +4342,7 @@ function shouldPreventScroll(e) {
   for (var index = 0; index < path.length; index++) {
     var el = path[index];
 
-    if (hasScrollbar(el, scrollY)) {
+    if (Object(utils_scroll["e" /* hasScrollbar */])(el, scrollY)) {
       return scrollY ? delta < 0 && el.scrollTop === 0 ? true : delta > 0 && el.scrollTop + el.clientHeight === el.scrollHeight : delta < 0 && el.scrollLeft === 0 ? true : delta > 0 && el.scrollLeft + el.clientWidth === el.scrollWidth;
     }
   }
@@ -3742,8 +4388,8 @@ function apply(action, is) {
 
   if (action === 'add') {
     var overflowY = window.getComputedStyle(body).overflowY;
-    scrollPositionX = getHorizontalScrollPosition(window);
-    scrollPositionY = getScrollPosition(window);
+    scrollPositionX = Object(utils_scroll["a" /* getHorizontalScrollPosition */])(window);
+    scrollPositionY = Object(utils_scroll["b" /* getScrollPosition */])(window);
     bodyLeft = body.style.left;
     bodyTop = body.style.top;
     body.style.left = "-".concat(scrollPositionX, "px");
@@ -3841,6 +4487,9 @@ function preventScroll(state, is) {
     }
   }
 });
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/dom.js
+var dom = __webpack_require__("f303");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find-index.js
 var es6_array_find_index = __webpack_require__("20d6");
 
@@ -3929,7 +4578,7 @@ var transitions = {
 };
 /* harmony default export */ var QDialog = __webpack_exports__["a"] = (vue_runtime_esm["default"].extend({
   name: 'QDialog',
-  mixins: [mixins_history, model_toggle, portal["b" /* default */], prevent_scroll],
+  mixins: [mixins_history, model_toggle["a" /* default */], portal["b" /* default */], prevent_scroll],
   props: {
     persistent: Boolean,
     autoClose: Boolean,
@@ -33235,6 +33884,32 @@ if (__webpack_require__("9e1e") && /./g.flags != 'g') __webpack_require__("86cc"
 
 /***/ }),
 
+/***/ "386b":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $export = __webpack_require__("5ca1");
+var fails = __webpack_require__("79e5");
+var defined = __webpack_require__("be13");
+var quot = /"/g;
+// B.2.3.2.1 CreateHTML(string, tag, attribute, value)
+var createHTML = function (string, tag, attribute, value) {
+  var S = String(defined(string));
+  var p1 = '<' + tag;
+  if (attribute !== '') p1 += ' ' + attribute + '="' + String(value).replace(quot, '&quot;') + '"';
+  return p1 + '>' + S + '</' + tag + '>';
+};
+module.exports = function (NAME, exec) {
+  var O = {};
+  O[NAME] = exec(createHTML);
+  $export($export.P + $export.F * fails(function () {
+    var test = ''[NAME]('"');
+    return test !== test.toLowerCase() || test.split('"').length > 3;
+  }), 'String', O);
+};
+
+
+/***/ }),
+
 /***/ "38f4":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -39646,6 +40321,132 @@ module.exports.default = exports.default;
 
 /***/ }),
 
+/***/ "7ee0":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _plugins_Platform_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("0967");
+/* harmony import */ var _timeout_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("463c");
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  mixins: [_timeout_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]],
+  props: {
+    value: {
+      type: Boolean,
+      default: void 0
+    }
+  },
+  data: function data() {
+    return {
+      showing: false
+    };
+  },
+  watch: {
+    value: function value(val) {
+      this.__processModelChange(val);
+    },
+    $route: function $route() {
+      this.hideOnRouteChange === true && this.showing === true && this.hide();
+    }
+  },
+  methods: {
+    toggle: function toggle(evt) {
+      this[this.showing === true ? 'hide' : 'show'](evt);
+    },
+    show: function show(evt) {
+      var _this = this;
+
+      if (this.disable === true || this.__showCondition !== void 0 && this.__showCondition(evt) !== true) {
+        return;
+      }
+
+      if (this.$listeners.input !== void 0 && _plugins_Platform_js__WEBPACK_IMPORTED_MODULE_0__[/* isSSR */ "f"] === false) {
+        this.$emit('input', true);
+        this.payload = evt;
+        this.$nextTick(function () {
+          if (_this.payload === evt) {
+            _this.payload = void 0;
+          }
+        });
+      }
+
+      if (this.value === void 0 || this.$listeners.input === void 0 || _plugins_Platform_js__WEBPACK_IMPORTED_MODULE_0__[/* isSSR */ "f"] === true) {
+        this.__processShow(evt);
+      }
+    },
+    __processShow: function __processShow(evt) {
+      if (this.showing === true) {
+        return;
+      } // need to call it before setting showing to true
+      // in order to not ruin the animation
+
+
+      this.__preparePortal !== void 0 && this.__preparePortal();
+      this.showing = true;
+      this.$emit('before-show', evt);
+
+      if (this.__show !== void 0) {
+        this.__clearTick();
+
+        this.__show(evt);
+
+        this.__prepareTick();
+      } else {
+        this.$emit('show', evt);
+      }
+    },
+    hide: function hide(evt) {
+      var _this2 = this;
+
+      if (this.disable === true) {
+        return;
+      }
+
+      if (this.$listeners.input !== void 0 && _plugins_Platform_js__WEBPACK_IMPORTED_MODULE_0__[/* isSSR */ "f"] === false) {
+        this.$emit('input', false);
+        this.payload = evt;
+        this.$nextTick(function () {
+          if (_this2.payload === evt) {
+            _this2.payload = void 0;
+          }
+        });
+      }
+
+      if (this.value === void 0 || this.$listeners.input === void 0 || _plugins_Platform_js__WEBPACK_IMPORTED_MODULE_0__[/* isSSR */ "f"] === true) {
+        this.__processHide(evt);
+      }
+    },
+    __processHide: function __processHide(evt) {
+      if (this.showing === false) {
+        return;
+      }
+
+      this.showing = false;
+      this.$emit('before-hide', evt);
+
+      if (this.__hide !== void 0) {
+        this.__clearTick();
+
+        this.__hide(evt);
+
+        this.__prepareTick();
+      } else {
+        this.$emit('hide', evt);
+      }
+    },
+    __processModelChange: function __processModelChange(val) {
+      if (this.disable === true && val === true) {
+        this.$listeners.input !== void 0 && this.$emit('input', false);
+      } else if (val === true !== this.showing) {
+        this["__process".concat(val === true ? 'Show' : 'Hide')](this.payload);
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "7f20":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40900,6 +41701,21 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 /***/ (function(module, exports) {
 
 module.exports = function () { /* empty */ };
+
+
+/***/ }),
+
+/***/ "8449":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// B.2.3.2 String.prototype.anchor(name)
+__webpack_require__("386b")('anchor', function (createHTML) {
+  return function anchor(name) {
+    return createHTML(this, 'a', 'name', name);
+  };
+});
 
 
 /***/ }),
@@ -62809,7 +63625,7 @@ module.exports = function (encodedURI) {
 /* unused harmony export faGit */
 /* unused harmony export faGitAlt */
 /* unused harmony export faGitSquare */
-/* unused harmony export faGithub */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return faGithub; });
 /* unused harmony export faGithubAlt */
 /* unused harmony export faGithubSquare */
 /* unused harmony export faGitkraken */
@@ -62823,7 +63639,7 @@ module.exports = function (encodedURI) {
 /* unused harmony export faGoogle */
 /* unused harmony export faGoogleDrive */
 /* unused harmony export faGooglePlay */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return faGooglePlus; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return faGooglePlus; });
 /* unused harmony export faGooglePlusG */
 /* unused harmony export faGooglePlusSquare */
 /* unused harmony export faGoogleWallet */
@@ -62910,12 +63726,12 @@ module.exports = function (encodedURI) {
 /* unused harmony export faNpm */
 /* unused harmony export faNs8 */
 /* unused harmony export faNutritionix */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return faOdnoklassniki; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return faOdnoklassniki; });
 /* unused harmony export faOdnoklassnikiSquare */
 /* unused harmony export faOldRepublic */
 /* unused harmony export faOpencart */
 /* unused harmony export faOpenid */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return faOpera; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return faOpera; });
 /* unused harmony export faOptinMonster */
 /* unused harmony export faOrcid */
 /* unused harmony export faOsi */
@@ -63014,7 +63830,7 @@ module.exports = function (encodedURI) {
 /* unused harmony export faSwift */
 /* unused harmony export faSymfony */
 /* unused harmony export faTeamspeak */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return faTelegram; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return faTelegram; });
 /* unused harmony export faTelegramPlane */
 /* unused harmony export faTencentWeibo */
 /* unused harmony export faTheRedYeti */
@@ -63027,7 +63843,7 @@ module.exports = function (encodedURI) {
 /* unused harmony export faTumblr */
 /* unused harmony export faTumblrSquare */
 /* unused harmony export faTwitch */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return faTwitter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return faTwitter; });
 /* unused harmony export faTwitterSquare */
 /* unused harmony export faTypo3 */
 /* unused harmony export faUber */
@@ -63050,7 +63866,7 @@ module.exports = function (encodedURI) {
 /* unused harmony export faVimeoSquare */
 /* unused harmony export faVimeoV */
 /* unused harmony export faVine */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return faVk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return faVk; });
 /* unused harmony export faVnv */
 /* unused harmony export faVuejs */
 /* unused harmony export faWaze */
@@ -66876,4 +67692,4 @@ module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u20
 /***/ })
 
 }]);
-//# sourceMappingURL=vendor.0460fe06.js.map
+//# sourceMappingURL=vendor.2caa1064.js.map

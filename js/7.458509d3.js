@@ -98,7 +98,7 @@ var componentNormalizer = __webpack_require__("2877");
 var runtime_auto_import = __webpack_require__("eebe");
 var runtime_auto_import_default = /*#__PURE__*/__webpack_require__.n(runtime_auto_import);
 
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/dialog/QDialog.js + 5 modules
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/dialog/QDialog.js + 3 modules
 var QDialog = __webpack_require__("24e8");
 
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/card/QCard.js

@@ -199,7 +199,7 @@ function signIn() {
 }
 
 function logOff() {
-  authInstance.signOut();
+  return authInstance.signOut();
 }
 
 function listenToSignedInChanges(callback) {
@@ -438,14 +438,17 @@ var actions = (_actions = {}, defineProperty_default()(_actions, mutation_types[
   }, function () {
     commit(mutation_types["c" /* LOG_OFF */], _objectSpread({}, initialState.user));
   });
-}), defineProperty_default()(_actions, mutation_types["c" /* LOG_OFF */], function () {
-  google_api_service.logOff();
-}), defineProperty_default()(_actions, mutation_types["f" /* SET_UP_GOOGLE_AUTHENTICATION_API */], function (_ref3) {
+}), defineProperty_default()(_actions, mutation_types["c" /* LOG_OFF */], function (_ref3) {
   var commit = _ref3.commit;
+  google_api_service.logOff().then(function () {
+    commit(mutation_types["c" /* LOG_OFF */], _objectSpread({}, initialState.user));
+  });
+}), defineProperty_default()(_actions, mutation_types["f" /* SET_UP_GOOGLE_AUTHENTICATION_API */], function (_ref4) {
+  var commit = _ref4.commit;
   google_api_service.setUpAuthInstance().then(function () {
-    google_api_service.listenToSignedInChanges(function (_ref4) {
-      var isSignedIn = _ref4.isSignedIn,
-          user = _ref4.user;
+    google_api_service.listenToSignedInChanges(function (_ref5) {
+      var isSignedIn = _ref5.isSignedIn,
+          user = _ref5.user;
 
       if (isSignedIn) {
         commit(mutation_types["g" /* SIGN_IN */], {
@@ -458,28 +461,28 @@ var actions = (_actions = {}, defineProperty_default()(_actions, mutation_types[
       }
     });
   });
-}), defineProperty_default()(_actions, mutation_types["a" /* CHECK_VIDEOS */], function (_ref5, _ref6) {
-  var commit = _ref5.commit;
-  var videosToCheck = _ref6.videosToCheck;
+}), defineProperty_default()(_actions, mutation_types["a" /* CHECK_VIDEOS */], function (_ref6, _ref7) {
+  var commit = _ref6.commit;
+  var videosToCheck = _ref7.videosToCheck;
   youtube_rating_service.checkVideos(videosToCheck).then(function (checkedVideos) {
     commit(mutation_types["a" /* CHECK_VIDEOS */], checkedVideos);
   });
-}), defineProperty_default()(_actions, mutation_types["b" /* GET_SAVED_VIDEOS */], function (_ref7) {
-  var commit = _ref7.commit;
+}), defineProperty_default()(_actions, mutation_types["b" /* GET_SAVED_VIDEOS */], function (_ref8) {
+  var commit = _ref8.commit;
   setTimeout(function () {
     storage_service.get(videosStorageKey).then(function (res) {
       var savedVideos = res || [];
       commit(mutation_types["b" /* GET_SAVED_VIDEOS */], savedVideos);
     });
   }, 1000);
-}), defineProperty_default()(_actions, mutation_types["e" /* SAVE_VIDEOS */], function (_ref8, _ref9) {
-  var commit = _ref8.commit;
-  var videosToSave = _ref9.videosToSave;
+}), defineProperty_default()(_actions, mutation_types["e" /* SAVE_VIDEOS */], function (_ref9, _ref10) {
+  var commit = _ref9.commit;
+  var videosToSave = _ref10.videosToSave;
   storage_service.save(videosStorageKey, videosToSave).then(function (result) {
     commit(mutation_types["e" /* SAVE_VIDEOS */], result);
   });
-}), defineProperty_default()(_actions, mutation_types["d" /* REMOVE_VIDEOS */], function (_ref10) {
-  var commit = _ref10.commit;
+}), defineProperty_default()(_actions, mutation_types["d" /* REMOVE_VIDEOS */], function (_ref11) {
+  var commit = _ref11.commit;
   storage_service.remove(videosStorageKey).then(function (result) {
     commit(mutation_types["d" /* REMOVE_VIDEOS */], result || []);
   });
@@ -770,9 +773,10 @@ var free_solid_svg_icons_index_es = __webpack_require__("c074");
 
 
 
+
 /* harmony default export */ var fontawesome = (function (_ref) {
   var Vue = _ref.Vue;
-  index_es["c" /* library */].add(free_brands_svg_icons_index_es["i" /* faVk */], free_brands_svg_icons_index_es["h" /* faTwitter */], free_brands_svg_icons_index_es["b" /* faFacebook */], free_brands_svg_icons_index_es["e" /* faOdnoklassniki */], free_brands_svg_icons_index_es["d" /* faGooglePlus */], free_brands_svg_icons_index_es["g" /* faTelegram */], free_brands_svg_icons_index_es["a" /* faChrome */], free_brands_svg_icons_index_es["f" /* faOpera */], free_brands_svg_icons_index_es["c" /* faFirefox */], free_solid_svg_icons_index_es["d" /* faThumbsUp */], free_solid_svg_icons_index_es["b" /* faSave */], free_solid_svg_icons_index_es["c" /* faTasks */], free_solid_svg_icons_index_es["a" /* faFileDownload */], free_solid_svg_icons_index_es["e" /* faTrashAlt */]);
+  index_es["c" /* library */].add(free_brands_svg_icons_index_es["j" /* faVk */], free_brands_svg_icons_index_es["i" /* faTwitter */], free_brands_svg_icons_index_es["b" /* faFacebook */], free_brands_svg_icons_index_es["f" /* faOdnoklassniki */], free_brands_svg_icons_index_es["e" /* faGooglePlus */], free_brands_svg_icons_index_es["h" /* faTelegram */], free_brands_svg_icons_index_es["a" /* faChrome */], free_brands_svg_icons_index_es["g" /* faOpera */], free_brands_svg_icons_index_es["c" /* faFirefox */], free_solid_svg_icons_index_es["d" /* faThumbsUp */], free_solid_svg_icons_index_es["b" /* faSave */], free_solid_svg_icons_index_es["c" /* faTasks */], free_solid_svg_icons_index_es["a" /* faFileDownload */], free_solid_svg_icons_index_es["e" /* faTrashAlt */], free_brands_svg_icons_index_es["d" /* faGithub */]);
   Vue.component('fa', vue_fontawesome_index_es["a" /* FontAwesomeIcon */]);
 });
 // EXTERNAL MODULE: ./node_modules/vue-plugin-load-script/index.js
@@ -1020,4 +1024,4 @@ var youtubeUrlParserService = publicApi;
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.3664bc50.js.map
+//# sourceMappingURL=app.a4a175d1.js.map
