@@ -247,7 +247,7 @@ var QToolbar = __webpack_require__("65c6");
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/tabs/QTabs.js + 2 modules
 var QTabs = __webpack_require__("429b");
 
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/tabs/QRouteTab.js + 4 modules
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/tabs/QRouteTab.js + 3 modules
 var QRouteTab = __webpack_require__("7867");
 
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/space/QSpace.js
