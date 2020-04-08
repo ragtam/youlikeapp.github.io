@@ -503,7 +503,15 @@ var vue_router_esm = __webpack_require__("8c4f");
 // CONCATENATED MODULE: ./src/router/routes.js
 var routes = [{
   path: '/',
-  redirect: '/recovery'
+  component: function component() {
+    return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, "713b"));
+  },
+  children: [{
+    path: '',
+    component: function component() {
+      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, "bc13b"));
+    }
+  }]
 }, {
   path: '/about',
   component: function component() {
@@ -512,7 +520,7 @@ var routes = [{
   children: [{
     path: '',
     component: function component() {
-      return __webpack_require__.e(/* import() */ 5).then(__webpack_require__.bind(null, "a1d1"));
+      return __webpack_require__.e(/* import() */ 6).then(__webpack_require__.bind(null, "a1d1"));
     }
   }]
 }, {
@@ -523,7 +531,7 @@ var routes = [{
   children: [{
     path: '',
     component: function component() {
-      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, "2973"));
+      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, "2973"));
     }
   }]
 }, {
@@ -534,7 +542,7 @@ var routes = [{
   children: [{
     path: '',
     component: function component() {
-      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, "afad"));
+      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, "afad"));
     }
   }]
 }]; // Always leave this as last one
@@ -543,7 +551,7 @@ if (true) {
   routes.push({
     path: '*',
     component: function component() {
-      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, "e51e"));
+      return Promise.all(/* import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, "e51e"));
     }
   });
 }
@@ -776,7 +784,7 @@ var free_solid_svg_icons_index_es = __webpack_require__("c074");
 
 /* harmony default export */ var fontawesome = (function (_ref) {
   var Vue = _ref.Vue;
-  index_es["c" /* library */].add(free_brands_svg_icons_index_es["j" /* faVk */], free_brands_svg_icons_index_es["i" /* faTwitter */], free_brands_svg_icons_index_es["b" /* faFacebook */], free_brands_svg_icons_index_es["f" /* faOdnoklassniki */], free_brands_svg_icons_index_es["e" /* faGooglePlus */], free_brands_svg_icons_index_es["h" /* faTelegram */], free_brands_svg_icons_index_es["a" /* faChrome */], free_brands_svg_icons_index_es["g" /* faOpera */], free_brands_svg_icons_index_es["c" /* faFirefox */], free_solid_svg_icons_index_es["d" /* faThumbsUp */], free_solid_svg_icons_index_es["b" /* faSave */], free_solid_svg_icons_index_es["c" /* faTasks */], free_solid_svg_icons_index_es["a" /* faFileDownload */], free_solid_svg_icons_index_es["e" /* faTrashAlt */], free_brands_svg_icons_index_es["d" /* faGithub */]);
+  index_es["c" /* library */].add(free_brands_svg_icons_index_es["j" /* faVk */], free_brands_svg_icons_index_es["i" /* faTwitter */], free_brands_svg_icons_index_es["b" /* faFacebook */], free_brands_svg_icons_index_es["f" /* faOdnoklassniki */], free_brands_svg_icons_index_es["e" /* faGooglePlus */], free_brands_svg_icons_index_es["h" /* faTelegram */], free_brands_svg_icons_index_es["a" /* faChrome */], free_brands_svg_icons_index_es["g" /* faOpera */], free_brands_svg_icons_index_es["c" /* faFirefox */], free_solid_svg_icons_index_es["e" /* faThumbsUp */], free_solid_svg_icons_index_es["c" /* faSave */], free_solid_svg_icons_index_es["d" /* faTasks */], free_solid_svg_icons_index_es["a" /* faFileDownload */], free_solid_svg_icons_index_es["f" /* faTrashAlt */], free_brands_svg_icons_index_es["d" /* faGithub */], free_solid_svg_icons_index_es["b" /* faHome */]);
   Vue.component('fa', vue_fontawesome_index_es["a" /* FontAwesomeIcon */]);
 });
 // EXTERNAL MODULE: ./node_modules/vue-plugin-load-script/index.js
@@ -1024,4 +1032,4 @@ var youtubeUrlParserService = publicApi;
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.a4a175d1.js.map
+//# sourceMappingURL=app.52419a78.js.map

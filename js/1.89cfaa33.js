@@ -17,12 +17,12 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/layouts/MainLayout.vue?vue&type=template&id=aa31012c&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',[_c('div',{staticClass:"q-gutter-y-md"},[_c('q-toolbar',{staticClass:"bg-purple text-white shadow-2 rounded-borders"},[_c('q-tabs',{attrs:{"shrink":"","stretch":""}},[_c('q-route-tab',{attrs:{"to":"/recovery","name":"recovery","icon":"far fa-thumbs-up","label":"Recovery"}}),_c('q-route-tab',{attrs:{"to":"/extension","name":"extension","icon":"fas fa-puzzle-piece","label":"Extension"}}),_c('q-route-tab',{attrs:{"to":"/about","name":"about","icon":"fas fa-info-circle","label":"About"}})],1),_c('q-space'),_c('div',{staticClass:"q-mr-lg"},[_c('q-btn',{attrs:{"type":"a","href":"https://github.com/ragtam/youlikeapp.github.io","target":"_blank","round":"","icon":"fab fa-github"}})],1),_c('google-sign-in')],1)],1)]),_c('router-view')],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/layouts/MainLayout.vue?vue&type=template&id=524b258a&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',[_c('div',{staticClass:"q-gutter-y-md"},[_c('q-toolbar',{staticClass:"bg-purple text-white shadow-2 rounded-borders"},[_c('q-tabs',{attrs:{"shrink":"","stretch":""}},[_c('q-route-tab',{attrs:{"to":"/","name":"home","icon":"fas fa-home","label":"Home"}}),_c('q-route-tab',{attrs:{"to":"/recovery","name":"recovery","icon":"far fa-thumbs-up","label":"Recovery"}}),_c('q-route-tab',{attrs:{"to":"/extension","name":"extension","icon":"fas fa-puzzle-piece","label":"Extension"}}),_c('q-route-tab',{attrs:{"to":"/about","name":"about","icon":"fas fa-info-circle","label":"About"}})],1),_c('q-space'),_c('div',{staticClass:"q-mr-lg"},[_c('q-btn',{attrs:{"type":"a","href":"https://github.com/ragtam/youlikeapp.github.io","target":"_blank","round":"","icon":"fab fa-github"}})],1),_c('google-sign-in')],1)],1)]),_c('router-view')],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/layouts/MainLayout.vue?vue&type=template&id=aa31012c&
+// CONCATENATED MODULE: ./src/layouts/MainLayout.vue?vue&type=template&id=524b258a&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/GoogleSignIn.vue?vue&type=template&id=36f9dd19&scoped=true&
 var GoogleSignInvue_type_template_id_36f9dd19_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('q-card',{staticClass:"my-card bg-primary"},[_c('q-card-section',{attrs:{"horizontal":""}},[_c('q-card-actions',[(!_vm.isSignedIn)?_c('q-btn',{attrs:{"flat":"","disabled":_vm.isLoading},on:{"click":_vm.signIn}},[_vm._v("Sign In")]):_vm._e(),(_vm.isSignedIn)?_c('q-btn',{attrs:{"flat":"","disabled":_vm.isLoading},on:{"click":_vm.logOff}},[_vm._v("Log Off")]):_vm._e()],1),_c('q-avatar',{class:{ blur: _vm.isLoading },attrs:{"size":'80px',"color":'primary'}},[_c('q-icon',{staticClass:"icon--size",attrs:{"name":_vm.user.image}})],1),_c('q-tooltip',{attrs:{"content-class":"bg-purple","content-style":"font-size: 16px","offset":[10, 10]}},[_vm._v(_vm._s(_vm.user.name))])],1)],1)}
@@ -232,6 +232,7 @@ runtime_auto_import_default()(component, 'components', {QCard: QCard["a" /* defa
 //
 //
 //
+//
 
 /* harmony default export */ var MainLayoutvue_type_script_lang_js_ = ({
   components: {
@@ -291,4 +292,4 @@ runtime_auto_import_default()(MainLayout_component, 'components', {QToolbar: QTo
 /***/ })
 
 }]);
-//# sourceMappingURL=1.4f755358.js.map
+//# sourceMappingURL=1.89cfaa33.js.map

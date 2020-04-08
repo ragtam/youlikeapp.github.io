@@ -37630,6 +37630,203 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "639d":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
+var es6_number_constructor = __webpack_require__("c5f6");
+
+// EXTERNAL MODULE: ./node_modules/vue/dist/vue.runtime.esm.js
+var vue_runtime_esm = __webpack_require__("2b0e");
+
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/dom.js
+var dom = __webpack_require__("f303");
+
+// CONCATENATED MODULE: ./node_modules/quasar/src/utils/frame-debounce.js
+/* harmony default export */ var frame_debounce = (function (fn) {
+  var wait = false,
+      frame,
+      callArgs;
+
+  function debounced()
+  /* ...args */
+  {
+    var _this = this;
+
+    callArgs = arguments;
+
+    if (wait === true) {
+      return;
+    }
+
+    wait = true;
+    frame = requestAnimationFrame(function () {
+      fn.apply(_this, callArgs);
+      callArgs = void 0;
+      wait = false;
+    });
+  }
+
+  debounced.cancel = function () {
+    window.cancelAnimationFrame(frame);
+    wait = false;
+  };
+
+  return debounced;
+});
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/scroll.js
+var utils_scroll = __webpack_require__("0831");
+
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/event.js
+var utils_event = __webpack_require__("d882");
+
+// EXTERNAL MODULE: ./node_modules/quasar/src/utils/slot.js
+var slot = __webpack_require__("dde5");
+
+// CONCATENATED MODULE: ./node_modules/quasar/src/components/parallax/QParallax.js
+
+
+
+
+
+
+
+/* harmony default export */ var QParallax = __webpack_exports__["a"] = (vue_runtime_esm["default"].extend({
+  name: 'QParallax',
+  props: {
+    src: String,
+    height: {
+      type: Number,
+      default: 500
+    },
+    speed: {
+      type: Number,
+      default: 1,
+      validator: function validator(v) {
+        return v >= 0 && v <= 1;
+      }
+    },
+    scrollTarget: {
+      default: void 0
+    }
+  },
+  data: function data() {
+    return {
+      scrolling: false,
+      percentScrolled: 0
+    };
+  },
+  watch: {
+    height: function height() {
+      this.__updatePos();
+    },
+    scrollTarget: function scrollTarget() {
+      this.__unconfigureScrollTarget();
+
+      this.__configureScrollTarget();
+    }
+  },
+  methods: {
+    __update: function __update(percentage) {
+      this.percentScrolled = percentage;
+      this.$listeners.scroll !== void 0 && this.$emit('scroll', percentage);
+    },
+    __onResize: function __onResize() {
+      if (this.__scrollTarget) {
+        this.mediaHeight = this.media.naturalHeight || this.media.videoHeight || Object(dom["c" /* height */])(this.media);
+
+        this.__updatePos();
+      }
+    },
+    __updatePos: function __updatePos() {
+      var containerTop, containerHeight, containerBottom, top, bottom;
+
+      if (this.__scrollTarget === window) {
+        containerTop = 0;
+        containerHeight = window.innerHeight;
+        containerBottom = containerHeight;
+      } else {
+        containerTop = Object(dom["d" /* offset */])(this.__scrollTarget).top;
+        containerHeight = Object(dom["c" /* height */])(this.__scrollTarget);
+        containerBottom = containerTop + containerHeight;
+      }
+
+      top = Object(dom["d" /* offset */])(this.$el).top;
+      bottom = top + this.height;
+
+      if (bottom > containerTop && top < containerBottom) {
+        var percent = (containerBottom - top) / (this.height + containerHeight);
+
+        this.__setPos((this.mediaHeight - this.height) * percent * this.speed);
+
+        this.__update(percent);
+      }
+    },
+    __setPos: function __setPos(offset) {
+      // apply it immediately without any delay
+      this.media.style.transform = "translate3D(-50%,".concat(Math.round(offset), "px, 0)");
+    },
+    __configureScrollTarget: function __configureScrollTarget() {
+      this.__scrollTarget = Object(utils_scroll["c" /* getScrollTarget */])(this.$el, this.scrollTarget);
+
+      this.__scrollTarget.addEventListener('scroll', this.__updatePos, utils_event["c" /* listenOpts */].passive);
+
+      this.__onResize();
+    },
+    __unconfigureScrollTarget: function __unconfigureScrollTarget() {
+      if (this.__scrollTarget !== void 0) {
+        this.__scrollTarget.removeEventListener('scroll', this.__updatePos, utils_event["c" /* listenOpts */].passive);
+
+        this.__scrollTarget = void 0;
+      }
+    }
+  },
+  render: function render(h) {
+    return h('div', {
+      staticClass: 'q-parallax',
+      style: {
+        height: "".concat(this.height, "px")
+      },
+      on: this.$listeners
+    }, [h('div', {
+      ref: 'mediaParent',
+      staticClass: 'q-parallax__media absolute-full'
+    }, this.$scopedSlots.media !== void 0 ? this.$scopedSlots.media() : [h('img', {
+      ref: 'media',
+      attrs: {
+        src: this.src
+      }
+    })]), h('div', {
+      staticClass: 'q-parallax__content absolute-full column flex-center'
+    }, this.$scopedSlots.content !== void 0 ? this.$scopedSlots.content({
+      percentScrolled: this.percentScrolled
+    }) : Object(slot["c" /* slot */])(this, 'default'))]);
+  },
+  beforeMount: function beforeMount() {
+    this.__setPos = frame_debounce(this.__setPos);
+  },
+  mounted: function mounted() {
+    this.__update = frame_debounce(this.__update);
+    this.resizeHandler = frame_debounce(this.__onResize);
+    this.media = this.$scopedSlots.media !== void 0 ? this.$refs.mediaParent.children[0] : this.$refs.media;
+    this.media.onload = this.media.onloadstart = this.media.loadedmetadata = this.__onResize;
+    window.addEventListener('resize', this.resizeHandler, utils_event["c" /* listenOpts */].passive);
+
+    this.__configureScrollTarget();
+  },
+  beforeDestroy: function beforeDestroy() {
+    window.removeEventListener('resize', this.resizeHandler, utils_event["c" /* listenOpts */].passive);
+
+    this.__unconfigureScrollTarget();
+
+    this.media.onload = this.media.onloadstart = this.media.loadedmetadata = null;
+  }
+}));
+
+/***/ }),
+
 /***/ "63b6":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -51717,7 +51914,7 @@ exports.f = __webpack_require__("8e60") ? gOPD : function getOwnPropertyDescript
 /* unused harmony export faHistory */
 /* unused harmony export faHockeyPuck */
 /* unused harmony export faHollyBerry */
-/* unused harmony export faHome */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return faHome; });
 /* unused harmony export faHorse */
 /* unused harmony export faHorseHead */
 /* unused harmony export faHospital */
@@ -51968,7 +52165,7 @@ exports.f = __webpack_require__("8e60") ? gOPD : function getOwnPropertyDescript
 /* unused harmony export faSadTear */
 /* unused harmony export faSatellite */
 /* unused harmony export faSatelliteDish */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return faSave; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return faSave; });
 /* unused harmony export faSchool */
 /* unused harmony export faScrewdriver */
 /* unused harmony export faScroll */
@@ -52092,7 +52289,7 @@ exports.f = __webpack_require__("8e60") ? gOPD : function getOwnPropertyDescript
 /* unused harmony export faTag */
 /* unused harmony export faTags */
 /* unused harmony export faTape */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return faTasks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return faTasks; });
 /* unused harmony export faTaxi */
 /* unused harmony export faTeeth */
 /* unused harmony export faTeethOpen */
@@ -52113,7 +52310,7 @@ exports.f = __webpack_require__("8e60") ? gOPD : function getOwnPropertyDescript
 /* unused harmony export faThermometerQuarter */
 /* unused harmony export faThermometerThreeQuarters */
 /* unused harmony export faThumbsDown */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return faThumbsUp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return faThumbsUp; });
 /* unused harmony export faThumbtack */
 /* unused harmony export faTicketAlt */
 /* unused harmony export faTimes */
@@ -52139,7 +52336,7 @@ exports.f = __webpack_require__("8e60") ? gOPD : function getOwnPropertyDescript
 /* unused harmony export faTransgender */
 /* unused harmony export faTransgenderAlt */
 /* unused harmony export faTrash */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return faTrashAlt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return faTrashAlt; });
 /* unused harmony export faTrashRestore */
 /* unused harmony export faTrashRestoreAlt */
 /* unused harmony export faTree */
@@ -66572,9 +66769,9 @@ var _iconsCache = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export offset */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return offset; });
 /* unused harmony export style */
-/* unused harmony export height */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return height; });
 /* unused harmony export width */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return css; });
 /* unused harmony export cssBatch */
@@ -67692,4 +67889,4 @@ module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u20
 /***/ })
 
 }]);
-//# sourceMappingURL=vendor.2caa1064.js.map
+//# sourceMappingURL=vendor.7648e508.js.map
