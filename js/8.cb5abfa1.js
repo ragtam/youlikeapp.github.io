@@ -557,14 +557,23 @@ var VMainContentCheckingSummary_component = Object(componentNormalizer["a" /* de
 
 runtime_auto_import_default()(VMainContentCheckingSummary_component, 'components', {QChip: QChip["a" /* default */],QAvatar: QAvatar["a" /* default */],QBtn: QBtn["a" /* default */],QTable: QTable["a" /* default */]})
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryPageRecoverySummary.vue?vue&type=template&id=6d54f683&
-var VRecoveryPageRecoverySummaryvue_type_template_id_6d54f683_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h3',[_vm._v("Результат выставления лайков")]),_c('strong',[_vm._v("Лайки могут появиться с задержкой.")]),_c('div',{staticClass:"q-pa-md"},[_c('p',[_vm._v("Проставлено: "+_vm._s(_vm.numberOfSuccessfullVideos))]),_c('q-table',{attrs:{"title":"List of recovered videos","dense":"","data":_vm.recoveredVideosTableList,"columns":_vm.columns,"row-key":"name"}})],1),_c('div',{staticClass:"q-pa-md"},[_c('p',[_vm._v("Не проставлено: "+_vm._s(_vm.numberOfFailedVideos))]),_c('q-table',{attrs:{"title":"List of unrecovered videos","dense":"","data":_vm.failedVideosTableList,"columns":_vm.columns,"row-key":"name"}})],1)])}
-var VRecoveryPageRecoverySummaryvue_type_template_id_6d54f683_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryPageRecoverySummary.vue?vue&type=template&id=99b72990&
+var VRecoveryPageRecoverySummaryvue_type_template_id_99b72990_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h3',[_vm._v("Результат выставления лайков")]),_c('strong',[_vm._v("Лайки могут появиться с задержкой.")]),_c('div',{staticClass:"q-pa-md"},[_c('div',{staticClass:"q-mb-md"},[_c('q-chip',[_c('q-avatar',{attrs:{"color":"teal","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfSuccessfullVideos))]),_vm._v("Проставлено\n            ")],1)],1),_c('q-table',{attrs:{"title":"List of recovered videos","dense":"","data":_vm.recoveredVideosTableList,"columns":_vm.columns,"row-key":"name"}})],1),_c('div',{staticClass:"q-pa-md"},[_c('div',{staticClass:"q-mb-md"},[_c('q-chip',[_c('q-avatar',{attrs:{"color":"red","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfFailedVideos))]),_vm._v("Не проставлено\n            ")],1)],1),_c('q-table',{attrs:{"title":"List of unrecovered videos","dense":"","data":_vm.failedVideosTableList,"columns":_vm.columns,"row-key":"name"}})],1)])}
+var VRecoveryPageRecoverySummaryvue_type_template_id_99b72990_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VRecoveryPageRecoverySummary.vue?vue&type=template&id=6d54f683&
+// CONCATENATED MODULE: ./src/components/VRecoveryPageRecoverySummary.vue?vue&type=template&id=99b72990&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryPageRecoverySummary.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -663,8 +672,8 @@ var VRecoveryPageRecoverySummaryvue_type_template_id_6d54f683_staticRenderFns = 
 
 var VRecoveryPageRecoverySummary_component = Object(componentNormalizer["a" /* default */])(
   components_VRecoveryPageRecoverySummaryvue_type_script_lang_js_,
-  VRecoveryPageRecoverySummaryvue_type_template_id_6d54f683_render,
-  VRecoveryPageRecoverySummaryvue_type_template_id_6d54f683_staticRenderFns,
+  VRecoveryPageRecoverySummaryvue_type_template_id_99b72990_render,
+  VRecoveryPageRecoverySummaryvue_type_template_id_99b72990_staticRenderFns,
   false,
   null,
   null,
@@ -675,7 +684,9 @@ var VRecoveryPageRecoverySummary_component = Object(componentNormalizer["a" /* d
 /* harmony default export */ var VRecoveryPageRecoverySummary = (VRecoveryPageRecoverySummary_component.exports);
 
 
-runtime_auto_import_default()(VRecoveryPageRecoverySummary_component, 'components', {QTable: QTable["a" /* default */]})
+
+
+runtime_auto_import_default()(VRecoveryPageRecoverySummary_component, 'components', {QChip: QChip["a" /* default */],QAvatar: QAvatar["a" /* default */],QTable: QTable["a" /* default */]})
 
 // EXTERNAL MODULE: ./src/store/mutation-types.js
 var mutation_types = __webpack_require__("9fb0");
@@ -791,4 +802,4 @@ var Recovery_component = Object(componentNormalizer["a" /* default */])(
 /***/ })
 
 }]);
-//# sourceMappingURL=8.6f032a22.js.map
+//# sourceMappingURL=8.cb5abfa1.js.map

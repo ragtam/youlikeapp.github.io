@@ -24,12 +24,12 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Home.vue?vue&type=template&id=22c034af&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"row justify-between"},[_c('q-parallax',{scopedSlots:_vm._u([{key:"media",fn:function(){return [_c('img',{staticClass:"blur",attrs:{"src":"statics/puzzle-like.jpg"}})]},proxy:true}])},[_c('h1',{staticClass:"text-primary"},[_vm._v("Y o u L i k e")]),_c('h5',{staticClass:"text-white"},[_vm._v("Some catchy text here")])]),_c('div',{staticClass:"q-pa-xl"},[_c('h1',[_vm._v("Some introduction and a button to go to recovery")]),_c('q-btn',{attrs:{"color":"red","icon":"far fa-thumbs-up","label":"Go to likes recovery","to":"/recovery"}})],1)],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Home.vue?vue&type=template&id=a52cbfba&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"row justify-between"},[_c('q-parallax',{staticStyle:{"background-color":"black"},scopedSlots:_vm._u([{key:"media",fn:function(){return [_c('img',{staticClass:"blur",attrs:{"src":"statics/puzzle-like.jpg"}})]},proxy:true}])},[_c('h1',{staticClass:"text-primary"},[_vm._v("YouLike")]),_c('h5',{staticClass:"text-white"},[_vm._v("Some catchy text here")])]),_c('div',{staticClass:"q-pa-xl q-ma-xl"},[_c('h1',[_vm._v("Some introduction and a button to go to recovery")]),_c('q-btn',{attrs:{"color":"red","icon":"far fa-thumbs-up","label":"Go to likes recovery","to":"/recovery"}})],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/pages/Home.vue?vue&type=template&id=22c034af&
+// CONCATENATED MODULE: ./src/pages/Home.vue?vue&type=template&id=a52cbfba&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Home.vue?vue&type=script&lang=js&
 //
@@ -97,4 +97,4 @@ runtime_auto_import_default()(component, 'components', {QParallax: QParallax["a"
 /***/ })
 
 }]);
-//# sourceMappingURL=4.a0cc6806.js.map
+//# sourceMappingURL=4.696978d2.js.map

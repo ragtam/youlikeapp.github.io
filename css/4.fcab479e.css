@@ -2,7 +2,8 @@
 .blur {
     -webkit-filter: blur(4px);
             filter: blur(4px);
+    opacity: 0.4;
 }
 
 
-/*# sourceMappingURL=4.5cbce436.css.map*/
+/*# sourceMappingURL=4.fcab479e.css.map*/
