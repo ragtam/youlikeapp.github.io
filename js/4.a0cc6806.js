@@ -61,7 +61,7 @@ var componentNormalizer = __webpack_require__("2877");
 var runtime_auto_import = __webpack_require__("eebe");
 var runtime_auto_import_default = /*#__PURE__*/__webpack_require__.n(runtime_auto_import);
 
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/parallax/QParallax.js + 1 modules
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/parallax/QParallax.js
 var QParallax = __webpack_require__("639d");
 
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/btn/QBtn.js + 1 modules

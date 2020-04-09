@@ -153,7 +153,7 @@ var QAvatar = __webpack_require__("cb32");
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/icon/QIcon.js
 var QIcon = __webpack_require__("0016");
 
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/tooltip/QTooltip.js + 4 modules
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/tooltip/QTooltip.js
 var QTooltip = __webpack_require__("05c0");
 
 // CONCATENATED MODULE: ./src/components/GoogleSignIn.vue
@@ -247,7 +247,7 @@ var QToolbar = __webpack_require__("65c6");
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/tabs/QTabs.js + 2 modules
 var QTabs = __webpack_require__("429b");
 
-// EXTERNAL MODULE: ./node_modules/quasar/src/components/tabs/QRouteTab.js + 3 modules
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/tabs/QRouteTab.js + 2 modules
 var QRouteTab = __webpack_require__("7867");
 
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/space/QSpace.js

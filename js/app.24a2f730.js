@@ -410,6 +410,10 @@ var initialState = {
     withLikes: [],
     withoutLikes: []
   },
+  recoveredVideos: {
+    successful: [],
+    failed: []
+  },
   savedVideos: []
 };
 var mutations = (_mutations = {}, defineProperty_default()(_mutations, mutation_types["g" /* SIGN_IN */], function (state, user) {
@@ -784,7 +788,7 @@ var free_solid_svg_icons_index_es = __webpack_require__("c074");
 
 /* harmony default export */ var fontawesome = (function (_ref) {
   var Vue = _ref.Vue;
-  index_es["c" /* library */].add(free_brands_svg_icons_index_es["j" /* faVk */], free_brands_svg_icons_index_es["i" /* faTwitter */], free_brands_svg_icons_index_es["b" /* faFacebook */], free_brands_svg_icons_index_es["f" /* faOdnoklassniki */], free_brands_svg_icons_index_es["e" /* faGooglePlus */], free_brands_svg_icons_index_es["h" /* faTelegram */], free_brands_svg_icons_index_es["a" /* faChrome */], free_brands_svg_icons_index_es["g" /* faOpera */], free_brands_svg_icons_index_es["c" /* faFirefox */], free_solid_svg_icons_index_es["e" /* faThumbsUp */], free_solid_svg_icons_index_es["c" /* faSave */], free_solid_svg_icons_index_es["d" /* faTasks */], free_solid_svg_icons_index_es["a" /* faFileDownload */], free_solid_svg_icons_index_es["f" /* faTrashAlt */], free_brands_svg_icons_index_es["d" /* faGithub */], free_solid_svg_icons_index_es["b" /* faHome */]);
+  index_es["c" /* library */].add(free_brands_svg_icons_index_es["j" /* faVk */], free_brands_svg_icons_index_es["i" /* faTwitter */], free_brands_svg_icons_index_es["b" /* faFacebook */], free_brands_svg_icons_index_es["f" /* faOdnoklassniki */], free_brands_svg_icons_index_es["e" /* faGooglePlus */], free_brands_svg_icons_index_es["h" /* faTelegram */], free_brands_svg_icons_index_es["a" /* faChrome */], free_brands_svg_icons_index_es["g" /* faOpera */], free_brands_svg_icons_index_es["c" /* faFirefox */], free_solid_svg_icons_index_es["f" /* faThumbsUp */], free_solid_svg_icons_index_es["d" /* faSave */], free_solid_svg_icons_index_es["e" /* faTasks */], free_solid_svg_icons_index_es["a" /* faFileDownload */], free_solid_svg_icons_index_es["g" /* faTrashAlt */], free_brands_svg_icons_index_es["d" /* faGithub */], free_solid_svg_icons_index_es["b" /* faHome */], free_solid_svg_icons_index_es["c" /* faRecycle */]);
   Vue.component('fa', vue_fontawesome_index_es["a" /* FontAwesomeIcon */]);
 });
 // EXTERNAL MODULE: ./node_modules/vue-plugin-load-script/index.js
@@ -1032,4 +1036,4 @@ var youtubeUrlParserService = publicApi;
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.52419a78.js.map
+//# sourceMappingURL=app.24a2f730.js.map
