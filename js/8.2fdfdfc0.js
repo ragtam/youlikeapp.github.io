@@ -6,31 +6,31 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Recovery.vue?vue&type=template&id=51db707e&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"q-pa-xl"},[_c('v-main-content-video-list-input',{attrs:{"videos":_vm.videos},on:{"check-videos":function($event){return _vm.checkVideos($event)},"save-list":_vm.saveList,"load-list":function($event){return _vm.loadList()},"remove-videos":_vm.removeVideos}}),_c('v-main-content-checking-summary',{attrs:{"checkedVideos":_vm.checkedVideos}}),_c('v-recovery-page-recovery-summary',{attrs:{"recoveredVideos":_vm.recoveredVideos}})],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Recovery.vue?vue&type=template&id=1b24386a&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"q-pa-xl"},[_c('v-recovery-video-list-input',{attrs:{"videos":_vm.videos},on:{"check-videos":function($event){return _vm.checkVideos($event)},"save-list":_vm.saveList,"load-list":function($event){return _vm.loadList()},"remove-videos":_vm.removeVideos}}),_c('v-recovery-checking-summary',{attrs:{"disabled":!_vm.areVideosChecked,"checkedVideos":_vm.checkedVideos}}),_c('v-recovery-page-recovery-summary',{attrs:{"disabled":!_vm.areVideosRecovered,"recoveredVideos":_vm.recoveredVideos}})],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/pages/Recovery.vue?vue&type=template&id=51db707e&
+// CONCATENATED MODULE: ./src/pages/Recovery.vue?vue&type=template&id=1b24386a&
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentVideoListInput.vue?vue&type=template&id=66776d75&
-var VMainContentVideoListInputvue_type_template_id_66776d75_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',[_c('h1',[_vm._v("Восстановление лайков")]),_c('div',[_c('label',[_vm._v("Список видео (идентификаторы или полные ссылки)")]),_c('q-input',{attrs:{"filled":"","autogrow":"","placeholder":"placeholder to be filled in"},model:{value:(_vm.$v.videosString.$model),callback:function ($$v) {_vm.$set(_vm.$v.videosString, "$model", (typeof $$v === 'string'? $$v.trim(): $$v))},expression:"$v.videosString.$model"}}),(!_vm.$v.videosString.required)?_c('div',{staticClass:"error"},[_vm._v("Field is required")]):_vm._e(),(_vm.$v.videosString.required && !_vm.$v.videosString.commaSeparatedListOfUrlsOrVideoIds)?_c('div',{staticClass:"error"},[_vm._v("YouTube url or video id invalid")]):_vm._e()],1),_c('div',{staticClass:"q-pa-md q-gutter-sm"},[_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-tasks","label":"Проверить","color":"primary"},on:{"click":function($event){return _vm.checkVideos()}}}),_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-save","label":"Сохранить","color":"secondary"},on:{"click":function($event){return _vm.saveList()}}}),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-file-download","label":"Загрузить","color":"red"},on:{"click":function($event){return _vm.loadList()}}}):_vm._e(),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-trash-alt","label":"Удалить","color":"purple"},on:{"click":function($event){return _vm.showDeleteConfirmationModal()}}}):_vm._e()],1)]),_c('v-main-content-video-list-input-modal-delete-confirmation',{attrs:{"modal-visible":_vm.isDeleteModalVisible},on:{"close":_vm.closeModal}})],1)}
-var VMainContentVideoListInputvue_type_template_id_66776d75_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryVideoListInput.vue?vue&type=template&id=4b3516ca&
+var VRecoveryVideoListInputvue_type_template_id_4b3516ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',[_c('h1',[_vm._v("Восстановление лайков")]),_c('div',[_c('label',[_vm._v("Список видео (идентификаторы или полные ссылки)")]),_c('q-input',{attrs:{"filled":"","autogrow":"","placeholder":"placeholder to be filled in"},model:{value:(_vm.$v.videosString.$model),callback:function ($$v) {_vm.$set(_vm.$v.videosString, "$model", (typeof $$v === 'string'? $$v.trim(): $$v))},expression:"$v.videosString.$model"}}),(!_vm.$v.videosString.required)?_c('div',{staticClass:"error"},[_vm._v("Field is required")]):_vm._e(),(_vm.$v.videosString.required && !_vm.$v.videosString.commaSeparatedListOfUrlsOrVideoIds)?_c('div',{staticClass:"error"},[_vm._v("YouTube url or video id invalid")]):_vm._e()],1),_c('div',{staticClass:"q-pa-md q-gutter-sm"},[_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-tasks","label":"Проверить","color":"primary"},on:{"click":function($event){return _vm.checkVideos()}}}),_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-save","label":"Сохранить","color":"secondary"},on:{"click":function($event){return _vm.saveList()}}}),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-file-download","label":"Загрузить","color":"red"},on:{"click":function($event){return _vm.loadList()}}}):_vm._e(),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-trash-alt","label":"Удалить","color":"purple"},on:{"click":function($event){return _vm.showDeleteConfirmationModal()}}}):_vm._e()],1)]),_c('v-recovery-video-list-input-modal-delete-confirmation',{attrs:{"modal-visible":_vm.isDeleteModalVisible},on:{"close":_vm.closeModal}})],1)}
+var VRecoveryVideoListInputvue_type_template_id_4b3516ca_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VMainContentVideoListInput.vue?vue&type=template&id=66776d75&
+// CONCATENATED MODULE: ./src/components/VRecoveryVideoListInput.vue?vue&type=template&id=4b3516ca&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.split.js
 var es6_regexp_split = __webpack_require__("28a5");
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentVideoListInputModalDeleteConfirmation.vue?vue&type=template&id=879e780e&
-var VMainContentVideoListInputModalDeleteConfirmationvue_type_template_id_879e780e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('q-dialog',{attrs:{"persistent":""},model:{value:(_vm.visible),callback:function ($$v) {_vm.visible=$$v},expression:"visible"}},[_c('q-card',[_c('q-card-section',{staticClass:"row items-center"},[_c('q-avatar',{attrs:{"icon":"fas fa-trash-alt","color":"primary","text-color":"white"}}),_c('span',{staticClass:"q-ml-sm"},[_vm._v("Вы уверены, что хотите удалить список видео?")])],1),_c('q-card-actions',{attrs:{"align":"right"}},[_c('q-btn',{directives:[{name:"close-popup",rawName:"v-close-popup"}],attrs:{"flat":"","label":"Нет","color":"primary"},on:{"click":function($event){_vm.deleteConfirmed = false}}}),_c('q-btn',{directives:[{name:"close-popup",rawName:"v-close-popup"}],attrs:{"flat":"","label":"Да","color":"primary"},on:{"click":function($event){_vm.deleteConfirmed = true}}})],1)],1)],1)}
-var VMainContentVideoListInputModalDeleteConfirmationvue_type_template_id_879e780e_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryVideoListInputModalDeleteConfirmation.vue?vue&type=template&id=241378f0&
+var VRecoveryVideoListInputModalDeleteConfirmationvue_type_template_id_241378f0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('q-dialog',{attrs:{"persistent":""},model:{value:(_vm.visible),callback:function ($$v) {_vm.visible=$$v},expression:"visible"}},[_c('q-card',[_c('q-card-section',{staticClass:"row items-center"},[_c('q-avatar',{attrs:{"icon":"fas fa-trash-alt","color":"primary","text-color":"white"}}),_c('span',{staticClass:"q-ml-sm"},[_vm._v("Вы уверены, что хотите удалить список видео?")])],1),_c('q-card-actions',{attrs:{"align":"right"}},[_c('q-btn',{directives:[{name:"close-popup",rawName:"v-close-popup"}],attrs:{"flat":"","label":"Нет","color":"primary"},on:{"click":function($event){_vm.deleteConfirmed = false}}}),_c('q-btn',{directives:[{name:"close-popup",rawName:"v-close-popup"}],attrs:{"flat":"","label":"Да","color":"primary"},on:{"click":function($event){_vm.deleteConfirmed = true}}})],1)],1)],1)}
+var VRecoveryVideoListInputModalDeleteConfirmationvue_type_template_id_241378f0_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VMainContentVideoListInputModalDeleteConfirmation.vue?vue&type=template&id=879e780e&
+// CONCATENATED MODULE: ./src/components/VRecoveryVideoListInputModalDeleteConfirmation.vue?vue&type=template&id=241378f0&
 
-// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentVideoListInputModalDeleteConfirmation.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryVideoListInputModalDeleteConfirmation.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -62,7 +62,7 @@ var VMainContentVideoListInputModalDeleteConfirmationvue_type_template_id_879e78
 var customEvents = {
   close: 'close'
 };
-/* harmony default export */ var VMainContentVideoListInputModalDeleteConfirmationvue_type_script_lang_js_ = ({
+/* harmony default export */ var VRecoveryVideoListInputModalDeleteConfirmationvue_type_script_lang_js_ = ({
   props: {
     modalVisible: Boolean
   },
@@ -89,8 +89,8 @@ var customEvents = {
     }
   }
 });
-// CONCATENATED MODULE: ./src/components/VMainContentVideoListInputModalDeleteConfirmation.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_VMainContentVideoListInputModalDeleteConfirmationvue_type_script_lang_js_ = (VMainContentVideoListInputModalDeleteConfirmationvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/VRecoveryVideoListInputModalDeleteConfirmation.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_VRecoveryVideoListInputModalDeleteConfirmationvue_type_script_lang_js_ = (VRecoveryVideoListInputModalDeleteConfirmationvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 var componentNormalizer = __webpack_require__("2877");
 
@@ -119,7 +119,7 @@ var QBtn = __webpack_require__("9c40");
 // EXTERNAL MODULE: ./node_modules/quasar/src/directives/ClosePopup.js
 var ClosePopup = __webpack_require__("7f67");
 
-// CONCATENATED MODULE: ./src/components/VMainContentVideoListInputModalDeleteConfirmation.vue
+// CONCATENATED MODULE: ./src/components/VRecoveryVideoListInputModalDeleteConfirmation.vue
 
 
 
@@ -128,9 +128,9 @@ var ClosePopup = __webpack_require__("7f67");
 /* normalize component */
 
 var component = Object(componentNormalizer["a" /* default */])(
-  components_VMainContentVideoListInputModalDeleteConfirmationvue_type_script_lang_js_,
-  VMainContentVideoListInputModalDeleteConfirmationvue_type_template_id_879e780e_render,
-  VMainContentVideoListInputModalDeleteConfirmationvue_type_template_id_879e780e_staticRenderFns,
+  components_VRecoveryVideoListInputModalDeleteConfirmationvue_type_script_lang_js_,
+  VRecoveryVideoListInputModalDeleteConfirmationvue_type_template_id_241378f0_render,
+  VRecoveryVideoListInputModalDeleteConfirmationvue_type_template_id_241378f0_staticRenderFns,
   false,
   null,
   null,
@@ -138,7 +138,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   
 )
 
-/* harmony default export */ var VMainContentVideoListInputModalDeleteConfirmation = (component.exports);
+/* harmony default export */ var VRecoveryVideoListInputModalDeleteConfirmation = (component.exports);
 
 
 
@@ -179,7 +179,7 @@ function idIsValid(videoId) {
 }
 
 
-// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentVideoListInput.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryVideoListInput.vue?vue&type=script&lang=js&
 
 //
 //
@@ -241,13 +241,13 @@ function idIsValid(videoId) {
 
 
 
-var VMainContentVideoListInputvue_type_script_lang_js_customEvents = {
+var VRecoveryVideoListInputvue_type_script_lang_js_customEvents = {
   checkVideos: 'check-videos',
   saveList: 'save-list',
   loadList: 'load-list',
   removeVideos: 'remove-videos'
 };
-/* harmony default export */ var VMainContentVideoListInputvue_type_script_lang_js_ = ({
+/* harmony default export */ var VRecoveryVideoListInputvue_type_script_lang_js_ = ({
   props: {
     videos: Array
   },
@@ -272,23 +272,23 @@ var VMainContentVideoListInputvue_type_script_lang_js_customEvents = {
     }
   },
   components: {
-    VMainContentVideoListInputModalDeleteConfirmation: VMainContentVideoListInputModalDeleteConfirmation
+    VRecoveryVideoListInputModalDeleteConfirmation: VRecoveryVideoListInputModalDeleteConfirmation
   },
   methods: {
     checkVideos: function checkVideos() {
       var videos = this.videosString.split(',').map(function (video) {
         return video.trim();
       });
-      this.$emit(VMainContentVideoListInputvue_type_script_lang_js_customEvents.checkVideos, videos);
+      this.$emit(VRecoveryVideoListInputvue_type_script_lang_js_customEvents.checkVideos, videos);
     },
     saveList: function saveList() {
       var videos = this.videosString.split(',').map(function (video) {
         return video.trim();
       });
-      this.$emit(VMainContentVideoListInputvue_type_script_lang_js_customEvents.saveList, videos);
+      this.$emit(VRecoveryVideoListInputvue_type_script_lang_js_customEvents.saveList, videos);
     },
     loadList: function loadList() {
-      this.$emit(VMainContentVideoListInputvue_type_script_lang_js_customEvents.loadList);
+      this.$emit(VRecoveryVideoListInputvue_type_script_lang_js_customEvents.loadList);
     },
     showDeleteConfirmationModal: function showDeleteConfirmationModal() {
       this.isDeleteModalVisible = true;
@@ -298,7 +298,7 @@ var VMainContentVideoListInputvue_type_script_lang_js_customEvents = {
       this.isDeleteModalVisible = false;
 
       if (deleteConfirmed) {
-        this.$emit(VMainContentVideoListInputvue_type_script_lang_js_customEvents.removeVideos);
+        this.$emit(VRecoveryVideoListInputvue_type_script_lang_js_customEvents.removeVideos);
       }
     }
   },
@@ -308,12 +308,12 @@ var VMainContentVideoListInputvue_type_script_lang_js_customEvents = {
     }
   }
 });
-// CONCATENATED MODULE: ./src/components/VMainContentVideoListInput.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_VMainContentVideoListInputvue_type_script_lang_js_ = (VMainContentVideoListInputvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/VRecoveryVideoListInput.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_VRecoveryVideoListInputvue_type_script_lang_js_ = (VRecoveryVideoListInputvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/input/QInput.js + 2 modules
 var QInput = __webpack_require__("27f9");
 
-// CONCATENATED MODULE: ./src/components/VMainContentVideoListInput.vue
+// CONCATENATED MODULE: ./src/components/VRecoveryVideoListInput.vue
 
 
 
@@ -321,10 +321,10 @@ var QInput = __webpack_require__("27f9");
 
 /* normalize component */
 
-var VMainContentVideoListInput_component = Object(componentNormalizer["a" /* default */])(
-  components_VMainContentVideoListInputvue_type_script_lang_js_,
-  VMainContentVideoListInputvue_type_template_id_66776d75_render,
-  VMainContentVideoListInputvue_type_template_id_66776d75_staticRenderFns,
+var VRecoveryVideoListInput_component = Object(componentNormalizer["a" /* default */])(
+  components_VRecoveryVideoListInputvue_type_script_lang_js_,
+  VRecoveryVideoListInputvue_type_template_id_4b3516ca_render,
+  VRecoveryVideoListInputvue_type_template_id_4b3516ca_staticRenderFns,
   false,
   null,
   null,
@@ -332,18 +332,18 @@ var VMainContentVideoListInput_component = Object(componentNormalizer["a" /* def
   
 )
 
-/* harmony default export */ var VMainContentVideoListInput = (VMainContentVideoListInput_component.exports);
+/* harmony default export */ var VRecoveryVideoListInput = (VRecoveryVideoListInput_component.exports);
 
 
 
-runtime_auto_import_default()(VMainContentVideoListInput_component, 'components', {QInput: QInput["a" /* default */],QBtn: QBtn["a" /* default */]})
+runtime_auto_import_default()(VRecoveryVideoListInput_component, 'components', {QInput: QInput["a" /* default */],QBtn: QBtn["a" /* default */]})
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentCheckingSummary.vue?vue&type=template&id=c2750b90&
-var VMainContentCheckingSummaryvue_type_template_id_c2750b90_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h3',[_vm._v("Результат проверки")]),_c('div',{staticClass:"q-mb-md"},[_c('q-chip',[_c('q-avatar',{attrs:{"color":"red","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfCheckedVideos))]),_vm._v("Всего проверено\n        ")],1),_c('q-chip',[_c('q-avatar',{attrs:{"color":"red","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfVideosWithoutLikes))]),_vm._v("Без лайков\n        ")],1),_c('q-chip',[_c('q-avatar',{attrs:{"color":"teal","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfVideosWithLikes))]),_vm._v("С лайками\n        ")],1),_c('q-btn',{attrs:{"icon":"fas fa-recycle","label":"Поставить лайки","color":"red"},on:{"click":function($event){return _vm.recoverLikes()}}})],1),_c('q-table',{attrs:{"title":"List of videos without likes","dense":"","data":_vm.videosWithoutLikes,"columns":_vm.columns,"row-key":"name"}})],1)}
-var VMainContentCheckingSummaryvue_type_template_id_c2750b90_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryCheckingSummary.vue?vue&type=template&id=2068eca3&
+var VRecoveryCheckingSummaryvue_type_template_id_2068eca3_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:{ disabled: _vm.disabled }},[_c('h3',[_vm._v("Результат проверки")]),_c('div',{staticClass:"q-mb-md"},[_c('q-chip',[_c('q-avatar',{attrs:{"color":"red","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfCheckedVideos))]),_vm._v("Всего проверено\n        ")],1),_c('q-chip',[_c('q-avatar',{attrs:{"color":"red","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfVideosWithoutLikes))]),_vm._v("Без лайков\n        ")],1),_c('q-chip',[_c('q-avatar',{attrs:{"color":"teal","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfVideosWithLikes))]),_vm._v("С лайками\n        ")],1),_c('q-btn',{attrs:{"disabled":_vm.disabled,"icon":"fas fa-recycle","label":"Поставить лайки","color":"red"},on:{"click":function($event){return _vm.recoverLikes()}}})],1),_c('q-table',{attrs:{"title":"List of videos without likes","dense":"","data":_vm.videosWithoutLikes,"columns":_vm.columns,"row-key":"name"}})],1)}
+var VRecoveryCheckingSummaryvue_type_template_id_2068eca3_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VMainContentCheckingSummary.vue?vue&type=template&id=c2750b90&
+// CONCATENATED MODULE: ./src/components/VRecoveryCheckingSummary.vue?vue&type=template&id=2068eca3&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentCheckingSummaryWithoutLikes.vue?vue&type=template&id=6b81588a&
 var VMainContentCheckingSummaryWithoutLikesvue_type_template_id_6b81588a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -427,7 +427,8 @@ var VMainContentCheckingSummaryWithoutLikes_component = Object(componentNormaliz
 )
 
 /* harmony default export */ var VMainContentCheckingSummaryWithoutLikes = (VMainContentCheckingSummaryWithoutLikes_component.exports);
-// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentCheckingSummary.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryCheckingSummary.vue?vue&type=script&lang=js&
+//
 //
 //
 //
@@ -459,7 +460,7 @@ var VMainContentCheckingSummaryWithoutLikes_component = Object(componentNormaliz
 //
 //
 
-/* harmony default export */ var VMainContentCheckingSummaryvue_type_script_lang_js_ = ({
+/* harmony default export */ var VRecoveryCheckingSummaryvue_type_script_lang_js_ = ({
   data: function data() {
     return {
       columns: [{
@@ -493,6 +494,12 @@ var VMainContentCheckingSummaryWithoutLikes_component = Object(componentNormaliz
           withoutLikes: []
         };
       }
+    },
+    disabled: {
+      type: Boolean,
+      default: function _default() {
+        return false;
+      }
     }
   },
   computed: {
@@ -522,15 +529,15 @@ var VMainContentCheckingSummaryWithoutLikes_component = Object(componentNormaliz
     }
   }
 });
-// CONCATENATED MODULE: ./src/components/VMainContentCheckingSummary.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_VMainContentCheckingSummaryvue_type_script_lang_js_ = (VMainContentCheckingSummaryvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/VRecoveryCheckingSummary.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_VRecoveryCheckingSummaryvue_type_script_lang_js_ = (VRecoveryCheckingSummaryvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/chip/QChip.js
 var QChip = __webpack_require__("b047");
 
 // EXTERNAL MODULE: ./node_modules/quasar/src/components/table/QTable.js + 27 modules
 var QTable = __webpack_require__("eaac");
 
-// CONCATENATED MODULE: ./src/components/VMainContentCheckingSummary.vue
+// CONCATENATED MODULE: ./src/components/VRecoveryCheckingSummary.vue
 
 
 
@@ -538,10 +545,10 @@ var QTable = __webpack_require__("eaac");
 
 /* normalize component */
 
-var VMainContentCheckingSummary_component = Object(componentNormalizer["a" /* default */])(
-  components_VMainContentCheckingSummaryvue_type_script_lang_js_,
-  VMainContentCheckingSummaryvue_type_template_id_c2750b90_render,
-  VMainContentCheckingSummaryvue_type_template_id_c2750b90_staticRenderFns,
+var VRecoveryCheckingSummary_component = Object(componentNormalizer["a" /* default */])(
+  components_VRecoveryCheckingSummaryvue_type_script_lang_js_,
+  VRecoveryCheckingSummaryvue_type_template_id_2068eca3_render,
+  VRecoveryCheckingSummaryvue_type_template_id_2068eca3_staticRenderFns,
   false,
   null,
   null,
@@ -549,20 +556,20 @@ var VMainContentCheckingSummary_component = Object(componentNormalizer["a" /* de
   
 )
 
-/* harmony default export */ var VMainContentCheckingSummary = (VMainContentCheckingSummary_component.exports);
+/* harmony default export */ var VRecoveryCheckingSummary = (VRecoveryCheckingSummary_component.exports);
 
 
 
 
 
-runtime_auto_import_default()(VMainContentCheckingSummary_component, 'components', {QChip: QChip["a" /* default */],QAvatar: QAvatar["a" /* default */],QBtn: QBtn["a" /* default */],QTable: QTable["a" /* default */]})
+runtime_auto_import_default()(VRecoveryCheckingSummary_component, 'components', {QChip: QChip["a" /* default */],QAvatar: QAvatar["a" /* default */],QBtn: QBtn["a" /* default */],QTable: QTable["a" /* default */]})
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryPageRecoverySummary.vue?vue&type=template&id=99b72990&
-var VRecoveryPageRecoverySummaryvue_type_template_id_99b72990_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h3',[_vm._v("Результат выставления лайков")]),_c('strong',[_vm._v("Лайки могут появиться с задержкой.")]),_c('div',{staticClass:"q-pa-md"},[_c('div',{staticClass:"q-mb-md"},[_c('q-chip',[_c('q-avatar',{attrs:{"color":"teal","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfSuccessfullVideos))]),_vm._v("Проставлено\n            ")],1)],1),_c('q-table',{attrs:{"title":"List of recovered videos","dense":"","data":_vm.recoveredVideosTableList,"columns":_vm.columns,"row-key":"name"}})],1),_c('div',{staticClass:"q-pa-md"},[_c('div',{staticClass:"q-mb-md"},[_c('q-chip',[_c('q-avatar',{attrs:{"color":"red","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfFailedVideos))]),_vm._v("Не проставлено\n            ")],1)],1),_c('q-table',{attrs:{"title":"List of unrecovered videos","dense":"","data":_vm.failedVideosTableList,"columns":_vm.columns,"row-key":"name"}})],1)])}
-var VRecoveryPageRecoverySummaryvue_type_template_id_99b72990_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryPageRecoverySummary.vue?vue&type=template&id=db13f926&
+var VRecoveryPageRecoverySummaryvue_type_template_id_db13f926_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:{ disabled: _vm.disabled }},[_c('h3',[_vm._v("Результат выставления лайков")]),_c('strong',[_vm._v("Лайки могут появиться с задержкой.")]),_c('div',{staticClass:"q-pa-md"},[_c('div',{staticClass:"q-mb-md"},[_c('q-chip',[_c('q-avatar',{attrs:{"color":"teal","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfSuccessfullVideos))]),_vm._v("Проставлено\n            ")],1)],1),_c('q-table',{attrs:{"title":"List of recovered videos","dense":"","data":_vm.recoveredVideosTableList,"columns":_vm.columns,"row-key":"name"}})],1),_c('div',{staticClass:"q-pa-md"},[_c('div',{staticClass:"q-mb-md"},[_c('q-chip',[_c('q-avatar',{attrs:{"color":"red","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfFailedVideos))]),_vm._v("Не проставлено\n            ")],1)],1),_c('q-table',{attrs:{"title":"List of unrecovered videos","dense":"","data":_vm.failedVideosTableList,"columns":_vm.columns,"row-key":"name"}})],1)])}
+var VRecoveryPageRecoverySummaryvue_type_template_id_db13f926_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VRecoveryPageRecoverySummary.vue?vue&type=template&id=99b72990&
+// CONCATENATED MODULE: ./src/components/VRecoveryPageRecoverySummary.vue?vue&type=template&id=db13f926&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryPageRecoverySummary.vue?vue&type=script&lang=js&
 //
@@ -635,6 +642,12 @@ var VRecoveryPageRecoverySummaryvue_type_template_id_99b72990_staticRenderFns = 
           failed: []
         };
       }
+    },
+    disabled: {
+      type: Boolean,
+      default: function _default() {
+        return false;
+      }
     }
   },
   computed: {
@@ -672,8 +685,8 @@ var VRecoveryPageRecoverySummaryvue_type_template_id_99b72990_staticRenderFns = 
 
 var VRecoveryPageRecoverySummary_component = Object(componentNormalizer["a" /* default */])(
   components_VRecoveryPageRecoverySummaryvue_type_script_lang_js_,
-  VRecoveryPageRecoverySummaryvue_type_template_id_99b72990_render,
-  VRecoveryPageRecoverySummaryvue_type_template_id_99b72990_staticRenderFns,
+  VRecoveryPageRecoverySummaryvue_type_template_id_db13f926_render,
+  VRecoveryPageRecoverySummaryvue_type_template_id_db13f926_staticRenderFns,
   false,
   null,
   null,
@@ -700,15 +713,7 @@ var mutation_types = __webpack_require__("9fb0");
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
- // import VMainContentVideoErrors from '../components/VMainContentVideoErrors';
 
 
 
@@ -727,9 +732,8 @@ var mutation_types = __webpack_require__("9fb0");
     };
   },
   components: {
-    VMainContentVideoListInput: VMainContentVideoListInput,
-    VMainContentCheckingSummary: VMainContentCheckingSummary,
-    // VMainContentVideoErrors,
+    VRecoveryVideoListInput: VRecoveryVideoListInput,
+    VRecoveryCheckingSummary: VRecoveryCheckingSummary,
     VRecoveryPageRecoverySummary: VRecoveryPageRecoverySummary
   },
   mounted: function mounted() {
@@ -774,6 +778,14 @@ var mutation_types = __webpack_require__("9fb0");
         type: mutation_types["d" /* REMOVE_VIDEOS */]
       });
     }
+  },
+  computed: {
+    areVideosChecked: function areVideosChecked() {
+      return !!this.checkedVideos.withLikes.length || !!this.checkedVideos.withoutLikes.length;
+    },
+    areVideosRecovered: function areVideosRecovered() {
+      return !!this.recoveredVideos.successfull.length || !!this.recoveredVideos.failed.length;
+    }
   }
 });
 // CONCATENATED MODULE: ./src/pages/Recovery.vue?vue&type=script&lang=js&
@@ -802,4 +814,4 @@ var Recovery_component = Object(componentNormalizer["a" /* default */])(
 /***/ })
 
 }]);
-//# sourceMappingURL=8.cb5abfa1.js.map
+//# sourceMappingURL=8.2fdfdfc0.js.map
