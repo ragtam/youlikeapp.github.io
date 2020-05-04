@@ -6,12 +6,12 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Recovery.vue?vue&type=template&id=1b24386a&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"q-pa-xl"},[_c('v-recovery-video-list-input',{attrs:{"videos":_vm.videos},on:{"check-videos":function($event){return _vm.checkVideos($event)},"save-list":_vm.saveList,"load-list":function($event){return _vm.loadList()},"remove-videos":_vm.removeVideos}}),_c('v-recovery-checking-summary',{attrs:{"disabled":!_vm.areVideosChecked,"checkedVideos":_vm.checkedVideos}}),_c('v-recovery-page-recovery-summary',{attrs:{"disabled":!_vm.areVideosRecovered,"recoveredVideos":_vm.recoveredVideos}})],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Recovery.vue?vue&type=template&id=ef2f3086&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"q-pa-xl"},[_c('v-recovery-video-list-input',{attrs:{"videos":_vm.videos},on:{"check-videos":function($event){return _vm.checkVideos($event)},"save-list":_vm.saveList,"load-list":function($event){return _vm.loadList()},"remove-videos":_vm.removeVideos}}),_c('v-recovery-checking-summary',{attrs:{"disabled":!_vm.areVideosChecked,"checkedVideos":_vm.checkedVideos},on:{"recover-videos":function($event){return _vm.recoverVideos($event)}}}),_c('v-recovery-page-recovery-summary',{attrs:{"disabled":!_vm.areVideosRecovered,"recoveredVideos":_vm.recoveredVideos}})],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/pages/Recovery.vue?vue&type=template&id=1b24386a&
+// CONCATENATED MODULE: ./src/pages/Recovery.vue?vue&type=template&id=ef2f3086&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryVideoListInput.vue?vue&type=template&id=4b3516ca&
 var VRecoveryVideoListInputvue_type_template_id_4b3516ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',[_c('h1',[_vm._v("Восстановление лайков")]),_c('div',[_c('label',[_vm._v("Список видео (идентификаторы или полные ссылки)")]),_c('q-input',{attrs:{"filled":"","autogrow":"","placeholder":"placeholder to be filled in"},model:{value:(_vm.$v.videosString.$model),callback:function ($$v) {_vm.$set(_vm.$v.videosString, "$model", (typeof $$v === 'string'? $$v.trim(): $$v))},expression:"$v.videosString.$model"}}),(!_vm.$v.videosString.required)?_c('div',{staticClass:"error"},[_vm._v("Field is required")]):_vm._e(),(_vm.$v.videosString.required && !_vm.$v.videosString.commaSeparatedListOfUrlsOrVideoIds)?_c('div',{staticClass:"error"},[_vm._v("YouTube url or video id invalid")]):_vm._e()],1),_c('div',{staticClass:"q-pa-md q-gutter-sm"},[_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-tasks","label":"Проверить","color":"primary"},on:{"click":function($event){return _vm.checkVideos()}}}),_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-save","label":"Сохранить","color":"secondary"},on:{"click":function($event){return _vm.saveList()}}}),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-file-download","label":"Загрузить","color":"red"},on:{"click":function($event){return _vm.loadList()}}}):_vm._e(),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-trash-alt","label":"Удалить","color":"purple"},on:{"click":function($event){return _vm.showDeleteConfirmationModal()}}}):_vm._e()],1)]),_c('v-recovery-video-list-input-modal-delete-confirmation',{attrs:{"modal-visible":_vm.isDeleteModalVisible},on:{"close":_vm.closeModal}})],1)}
@@ -338,12 +338,12 @@ var VRecoveryVideoListInput_component = Object(componentNormalizer["a" /* defaul
 
 runtime_auto_import_default()(VRecoveryVideoListInput_component, 'components', {QInput: QInput["a" /* default */],QBtn: QBtn["a" /* default */]})
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryCheckingSummary.vue?vue&type=template&id=2068eca3&
-var VRecoveryCheckingSummaryvue_type_template_id_2068eca3_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:{ disabled: _vm.disabled }},[_c('h3',[_vm._v("Результат проверки")]),_c('div',{staticClass:"q-mb-md"},[_c('q-chip',[_c('q-avatar',{attrs:{"color":"red","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfCheckedVideos))]),_vm._v("Всего проверено\n        ")],1),_c('q-chip',[_c('q-avatar',{attrs:{"color":"red","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfVideosWithoutLikes))]),_vm._v("Без лайков\n        ")],1),_c('q-chip',[_c('q-avatar',{attrs:{"color":"teal","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfVideosWithLikes))]),_vm._v("С лайками\n        ")],1),_c('q-btn',{attrs:{"disabled":_vm.disabled,"icon":"fas fa-recycle","label":"Поставить лайки","color":"red"},on:{"click":function($event){return _vm.recoverLikes()}}})],1),_c('q-table',{attrs:{"title":"List of videos without likes","dense":"","data":_vm.videosWithoutLikes,"columns":_vm.columns,"row-key":"name"}})],1)}
-var VRecoveryCheckingSummaryvue_type_template_id_2068eca3_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryCheckingSummary.vue?vue&type=template&id=37a5a905&
+var VRecoveryCheckingSummaryvue_type_template_id_37a5a905_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:{ disabled: _vm.disabled }},[_c('h3',[_vm._v("Результат проверки")]),_c('div',{staticClass:"q-mb-md"},[_c('q-chip',[_c('q-avatar',{attrs:{"color":"red","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfCheckedVideos))]),_vm._v("Всего проверено\n        ")],1),_c('q-chip',[_c('q-avatar',{attrs:{"color":"red","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfVideosWithoutLikes))]),_vm._v("Без лайков\n        ")],1),_c('q-chip',[_c('q-avatar',{attrs:{"color":"teal","text-color":"white"}},[_vm._v(_vm._s(_vm.numberOfVideosWithLikes))]),_vm._v("С лайками\n        ")],1),_c('q-btn',{attrs:{"disabled":_vm.disabled,"icon":"fas fa-recycle","label":"Поставить лайки","color":"red"},on:{"click":function($event){return _vm.recoverLikes()}}})],1),_c('q-table',{attrs:{"title":"List of videos without likes","dense":"","data":_vm.videosWithoutLikes,"columns":_vm.columns,"row-key":"name"}})],1)}
+var VRecoveryCheckingSummaryvue_type_template_id_37a5a905_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VRecoveryCheckingSummary.vue?vue&type=template&id=2068eca3&
+// CONCATENATED MODULE: ./src/components/VRecoveryCheckingSummary.vue?vue&type=template&id=37a5a905&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VMainContentCheckingSummaryWithoutLikes.vue?vue&type=template&id=6b81588a&
 var VMainContentCheckingSummaryWithoutLikesvue_type_template_id_6b81588a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -460,6 +460,9 @@ var VMainContentCheckingSummaryWithoutLikes_component = Object(componentNormaliz
 //
 //
 
+var VRecoveryCheckingSummaryvue_type_script_lang_js_customEvents = {
+  recoverVideos: 'recover-videos'
+};
 /* harmony default export */ var VRecoveryCheckingSummaryvue_type_script_lang_js_ = ({
   data: function data() {
     return {
@@ -525,7 +528,10 @@ var VMainContentCheckingSummaryWithoutLikes_component = Object(componentNormaliz
   },
   methods: {
     recoverLikes: function recoverLikes() {
-      console.log('recover likes btn');
+      var videoIds = this.videosWithoutLikes.map(function (v) {
+        return v.url;
+      });
+      this.$emit(VRecoveryCheckingSummaryvue_type_script_lang_js_customEvents.recoverVideos, videoIds);
     }
   }
 });
@@ -547,8 +553,8 @@ var QTable = __webpack_require__("eaac");
 
 var VRecoveryCheckingSummary_component = Object(componentNormalizer["a" /* default */])(
   components_VRecoveryCheckingSummaryvue_type_script_lang_js_,
-  VRecoveryCheckingSummaryvue_type_template_id_2068eca3_render,
-  VRecoveryCheckingSummaryvue_type_template_id_2068eca3_staticRenderFns,
+  VRecoveryCheckingSummaryvue_type_template_id_37a5a905_render,
+  VRecoveryCheckingSummaryvue_type_template_id_37a5a905_staticRenderFns,
   false,
   null,
   null,
@@ -713,6 +719,19 @@ var mutation_types = __webpack_require__("9fb0");
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -726,8 +745,8 @@ var mutation_types = __webpack_require__("9fb0");
         withoutLikes: []
       },
       recoveredVideos: {
-        successfull: ['youtube.com.pl/1234', 'youtube.com.pl/acded', 'youtube.com.pl/vbsj'],
-        failed: ['youtube.com.pl/1234', 'youtube.com.pl/xyzas']
+        successfull: [],
+        failed: []
       }
     };
   },
@@ -749,9 +768,13 @@ var mutation_types = __webpack_require__("9fb0");
           break;
 
         case mutation_types["b" /* GET_SAVED_VIDEOS */]:
-        case mutation_types["d" /* REMOVE_VIDEOS */]:
-        case mutation_types["e" /* SAVE_VIDEOS */]:
+        case mutation_types["e" /* REMOVE_VIDEOS */]:
+        case mutation_types["f" /* SAVE_VIDEOS */]:
           _this.videos = payload;
+          break;
+
+        case mutation_types["d" /* RECOVER_VIDEOS */]:
+          _this.recoveredVideos = payload;
           break;
       }
     });
@@ -766,7 +789,7 @@ var mutation_types = __webpack_require__("9fb0");
     },
     saveList: function saveList(videosToSave) {
       this.$store.dispatch({
-        type: mutation_types["e" /* SAVE_VIDEOS */],
+        type: mutation_types["f" /* SAVE_VIDEOS */],
         videosToSave: videosToSave
       });
     },
@@ -775,7 +798,13 @@ var mutation_types = __webpack_require__("9fb0");
     },
     removeVideos: function removeVideos() {
       this.$store.dispatch({
-        type: mutation_types["d" /* REMOVE_VIDEOS */]
+        type: mutation_types["e" /* REMOVE_VIDEOS */]
+      });
+    },
+    recoverVideos: function recoverVideos(videosToRecover) {
+      this.$store.dispatch({
+        type: mutation_types["d" /* RECOVER_VIDEOS */],
+        videosToRecover: videosToRecover
       });
     }
   },
@@ -814,4 +843,4 @@ var Recovery_component = Object(componentNormalizer["a" /* default */])(
 /***/ })
 
 }]);
-//# sourceMappingURL=8.2fdfdfc0.js.map
+//# sourceMappingURL=8.8544a262.js.map

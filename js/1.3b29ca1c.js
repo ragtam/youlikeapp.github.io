@@ -90,7 +90,7 @@ function appendPrefixIfImage(image) {
     this.$store.subscribe(function (_ref) {
       var type = _ref.type;
 
-      if (type === mutation_types["g" /* SIGN_IN */]) {
+      if (type === mutation_types["h" /* SIGN_IN */]) {
         _this.isSignedIn = true;
       } else if (type === mutation_types["c" /* LOG_OFF */]) {
         _this.isSignedIn = false;
@@ -115,7 +115,7 @@ function appendPrefixIfImage(image) {
   methods: {
     signIn: function signIn() {
       this.isLoading = true;
-      this.$store.dispatch(mutation_types["g" /* SIGN_IN */]);
+      this.$store.dispatch(mutation_types["h" /* SIGN_IN */]);
     },
     logOff: function logOff() {
       this.isLoading = true;
@@ -292,4 +292,4 @@ runtime_auto_import_default()(MainLayout_component, 'components', {QToolbar: QTo
 /***/ })
 
 }]);
-//# sourceMappingURL=1.89cfaa33.js.map
+//# sourceMappingURL=1.3b29ca1c.js.map

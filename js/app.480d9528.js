@@ -96,7 +96,7 @@ var googleAuthenticationApi = 'https://apis.google.com/js/platform.js';
     var _this = this;
 
     vue_runtime_esm["default"].loadScript(googleAuthenticationApi).then(function () {
-      _this.$store.dispatch(mutation_types["f" /* SET_UP_GOOGLE_AUTHENTICATION_API */]);
+      _this.$store.dispatch(mutation_types["g" /* SET_UP_GOOGLE_AUTHENTICATION_API */]);
     });
   }
 });
@@ -185,9 +185,9 @@ function setUpAuthInstance() {
 function signIn() {
   return new Promise(function (resolve, reject) {
     authInstance.signIn().then(function (_ref) {
-      var Qt = _ref.Qt;
-      var name = Qt.Ad,
-          image = Qt.jL;
+      var Pt = _ref.Pt;
+      var name = Pt.Ad,
+          image = Pt.fL;
       resolve({
         name: name,
         image: image
@@ -267,7 +267,7 @@ var gapiService = {
 function checkVideos(videos) {
   var videoIds = Object(lodash["uniq"])(extractVideoIds(videos));
   var videoIdsChunksMatrix = split(videoIds).intoChunksOf(maxSizeOfGapiBatchRequest);
-  return gapi.client.load(gapiService.name, gapiService.version).then(function () {
+  return loadGapiClient().then(function () {
     var promisesArray = [];
     videoIdsChunksMatrix.forEach(function (videoIdsChunk) {
       console.log(videoIdsChunk);
@@ -308,28 +308,31 @@ function checkVideos(videos) {
 }
 
 function setRating(videoIds, rating, onSuccess, onError) {
-  return gapi.client.load('youtube', 'v3').then(function () {
+  return loadGapiClient().then(function () {
     var promisesArray = [];
-    videoIds.forEach(function (videoId, index) {
+    var recoveredVideos = {
+      successfull: [],
+      failed: []
+    };
+    videoIds.forEach(function (videoId) {
       var promise = gapi.client.youtube.videos.rate({
         id: videoId,
         rating: rating
       }).then(function () {
-        if (onSuccess) {
-          onSuccess(videoId);
-        }
-      }, function (data) {
-        // toastr.error(`Не удалось поставить лайк на видео с идентификатором ${videoId}. ${data.result.error.message}`);
-        console.error(data);
-
-        if (onError) {
-          onError(videoId, data.result.error.message);
-        }
+        recoveredVideos.successfull.push(videoId);
+      }, function () {
+        recoveredVideos.failed.push(videoId);
       });
       promisesArray.push(promise);
     });
-    return Promise.all(promisesArray);
+    return Promise.all(promisesArray).then(function () {
+      return Promise.resolve(recoveredVideos);
+    });
   });
+}
+
+function loadGapiClient() {
+  return gapi.client.load(gapiService.name, gapiService.version);
 }
 
 function extractVideoIds(videos) {
@@ -416,7 +419,7 @@ var initialState = {
   },
   savedVideos: []
 };
-var mutations = (_mutations = {}, defineProperty_default()(_mutations, mutation_types["g" /* SIGN_IN */], function (state, user) {
+var mutations = (_mutations = {}, defineProperty_default()(_mutations, mutation_types["h" /* SIGN_IN */], function (state, user) {
   state.user = _objectSpread({}, user);
 }), defineProperty_default()(_mutations, mutation_types["c" /* LOG_OFF */], function (state, user) {
   state.user = _objectSpread({}, user);
@@ -424,17 +427,19 @@ var mutations = (_mutations = {}, defineProperty_default()(_mutations, mutation_
   state.checkedVideos = _objectSpread({}, checkedVideos);
 }), defineProperty_default()(_mutations, mutation_types["b" /* GET_SAVED_VIDEOS */], function (state, savedVideos) {
   state.savedVideos = savedVideos;
-}), defineProperty_default()(_mutations, mutation_types["d" /* REMOVE_VIDEOS */], function (state, removedVideos) {
+}), defineProperty_default()(_mutations, mutation_types["e" /* REMOVE_VIDEOS */], function (state, removedVideos) {
   state.savedVideos = removedVideos;
-}), defineProperty_default()(_mutations, mutation_types["e" /* SAVE_VIDEOS */], function (state, savedVideos) {
+}), defineProperty_default()(_mutations, mutation_types["f" /* SAVE_VIDEOS */], function (state, savedVideos) {
   state.savedVideos = savedVideos;
+}), defineProperty_default()(_mutations, mutation_types["d" /* RECOVER_VIDEOS */], function (state, recoveredVideos) {
+  state.recoveredVideos = recoveredVideos;
 }), _mutations);
-var actions = (_actions = {}, defineProperty_default()(_actions, mutation_types["g" /* SIGN_IN */], function (_ref) {
+var actions = (_actions = {}, defineProperty_default()(_actions, mutation_types["h" /* SIGN_IN */], function (_ref) {
   var commit = _ref.commit;
   google_api_service.signIn().then(function (_ref2) {
     var name = _ref2.name,
         image = _ref2.image;
-    commit(mutation_types["g" /* SIGN_IN */], {
+    commit(mutation_types["h" /* SIGN_IN */], {
       name: name,
       image: image,
       isSignedIn: true
@@ -447,7 +452,7 @@ var actions = (_actions = {}, defineProperty_default()(_actions, mutation_types[
   google_api_service.logOff().then(function () {
     commit(mutation_types["c" /* LOG_OFF */], _objectSpread({}, initialState.user));
   });
-}), defineProperty_default()(_actions, mutation_types["f" /* SET_UP_GOOGLE_AUTHENTICATION_API */], function (_ref4) {
+}), defineProperty_default()(_actions, mutation_types["g" /* SET_UP_GOOGLE_AUTHENTICATION_API */], function (_ref4) {
   var commit = _ref4.commit;
   google_api_service.setUpAuthInstance().then(function () {
     google_api_service.listenToSignedInChanges(function (_ref5) {
@@ -455,7 +460,7 @@ var actions = (_actions = {}, defineProperty_default()(_actions, mutation_types[
           user = _ref5.user;
 
       if (isSignedIn) {
-        commit(mutation_types["g" /* SIGN_IN */], {
+        commit(mutation_types["h" /* SIGN_IN */], {
           name: user.name,
           image: user.image,
           isSignedIn: isSignedIn
@@ -479,16 +484,22 @@ var actions = (_actions = {}, defineProperty_default()(_actions, mutation_types[
       commit(mutation_types["b" /* GET_SAVED_VIDEOS */], savedVideos);
     });
   }, 1000);
-}), defineProperty_default()(_actions, mutation_types["e" /* SAVE_VIDEOS */], function (_ref9, _ref10) {
+}), defineProperty_default()(_actions, mutation_types["f" /* SAVE_VIDEOS */], function (_ref9, _ref10) {
   var commit = _ref9.commit;
   var videosToSave = _ref10.videosToSave;
   storage_service.save(videosStorageKey, videosToSave).then(function (result) {
-    commit(mutation_types["e" /* SAVE_VIDEOS */], result);
+    commit(mutation_types["f" /* SAVE_VIDEOS */], result);
   });
-}), defineProperty_default()(_actions, mutation_types["d" /* REMOVE_VIDEOS */], function (_ref11) {
+}), defineProperty_default()(_actions, mutation_types["e" /* REMOVE_VIDEOS */], function (_ref11) {
   var commit = _ref11.commit;
   storage_service.remove(videosStorageKey).then(function (result) {
-    commit(mutation_types["d" /* REMOVE_VIDEOS */], result || []);
+    commit(mutation_types["e" /* REMOVE_VIDEOS */], result || []);
+  });
+}), defineProperty_default()(_actions, mutation_types["d" /* RECOVER_VIDEOS */], function (_ref12, _ref13) {
+  var commit = _ref12.commit;
+  var videosToRecover = _ref13.videosToRecover;
+  youtube_rating_service.setRating(videosToRecover, 'like').then(function (result) {
+    commit(mutation_types["d" /* RECOVER_VIDEOS */], result || []);
   });
 }), _actions);
 /* harmony default export */ var src_store = (function ()
@@ -992,13 +1003,14 @@ start();
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return SIGN_IN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return SIGN_IN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LOG_OFF; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return SET_UP_GOOGLE_AUTHENTICATION_API; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return SET_UP_GOOGLE_AUTHENTICATION_API; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CHECK_VIDEOS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return GET_SAVED_VIDEOS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return SAVE_VIDEOS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return REMOVE_VIDEOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return SAVE_VIDEOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return REMOVE_VIDEOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return RECOVER_VIDEOS; });
 var SIGN_IN = 'SIGN_IN';
 var LOG_OFF = 'LOG_OFF';
 var SET_UP_GOOGLE_AUTHENTICATION_API = 'SET_UP_GOOGLE_AUTHENTICATION_API';
@@ -1006,6 +1018,7 @@ var CHECK_VIDEOS = 'CHECK_VIDEOS';
 var GET_SAVED_VIDEOS = 'GET_SAVED_VIDEOS';
 var SAVE_VIDEOS = 'SAVE_VIDEOS';
 var REMOVE_VIDEOS = 'REMOVE_VIDEOS';
+var RECOVER_VIDEOS = 'RECOVER_VIDEOS';
 
 /***/ }),
 
@@ -1036,4 +1049,4 @@ var youtubeUrlParserService = publicApi;
 /***/ })
 
 },[[0,3,0]]]);
-//# sourceMappingURL=app.24a2f730.js.map
+//# sourceMappingURL=app.480d9528.js.map
