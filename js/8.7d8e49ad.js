@@ -6,12 +6,12 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Recovery.vue?vue&type=template&id=ef2f3086&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"q-pa-xl"},[_c('v-recovery-video-list-input',{attrs:{"videos":_vm.videos},on:{"check-videos":function($event){return _vm.checkVideos($event)},"save-list":_vm.saveList,"load-list":function($event){return _vm.loadList()},"remove-videos":_vm.removeVideos}}),_c('v-recovery-checking-summary',{attrs:{"disabled":!_vm.areVideosChecked,"checkedVideos":_vm.checkedVideos},on:{"recover-videos":function($event){return _vm.recoverVideos($event)}}}),_c('v-recovery-page-recovery-summary',{attrs:{"disabled":!_vm.areVideosRecovered,"recoveredVideos":_vm.recoveredVideos}})],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Recovery.vue?vue&type=template&id=1ee13c93&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"q-pa-xl"},[_c('v-toaster',{attrs:{"message":_vm.dialog.message,"backgroundClass":_vm.dialog.backgroundClass},model:{value:(_vm.dialog.isVisible),callback:function ($$v) {_vm.$set(_vm.dialog, "isVisible", $$v)},expression:"dialog.isVisible"}}),_c('v-recovery-video-list-input',{attrs:{"videos":_vm.videos},on:{"check-videos":function($event){return _vm.checkVideos($event)},"save-list":_vm.saveList,"load-list":function($event){return _vm.loadList()},"remove-videos":_vm.removeVideos}}),_c('v-recovery-checking-summary',{attrs:{"disabled":!_vm.areVideosChecked,"checkedVideos":_vm.checkedVideos},on:{"recover-videos":function($event){return _vm.recoverVideos($event)}}}),_c('v-recovery-page-recovery-summary',{attrs:{"disabled":!_vm.areVideosRecovered,"recoveredVideos":_vm.recoveredVideos}}),_c('button',{on:{"click":function($event){return _vm.openDialog()}}},[_vm._v("Dialog")])],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/pages/Recovery.vue?vue&type=template&id=ef2f3086&
+// CONCATENATED MODULE: ./src/pages/Recovery.vue?vue&type=template&id=1ee13c93&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryVideoListInput.vue?vue&type=template&id=4b3516ca&
 var VRecoveryVideoListInputvue_type_template_id_4b3516ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',[_c('h1',[_vm._v("Восстановление лайков")]),_c('div',[_c('label',[_vm._v("Список видео (идентификаторы или полные ссылки)")]),_c('q-input',{attrs:{"filled":"","autogrow":"","placeholder":"placeholder to be filled in"},model:{value:(_vm.$v.videosString.$model),callback:function ($$v) {_vm.$set(_vm.$v.videosString, "$model", (typeof $$v === 'string'? $$v.trim(): $$v))},expression:"$v.videosString.$model"}}),(!_vm.$v.videosString.required)?_c('div',{staticClass:"error"},[_vm._v("Field is required")]):_vm._e(),(_vm.$v.videosString.required && !_vm.$v.videosString.commaSeparatedListOfUrlsOrVideoIds)?_c('div',{staticClass:"error"},[_vm._v("YouTube url or video id invalid")]):_vm._e()],1),_c('div',{staticClass:"q-pa-md q-gutter-sm"},[_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-tasks","label":"Проверить","color":"primary"},on:{"click":function($event){return _vm.checkVideos()}}}),_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-save","label":"Сохранить","color":"secondary"},on:{"click":function($event){return _vm.saveList()}}}),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-file-download","label":"Загрузить","color":"red"},on:{"click":function($event){return _vm.loadList()}}}):_vm._e(),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-trash-alt","label":"Удалить","color":"purple"},on:{"click":function($event){return _vm.showDeleteConfirmationModal()}}}):_vm._e()],1)]),_c('v-recovery-video-list-input-modal-delete-confirmation',{attrs:{"modal-visible":_vm.isDeleteModalVisible},on:{"close":_vm.closeModal}})],1)}
@@ -707,6 +707,77 @@ var VRecoveryPageRecoverySummary_component = Object(componentNormalizer["a" /* d
 
 runtime_auto_import_default()(VRecoveryPageRecoverySummary_component, 'components', {QChip: QChip["a" /* default */],QAvatar: QAvatar["a" /* default */],QTable: QTable["a" /* default */]})
 
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VToaster.vue?vue&type=template&id=3e44a0c2&
+var VToastervue_type_template_id_3e44a0c2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('q-dialog',{attrs:{"position":'top'},model:{value:(_vm.isVisible),callback:function ($$v) {_vm.isVisible=$$v},expression:"isVisible"}},[_c('q-card',{class:_vm.backgroundClass,staticStyle:{"width":"350px"}},[_c('q-card-section',{staticClass:"row items-center no-wrap"},[_c('div',[_c('div',{staticClass:"text-weight-bold"},[_vm._v(_vm._s(_vm.message))])]),_c('q-space')],1)],1)],1)}
+var VToastervue_type_template_id_3e44a0c2_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/VToaster.vue?vue&type=template&id=3e44a0c2&
+
+// CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VToaster.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var VToastervue_type_script_lang_js_ = ({
+  props: {
+    value: Boolean,
+    message: String,
+    backgroundClass: String
+  },
+  data: function data() {
+    return {
+      isVisible: this.value
+    };
+  },
+  watch: {
+    value: function value() {
+      this.isVisible = this.value;
+    }
+  },
+  computed: {}
+});
+// CONCATENATED MODULE: ./src/components/VToaster.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_VToastervue_type_script_lang_js_ = (VToastervue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./node_modules/quasar/src/components/space/QSpace.js
+var QSpace = __webpack_require__("2c91");
+
+// CONCATENATED MODULE: ./src/components/VToaster.vue
+
+
+
+
+
+/* normalize component */
+
+var VToaster_component = Object(componentNormalizer["a" /* default */])(
+  components_VToastervue_type_script_lang_js_,
+  VToastervue_type_template_id_3e44a0c2_render,
+  VToastervue_type_template_id_3e44a0c2_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var VToaster = (VToaster_component.exports);
+
+
+
+
+
+runtime_auto_import_default()(VToaster_component, 'components', {QDialog: QDialog["a" /* default */],QCard: QCard["a" /* default */],QCardSection: QCardSection["a" /* default */],QSpace: QSpace["a" /* default */]})
+
 // EXTERNAL MODULE: ./src/store/mutation-types.js
 var mutation_types = __webpack_require__("9fb0");
 
@@ -732,6 +803,13 @@ var mutation_types = __webpack_require__("9fb0");
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -747,13 +825,20 @@ var mutation_types = __webpack_require__("9fb0");
       recoveredVideos: {
         successfull: [],
         failed: []
+      },
+      dialog: {
+        isVisible: false,
+        message: '',
+        backgroundClass: 'bg-secondary',
+        dismissSchedule: null
       }
     };
   },
   components: {
     VRecoveryVideoListInput: VRecoveryVideoListInput,
     VRecoveryCheckingSummary: VRecoveryCheckingSummary,
-    VRecoveryPageRecoverySummary: VRecoveryPageRecoverySummary
+    VRecoveryPageRecoverySummary: VRecoveryPageRecoverySummary,
+    VToaster: VToaster
   },
   mounted: function mounted() {
     var _this = this;
@@ -781,6 +866,26 @@ var mutation_types = __webpack_require__("9fb0");
     this.$store.dispatch(mutation_types["b" /* GET_SAVED_VIDEOS */]);
   },
   methods: {
+    openDialog: function openDialog() {
+      var _this2 = this;
+
+      var _this$recoverySummary = this.recoverySummary(),
+          message = _this$recoverySummary.message,
+          cssClass = _this$recoverySummary.cssClass;
+
+      this.dialog.message = message;
+      this.dialog.backgroundClass = cssClass;
+
+      if (this.dialog.dismissSchedule) {
+        clearTimeout(this.dialog.dismissSchedule);
+      }
+
+      this.dialog.dismissSchedule = setTimeout(function () {
+        _this2.dialog.isVisible = false;
+        _this2.dialog.message = '';
+      }, 2000);
+      this.dialog.isVisible = true;
+    },
     checkVideos: function checkVideos(videosToCheck) {
       this.$store.dispatch({
         type: mutation_types["a" /* CHECK_VIDEOS */],
@@ -806,6 +911,28 @@ var mutation_types = __webpack_require__("9fb0");
         type: mutation_types["d" /* RECOVER_VIDEOS */],
         videosToRecover: videosToRecover
       });
+    },
+    recoverySummary: function recoverySummary() {
+      var _this$recoveredVideos = this.recoveredVideos,
+          failed = _this$recoveredVideos.failed,
+          successfull = _this$recoveredVideos.successfull;
+
+      if (failed > 0 && successfull === 0) {
+        return {
+          message: 'Sorry! None of the videos were recovered',
+          cssClass: 'bg-red'
+        };
+      } else if (successfull > 0 && failed === 0) {
+        return {
+          message: 'Success! All of the videos were recovered',
+          cssClass: 'bg-teal'
+        };
+      } else {
+        return {
+          message: 'Only some of the videos were recovered',
+          cssClass: 'bg-purple'
+        };
+      }
     }
   },
   computed: {
@@ -843,4 +970,4 @@ var Recovery_component = Object(componentNormalizer["a" /* default */])(
 /***/ })
 
 }]);
-//# sourceMappingURL=8.8544a262.js.map
+//# sourceMappingURL=8.7d8e49ad.js.map
