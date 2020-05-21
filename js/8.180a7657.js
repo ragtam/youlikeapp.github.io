@@ -6,12 +6,27 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Recovery.vue?vue&type=template&id=1ee13c93&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Recovery.vue?vue&type=template&id=06ea3b37&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"q-pa-xl"},[_c('v-toaster',{attrs:{"message":_vm.dialog.message,"backgroundClass":_vm.dialog.backgroundClass},model:{value:(_vm.dialog.isVisible),callback:function ($$v) {_vm.$set(_vm.dialog, "isVisible", $$v)},expression:"dialog.isVisible"}}),_c('v-recovery-video-list-input',{attrs:{"videos":_vm.videos},on:{"check-videos":function($event){return _vm.checkVideos($event)},"save-list":_vm.saveList,"load-list":function($event){return _vm.loadList()},"remove-videos":_vm.removeVideos}}),_c('v-recovery-checking-summary',{attrs:{"disabled":!_vm.areVideosChecked,"checkedVideos":_vm.checkedVideos},on:{"recover-videos":function($event){return _vm.recoverVideos($event)}}}),_c('v-recovery-page-recovery-summary',{attrs:{"disabled":!_vm.areVideosRecovered,"recoveredVideos":_vm.recoveredVideos}}),_c('button',{on:{"click":function($event){return _vm.openDialog()}}},[_vm._v("Dialog")])],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/pages/Recovery.vue?vue&type=template&id=1ee13c93&
+// CONCATENATED MODULE: ./src/pages/Recovery.vue?vue&type=template&id=06ea3b37&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
+var web_dom_iterable = __webpack_require__("ac6a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.iterator.js
+var es6_array_iterator = __webpack_require__("cadf");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.to-string.js
+var es6_object_to_string = __webpack_require__("06db");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.string.iterator.js
+var es6_string_iterator = __webpack_require__("5df3");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.map.js
+var es6_map = __webpack_require__("f400");
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VRecoveryVideoListInput.vue?vue&type=template&id=4b3516ca&
 var VRecoveryVideoListInputvue_type_template_id_4b3516ca_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',[_c('h1',[_vm._v("Восстановление лайков")]),_c('div',[_c('label',[_vm._v("Список видео (идентификаторы или полные ссылки)")]),_c('q-input',{attrs:{"filled":"","autogrow":"","placeholder":"placeholder to be filled in"},model:{value:(_vm.$v.videosString.$model),callback:function ($$v) {_vm.$set(_vm.$v.videosString, "$model", (typeof $$v === 'string'? $$v.trim(): $$v))},expression:"$v.videosString.$model"}}),(!_vm.$v.videosString.required)?_c('div',{staticClass:"error"},[_vm._v("Field is required")]):_vm._e(),(_vm.$v.videosString.required && !_vm.$v.videosString.commaSeparatedListOfUrlsOrVideoIds)?_c('div',{staticClass:"error"},[_vm._v("YouTube url or video id invalid")]):_vm._e()],1),_c('div',{staticClass:"q-pa-md q-gutter-sm"},[_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-tasks","label":"Проверить","color":"primary"},on:{"click":function($event){return _vm.checkVideos()}}}),_c('q-btn',{attrs:{"disabled":_vm.$v.$invalid,"icon":"fas fa-save","label":"Сохранить","color":"secondary"},on:{"click":function($event){return _vm.saveList()}}}),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-file-download","label":"Загрузить","color":"red"},on:{"click":function($event){return _vm.loadList()}}}):_vm._e(),(!_vm.isListEmpty)?_c('q-btn',{attrs:{"icon":"fas fa-trash-alt","label":"Удалить","color":"purple"},on:{"click":function($event){return _vm.showDeleteConfirmationModal()}}}):_vm._e()],1)]),_c('v-recovery-video-list-input-modal-delete-confirmation',{attrs:{"modal-visible":_vm.isDeleteModalVisible},on:{"close":_vm.closeModal}})],1)}
@@ -707,12 +722,12 @@ var VRecoveryPageRecoverySummary_component = Object(componentNormalizer["a" /* d
 
 runtime_auto_import_default()(VRecoveryPageRecoverySummary_component, 'components', {QChip: QChip["a" /* default */],QAvatar: QAvatar["a" /* default */],QTable: QTable["a" /* default */]})
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VToaster.vue?vue&type=template&id=3e44a0c2&
-var VToastervue_type_template_id_3e44a0c2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('q-dialog',{attrs:{"position":'top'},model:{value:(_vm.isVisible),callback:function ($$v) {_vm.isVisible=$$v},expression:"isVisible"}},[_c('q-card',{class:_vm.backgroundClass,staticStyle:{"width":"350px"}},[_c('q-card-section',{staticClass:"row items-center no-wrap"},[_c('div',[_c('div',{staticClass:"text-weight-bold"},[_vm._v(_vm._s(_vm.message))])]),_c('q-space')],1)],1)],1)}
-var VToastervue_type_template_id_3e44a0c2_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VToaster.vue?vue&type=template&id=1e3eb246&
+var VToastervue_type_template_id_1e3eb246_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('q-dialog',{attrs:{"position":'top'},model:{value:(_vm.isVisible),callback:function ($$v) {_vm.isVisible=$$v},expression:"isVisible"}},[_c('q-card',{class:_vm.backgroundClass,staticStyle:{"width":"350px"}},[_c('q-card-section',{staticClass:"row items-center no-wrap"},[_c('div',[_c('div',{staticClass:"text-weight-bold"},[_vm._v(_vm._s(_vm.message))])]),_c('q-space')],1)],1)],1)}
+var VToastervue_type_template_id_1e3eb246_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VToaster.vue?vue&type=template&id=3e44a0c2&
+// CONCATENATED MODULE: ./src/components/VToaster.vue?vue&type=template&id=1e3eb246&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VToaster.vue?vue&type=script&lang=js&
 //
@@ -743,8 +758,7 @@ var VToastervue_type_template_id_3e44a0c2_staticRenderFns = []
     value: function value() {
       this.isVisible = this.value;
     }
-  },
-  computed: {}
+  }
 });
 // CONCATENATED MODULE: ./src/components/VToaster.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_VToastervue_type_script_lang_js_ = (VToastervue_type_script_lang_js_); 
@@ -761,8 +775,8 @@ var QSpace = __webpack_require__("2c91");
 
 var VToaster_component = Object(componentNormalizer["a" /* default */])(
   components_VToastervue_type_script_lang_js_,
-  VToastervue_type_template_id_3e44a0c2_render,
-  VToastervue_type_template_id_3e44a0c2_staticRenderFns,
+  VToastervue_type_template_id_1e3eb246_render,
+  VToastervue_type_template_id_1e3eb246_staticRenderFns,
   false,
   null,
   null,
@@ -782,6 +796,11 @@ runtime_auto_import_default()(VToaster_component, 'components', {QDialog: QDialo
 var mutation_types = __webpack_require__("9fb0");
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--1-0!./node_modules/@quasar/app/lib/webpack/loader.auto-import.js?kebab!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/Recovery.vue?vue&type=script&lang=js&
+
+
+
+
+
 //
 //
 //
@@ -813,6 +832,30 @@ var mutation_types = __webpack_require__("9fb0");
 
 
 
+
+var recoveryMessages = new Map([['failure', {
+  message: 'Sorry! None of the videos were recovered',
+  cssClass: 'bg-red'
+}], ['success', {
+  message: 'Success! All of the videos were recovered',
+  cssClass: 'bg-teal'
+}], ['semi-success', {
+  message: 'Only some of the videos were recovered',
+  cssClass: 'bg-purple'
+}]]);
+
+function typeOfRecoveryMessage(recoveredVideos) {
+  var failed = recoveredVideos.failed,
+      successfull = recoveredVideos.successfull;
+
+  if (failed > 0 && successfull === 0) {
+    return 'failure';
+  } else if (successfull > 0 && failed === 0) {
+    return 'success';
+  } else {
+    return 'semi-success';
+  }
+}
 
 /* harmony default export */ var Recoveryvue_type_script_lang_js_ = ({
   data: function data() {
@@ -913,26 +956,7 @@ var mutation_types = __webpack_require__("9fb0");
       });
     },
     recoverySummary: function recoverySummary() {
-      var _this$recoveredVideos = this.recoveredVideos,
-          failed = _this$recoveredVideos.failed,
-          successfull = _this$recoveredVideos.successfull;
-
-      if (failed > 0 && successfull === 0) {
-        return {
-          message: 'Sorry! None of the videos were recovered',
-          cssClass: 'bg-red'
-        };
-      } else if (successfull > 0 && failed === 0) {
-        return {
-          message: 'Success! All of the videos were recovered',
-          cssClass: 'bg-teal'
-        };
-      } else {
-        return {
-          message: 'Only some of the videos were recovered',
-          cssClass: 'bg-purple'
-        };
-      }
+      return recoveryMessages.get(typeOfRecoveryMessage(this.recoveredVideos));
     }
   },
   computed: {
@@ -970,4 +994,4 @@ var Recovery_component = Object(componentNormalizer["a" /* default */])(
 /***/ })
 
 }]);
-//# sourceMappingURL=8.7d8e49ad.js.map
+//# sourceMappingURL=8.180a7657.js.map
